@@ -39,22 +39,22 @@ export default function Navbar() {
 
       <div className="flex items-center gap-6">
         <button
+          onClick={() => navigate('/careers')}
+          className="hidden md:block text-sm text-ink-2 font-medium hover:text-ink transition-colors bg-transparent border-0 cursor-pointer"
+        >
+          Careers
+        </button>
+        <button
+          onClick={() => navigate('/colleges')}
+          className="hidden md:block text-sm text-ink-2 font-medium hover:text-ink transition-colors bg-transparent border-0 cursor-pointer"
+        >
+          Colleges
+        </button>
+        <button
           onClick={() => scrollTo('how-it-works')}
           className="hidden md:block text-sm text-ink-2 font-medium hover:text-ink transition-colors bg-transparent border-0 cursor-pointer"
         >
-          How it works
-        </button>
-        <button
-          onClick={() => scrollTo('features')}
-          className="hidden md:block text-sm text-ink-2 font-medium hover:text-ink transition-colors bg-transparent border-0 cursor-pointer"
-        >
-          Features
-        </button>
-        <button
-          onClick={() => scrollTo('faq')}
-          className="hidden md:block text-sm text-ink-2 font-medium hover:text-ink transition-colors bg-transparent border-0 cursor-pointer"
-        >
-          FAQ
+          Method
         </button>
         <button
           className="btn-primary text-sm px-4 py-2"

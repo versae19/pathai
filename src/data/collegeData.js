@@ -1,0 +1,499 @@
+export const collegeData = [
+  {
+    college_name: 'Indian Institute of Technology Bombay',
+    location: { city: 'Mumbai', state: 'Maharashtra' },
+    courses_offered: ['Software Engineer', 'Mechanical Engineer', 'Civil Engineer', 'Electronics and Communication Engineer', 'AI/ML Engineer', 'Data Scientist', 'Cloud Engineer'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['JEE Advanced', 'GATE', 'UCEED'],
+    approximate_fees: 'INR 8-12 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'Indian Institute of Technology Delhi',
+    location: { city: 'New Delhi', state: 'Delhi' },
+    courses_offered: ['Software Engineer', 'Mechanical Engineer', 'Civil Engineer', 'Electronics and Communication Engineer', 'AI/ML Engineer', 'Data Scientist', 'Product Manager'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['JEE Advanced', 'GATE', 'UCEED'],
+    approximate_fees: 'INR 8-12 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'Indian Institute of Technology Madras',
+    location: { city: 'Chennai', state: 'Tamil Nadu' },
+    courses_offered: ['Software Engineer', 'Mechanical Engineer', 'Civil Engineer', 'AI/ML Engineer', 'Data Scientist', 'Renewable Energy Engineer'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['JEE Advanced', 'GATE', 'IIT JAM'],
+    approximate_fees: 'INR 8-12 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'Indian Institute of Technology Kanpur',
+    location: { city: 'Kanpur', state: 'Uttar Pradesh' },
+    courses_offered: ['Software Engineer', 'Mechanical Engineer', 'Electronics and Communication Engineer', 'AI/ML Engineer', 'Aerospace Engineer', 'Data Scientist'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['JEE Advanced', 'GATE', 'IIT JAM'],
+    approximate_fees: 'INR 8-12 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'Indian Institute of Technology Kharagpur',
+    location: { city: 'Kharagpur', state: 'West Bengal' },
+    courses_offered: ['Software Engineer', 'Civil Engineer', 'Mechanical Engineer', 'Chemical Engineer', 'Architect', 'Lawyer'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['JEE Advanced', 'GATE', 'NATA'],
+    approximate_fees: 'INR 8-12 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'Indian Institute of Technology Roorkee',
+    location: { city: 'Roorkee', state: 'Uttarakhand' },
+    courses_offered: ['Civil Engineer', 'Mechanical Engineer', 'Software Engineer', 'Architect', 'Renewable Energy Engineer'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['JEE Advanced', 'GATE', 'NATA'],
+    approximate_fees: 'INR 8-12 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'Indian Institute of Science',
+    location: { city: 'Bengaluru', state: 'Karnataka' },
+    courses_offered: ['AI/ML Engineer', 'Data Scientist', 'Renewable Energy Engineer', 'Aerospace Engineer', 'Biotechnologist'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['JEE Advanced', 'GATE', 'IIT JAM'],
+    approximate_fees: 'INR 1-3 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'National Institute of Technology Tiruchirappalli',
+    location: { city: 'Tiruchirappalli', state: 'Tamil Nadu' },
+    courses_offered: ['Software Engineer', 'Mechanical Engineer', 'Civil Engineer', 'Electronics and Communication Engineer', 'Chemical Engineer'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['JEE Main', 'GATE'],
+    approximate_fees: 'INR 6-8 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'National Institute of Technology Karnataka Surathkal',
+    location: { city: 'Mangaluru', state: 'Karnataka' },
+    courses_offered: ['Software Engineer', 'Mechanical Engineer', 'Civil Engineer', 'Electronics and Communication Engineer', 'Data Scientist'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['JEE Main', 'GATE'],
+    approximate_fees: 'INR 6-8 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'National Institute of Technology Warangal',
+    location: { city: 'Warangal', state: 'Telangana' },
+    courses_offered: ['Software Engineer', 'Mechanical Engineer', 'Civil Engineer', 'Electronics and Communication Engineer', 'Chemical Engineer'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['JEE Main', 'GATE'],
+    approximate_fees: 'INR 6-8 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'International Institute of Information Technology Hyderabad',
+    location: { city: 'Hyderabad', state: 'Telangana' },
+    courses_offered: ['Software Engineer', 'AI/ML Engineer', 'Data Scientist', 'Cybersecurity Analyst', 'Cloud Engineer'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['JEE Main', 'UGEE', 'GATE'],
+    approximate_fees: 'INR 14-18 lakh total',
+    type: 'private'
+  },
+  {
+    college_name: 'Birla Institute of Technology and Science Pilani',
+    location: { city: 'Pilani', state: 'Rajasthan' },
+    courses_offered: ['Software Engineer', 'Mechanical Engineer', 'Electronics and Communication Engineer', 'Chemical Engineer', 'Data Scientist'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['BITSAT', 'GATE'],
+    approximate_fees: 'INR 20-28 lakh total',
+    type: 'private'
+  },
+  {
+    college_name: 'Vellore Institute of Technology',
+    location: { city: 'Vellore', state: 'Tamil Nadu' },
+    courses_offered: ['Software Engineer', 'Mechanical Engineer', 'Electronics and Communication Engineer', 'AI/ML Engineer', 'Cybersecurity Analyst'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['VITEEE'],
+    approximate_fees: 'INR 8-20 lakh total',
+    type: 'private'
+  },
+  {
+    college_name: 'Delhi Technological University',
+    location: { city: 'New Delhi', state: 'Delhi' },
+    courses_offered: ['Software Engineer', 'Mechanical Engineer', 'Civil Engineer', 'Electronics and Communication Engineer', 'Product Manager'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['JEE Main', 'GATE'],
+    approximate_fees: 'INR 8-10 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'College of Engineering Pune Technological University',
+    location: { city: 'Pune', state: 'Maharashtra' },
+    courses_offered: ['Software Engineer', 'Mechanical Engineer', 'Civil Engineer', 'Electronics and Communication Engineer', 'Robotics Engineer'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['MHT CET', 'JEE Main', 'GATE'],
+    approximate_fees: 'INR 4-6 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'AIIMS Delhi',
+    location: { city: 'New Delhi', state: 'Delhi' },
+    courses_offered: ['Doctor', 'Nurse', 'Physiotherapist', 'Medical Lab Technologist'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['NEET UG', 'INI CET', 'AIIMS BSc Nursing'],
+    approximate_fees: 'INR 10,000-1 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'Christian Medical College Vellore',
+    location: { city: 'Vellore', state: 'Tamil Nadu' },
+    courses_offered: ['Doctor', 'Nurse', 'Physiotherapist', 'Medical Lab Technologist'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['NEET UG', 'NEET PG', 'University Entrance Exams'],
+    approximate_fees: 'INR 2-8 lakh total',
+    type: 'private'
+  },
+  {
+    college_name: 'Armed Forces Medical College',
+    location: { city: 'Pune', state: 'Maharashtra' },
+    courses_offered: ['Doctor', 'Nurse', 'Defence Officer'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['NEET UG', 'NEET PG'],
+    approximate_fees: 'INR 1-3 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'JIPMER Puducherry',
+    location: { city: 'Puducherry', state: 'Puducherry' },
+    courses_offered: ['Doctor', 'Nurse', 'Medical Lab Technologist'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['NEET UG', 'INI CET', 'JIPMER Nursing'],
+    approximate_fees: 'INR 50,000-2 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'Maulana Azad Medical College',
+    location: { city: 'New Delhi', state: 'Delhi' },
+    courses_offered: ['Doctor', 'Nurse', 'Pharmacist', 'Medical Lab Technologist'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['NEET UG', 'NEET PG'],
+    approximate_fees: 'INR 50,000-2 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'King George Medical University',
+    location: { city: 'Lucknow', state: 'Uttar Pradesh' },
+    courses_offered: ['Doctor', 'Dentist', 'Nurse', 'Physiotherapist'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['NEET UG', 'NEET PG', 'NEET MDS'],
+    approximate_fees: 'INR 2-6 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'Institute of Medical Sciences BHU',
+    location: { city: 'Varanasi', state: 'Uttar Pradesh' },
+    courses_offered: ['Doctor', 'Dentist', 'Nurse', 'Pharmacist'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['NEET UG', 'NEET PG', 'CUET'],
+    approximate_fees: 'INR 1-4 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'Kasturba Medical College Manipal',
+    location: { city: 'Manipal', state: 'Karnataka' },
+    courses_offered: ['Doctor', 'Nurse', 'Physiotherapist', 'Medical Lab Technologist'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['NEET UG', 'NEET PG'],
+    approximate_fees: 'INR 40-80 lakh total',
+    type: 'private'
+  },
+  {
+    college_name: 'Sri Ram College of Commerce',
+    location: { city: 'New Delhi', state: 'Delhi' },
+    courses_offered: ['Chartered Accountant', 'Financial Analyst', 'Investment Banker', 'Economist'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['CUET'],
+    approximate_fees: 'INR 1-2 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'Lady Shri Ram College for Women',
+    location: { city: 'New Delhi', state: 'Delhi' },
+    courses_offered: ['Psychologist', 'Journalist', 'Economist', 'Public Policy Analyst'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['CUET'],
+    approximate_fees: 'INR 1-2 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'Hindu College',
+    location: { city: 'New Delhi', state: 'Delhi' },
+    courses_offered: ['Economist', 'Journalist', 'Teacher', 'Psychologist', 'Public Policy Analyst'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['CUET'],
+    approximate_fees: 'INR 75,000-2 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'St. Xavier’s College Mumbai',
+    location: { city: 'Mumbai', state: 'Maharashtra' },
+    courses_offered: ['Journalist', 'Psychologist', 'Economist', 'Digital Marketer'],
+    admission_process: 'merit',
+    entrance_exams_accepted: ['CUET', 'University Entrance Exams'],
+    approximate_fees: 'INR 1-4 lakh total',
+    type: 'private'
+  },
+  {
+    college_name: 'Narsee Monjee Institute of Management Studies',
+    location: { city: 'Mumbai', state: 'Maharashtra' },
+    courses_offered: ['Investment Banker', 'Financial Analyst', 'Digital Marketer', 'Product Manager'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['NMAT', 'NPAT', 'CUET'],
+    approximate_fees: 'INR 8-25 lakh total',
+    type: 'private'
+  },
+  {
+    college_name: 'Symbiosis Centre for Management Studies',
+    location: { city: 'Pune', state: 'Maharashtra' },
+    courses_offered: ['Digital Marketer', 'Financial Analyst', 'Product Manager', 'Hotel Manager'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['SET', 'SNAP'],
+    approximate_fees: 'INR 8-18 lakh total',
+    type: 'private'
+  },
+  {
+    college_name: 'Indian Institute of Management Ahmedabad',
+    location: { city: 'Ahmedabad', state: 'Gujarat' },
+    courses_offered: ['Investment Banker', 'Financial Analyst', 'Product Manager', 'Management Consultant'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['CAT', 'GMAT'],
+    approximate_fees: 'INR 25-35 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'Indian Institute of Management Bangalore',
+    location: { city: 'Bengaluru', state: 'Karnataka' },
+    courses_offered: ['Investment Banker', 'Financial Analyst', 'Product Manager', 'Management Consultant'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['CAT', 'GMAT'],
+    approximate_fees: 'INR 25-35 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'Indian Institute of Management Calcutta',
+    location: { city: 'Kolkata', state: 'West Bengal' },
+    courses_offered: ['Investment Banker', 'Financial Analyst', 'Product Manager', 'Management Consultant'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['CAT', 'GMAT'],
+    approximate_fees: 'INR 25-35 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'Faculty of Management Studies, University of Delhi',
+    location: { city: 'New Delhi', state: 'Delhi' },
+    courses_offered: ['Investment Banker', 'Financial Analyst', 'Digital Marketer', 'Management Consultant'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['CAT'],
+    approximate_fees: 'INR 2-4 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'National Law School of India University',
+    location: { city: 'Bengaluru', state: 'Karnataka' },
+    courses_offered: ['Lawyer', 'Public Policy Analyst'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['CLAT'],
+    approximate_fees: 'INR 12-18 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'NALSAR University of Law',
+    location: { city: 'Hyderabad', state: 'Telangana' },
+    courses_offered: ['Lawyer', 'Public Policy Analyst'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['CLAT'],
+    approximate_fees: 'INR 10-16 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'National Law University Delhi',
+    location: { city: 'New Delhi', state: 'Delhi' },
+    courses_offered: ['Lawyer', 'Public Policy Analyst'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['AILET'],
+    approximate_fees: 'INR 10-16 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'The West Bengal National University of Juridical Sciences',
+    location: { city: 'Kolkata', state: 'West Bengal' },
+    courses_offered: ['Lawyer', 'Public Policy Analyst'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['CLAT'],
+    approximate_fees: 'INR 10-16 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'National Institute of Design Ahmedabad',
+    location: { city: 'Ahmedabad', state: 'Gujarat' },
+    courses_offered: ['Graphic Designer', 'UI/UX Designer', 'Animation and VFX Artist'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['NID DAT'],
+    approximate_fees: 'INR 10-18 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'IDC School of Design, IIT Bombay',
+    location: { city: 'Mumbai', state: 'Maharashtra' },
+    courses_offered: ['UI/UX Designer', 'Graphic Designer', 'Product Manager'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['UCEED', 'CEED'],
+    approximate_fees: 'INR 8-12 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'National Institute of Fashion Technology Delhi',
+    location: { city: 'New Delhi', state: 'Delhi' },
+    courses_offered: ['Fashion Designer', 'Graphic Designer', 'Digital Marketer'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['NIFT Entrance Exam'],
+    approximate_fees: 'INR 12-18 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'Srishti Manipal Institute of Art, Design and Technology',
+    location: { city: 'Bengaluru', state: 'Karnataka' },
+    courses_offered: ['Graphic Designer', 'UI/UX Designer', 'Animation and VFX Artist'],
+    admission_process: 'interview',
+    entrance_exams_accepted: ['University Entrance Exams'],
+    approximate_fees: 'INR 16-24 lakh total',
+    type: 'private'
+  },
+  {
+    college_name: 'Film and Television Institute of India',
+    location: { city: 'Pune', state: 'Maharashtra' },
+    courses_offered: ['Animation and VFX Artist', 'Journalist', 'Graphic Designer'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['JET', 'Interview'],
+    approximate_fees: 'INR 1-4 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'Indian Agricultural Research Institute',
+    location: { city: 'New Delhi', state: 'Delhi' },
+    courses_offered: ['Agricultural Scientist', 'Biotechnologist'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['ICAR AIEEA', 'CUET', 'GATE'],
+    approximate_fees: 'INR 50,000-2 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'Tamil Nadu Agricultural University',
+    location: { city: 'Coimbatore', state: 'Tamil Nadu' },
+    courses_offered: ['Agricultural Scientist', 'Biotechnologist', 'Food Technologist'],
+    admission_process: 'merit',
+    entrance_exams_accepted: ['State Agriculture Admission', 'ICAR AIEEA'],
+    approximate_fees: 'INR 1-4 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'National Dairy Research Institute',
+    location: { city: 'Karnal', state: 'Haryana' },
+    courses_offered: ['Food Technologist', 'Veterinarian', 'Agricultural Scientist'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['ICAR AIEEA', 'CUET'],
+    approximate_fees: 'INR 1-3 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'Indian Veterinary Research Institute',
+    location: { city: 'Bareilly', state: 'Uttar Pradesh' },
+    courses_offered: ['Veterinarian', 'Biotechnologist', 'Agricultural Scientist'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['NEET UG', 'ICAR AIEEA'],
+    approximate_fees: 'INR 1-3 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'School of Planning and Architecture Delhi',
+    location: { city: 'New Delhi', state: 'Delhi' },
+    courses_offered: ['Architect', 'Civil Engineer'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['NATA', 'JEE Main Paper 2', 'GATE'],
+    approximate_fees: 'INR 4-8 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'CEPT University',
+    location: { city: 'Ahmedabad', state: 'Gujarat' },
+    courses_offered: ['Architect', 'Civil Engineer', 'UI/UX Designer'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['NATA', 'JEE Main Paper 2', 'University Entrance Exams'],
+    approximate_fees: 'INR 12-20 lakh total',
+    type: 'private'
+  },
+  {
+    college_name: 'National Institute of Hotel Management and Catering Technology Pusa',
+    location: { city: 'New Delhi', state: 'Delhi' },
+    courses_offered: ['Hotel Manager', 'Digital Marketer'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['NCHM JEE'],
+    approximate_fees: 'INR 3-6 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'Tata Institute of Social Sciences',
+    location: { city: 'Mumbai', state: 'Maharashtra' },
+    courses_offered: ['Psychologist', 'Social Worker', 'Public Policy Analyst'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['CUET PG', 'TISS Entrance Process'],
+    approximate_fees: 'INR 1-4 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'Indian Institute of Mass Communication',
+    location: { city: 'New Delhi', state: 'Delhi' },
+    courses_offered: ['Journalist', 'Digital Marketer', 'Public Policy Analyst'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['IIMC Entrance Exam', 'CUET PG'],
+    approximate_fees: 'INR 1-3 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'Indian Statistical Institute',
+    location: { city: 'Kolkata', state: 'West Bengal' },
+    courses_offered: ['Data Scientist', 'Financial Analyst', 'Actuary', 'Economist'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['ISI Admission Test'],
+    approximate_fees: 'INR 50,000-2 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'National Forensic Sciences University',
+    location: { city: 'Gandhinagar', state: 'Gujarat' },
+    courses_offered: ['Cybersecurity Analyst', 'Lawyer', 'IPS Officer'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['CUET', 'University Entrance Exams'],
+    approximate_fees: 'INR 2-8 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'Indian Institute of Space Science and Technology',
+    location: { city: 'Thiruvananthapuram', state: 'Kerala' },
+    courses_offered: ['Aerospace Engineer', 'Electronics and Communication Engineer', 'AI/ML Engineer'],
+    admission_process: 'exam-based',
+    entrance_exams_accepted: ['JEE Advanced', 'GATE'],
+    approximate_fees: 'INR 4-8 lakh total',
+    type: 'government'
+  },
+  {
+    college_name: 'Amity University Noida',
+    location: { city: 'Noida', state: 'Uttar Pradesh' },
+    courses_offered: ['Digital Marketer', 'Graphic Designer', 'Psychologist', 'Biotechnologist', 'Animation and VFX Artist'],
+    admission_process: 'merit',
+    entrance_exams_accepted: ['CUET', 'University Entrance Exams', 'Interview'],
+    approximate_fees: 'INR 6-20 lakh total',
+    type: 'private'
+  }
+]
+
+export default collegeData

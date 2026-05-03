@@ -201,6 +201,45 @@ export default function DashboardPage({ formData, planData, setPlanData }) {
             </div>
 
             {/* Roadmap */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-8">
+              <div className="bg-white border border-border rounded-2xl p-6">
+                <h3 className="text-base font-bold mb-4">Entrance exams to prepare</h3>
+                <div className="space-y-3">
+                  {(career.entranceExams || []).slice(0, 4).map((exam) => (
+                    <div key={exam.exam_name} className="rounded-xl bg-bg border border-border p-4">
+                      <div className="flex items-center justify-between gap-3 mb-1">
+                        <h4 className="text-sm font-bold text-ink">{exam.exam_name}</h4>
+                        <span className="text-[11px] font-bold uppercase tracking-wide text-accent bg-accent-light px-2 py-1 rounded-full">
+                          {exam.difficulty_level}
+                        </span>
+                      </div>
+                      <p className="text-xs text-ink-2 leading-relaxed">{exam.short_description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="bg-white border border-border rounded-2xl p-6">
+                <h3 className="text-base font-bold mb-4">Suggested colleges</h3>
+                <div className="space-y-3">
+                  {(career.suggestedColleges || []).slice(0, 5).map((college) => (
+                    <div key={college.college_name} className="rounded-xl bg-bg border border-border p-4">
+                      <div className="flex items-start justify-between gap-3">
+                        <div>
+                          <h4 className="text-sm font-bold text-ink leading-snug">{college.college_name}</h4>
+                          <p className="text-xs text-ink-3 mt-1">{college.location} · {college.type}</p>
+                        </div>
+                        <span className="text-[11px] font-bold text-gold bg-gold-light px-2 py-1 rounded-full whitespace-nowrap">
+                          {college.admission_process}
+                        </span>
+                      </div>
+                      <p className="text-xs text-ink-2 mt-2">Fees: {college.approximate_fees}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
             <div className="bg-white border border-border rounded-2xl p-6">
               <h3 className="text-base font-bold mb-6 flex items-center gap-2">
                 <span>📍</span> Step-by-Step Roadmap — {career.title}

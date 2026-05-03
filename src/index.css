@@ -9,8 +9,17 @@
 }
 
 @layer components {
+  .hero-surface {
+    background:
+      radial-gradient(circle at 86% 18%, rgba(83,74,183,0.16) 0, transparent 30%),
+      radial-gradient(circle at 12% 82%, rgba(201,123,42,0.18) 0, transparent 28%),
+      linear-gradient(115deg, rgba(250,250,248,0.98) 0%, rgba(250,250,248,0.9) 46%, rgba(232,245,238,0.88) 100%),
+      linear-gradient(90deg, rgba(26,25,22,0.05) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(26,25,22,0.04) 1px, transparent 1px);
+    background-size: auto, auto, auto, 44px 44px, 44px 44px;
+  }
   .btn-primary {
-    @apply bg-ink text-white px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200 hover:bg-accent hover:-translate-y-0.5 inline-flex items-center gap-2 cursor-pointer border-0;
+    @apply bg-ink text-white px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200 hover:bg-accent hover:-translate-y-0.5 inline-flex items-center gap-2 cursor-pointer border-0 shadow-sm;
   }
   .btn-secondary {
     @apply bg-transparent text-ink px-6 py-3 rounded-xl font-medium text-sm border border-border-2 transition-all duration-200 hover:border-ink hover:bg-bg-2 cursor-pointer;
@@ -22,13 +31,390 @@
     @apply bg-accent-light border-accent text-accent;
   }
   .card {
-    @apply bg-white border border-border rounded-2xl p-6;
+    @apply bg-white border border-border rounded-2xl p-6 shadow-sm;
   }
   .section-label {
     @apply text-xs font-semibold uppercase tracking-widest text-ink-3 mb-4;
   }
   .h2 {
     @apply font-serif text-4xl md:text-5xl tracking-tight leading-tight mb-4;
+  }
+  .career-orbit {
+    @apply bg-ink text-white rounded-[28px] p-5 shadow-2xl border border-white/10;
+  }
+  .career-orbit-header {
+    @apply flex items-center justify-between pb-4 mb-4 border-b border-white/10 text-xs uppercase tracking-widest text-white/50;
+  }
+  .career-orbit-header strong {
+    @apply text-white font-semibold tracking-normal normal-case;
+  }
+  .career-preview-row {
+    @apply bg-white/[0.08] border border-white/10 rounded-2xl p-4 flex items-center justify-between gap-4;
+  }
+  .exam-pill {
+    @apply bg-accent-light text-accent text-xs font-bold px-3 py-1.5 rounded-full whitespace-nowrap;
+  }
+  .career-orbit-footer {
+    @apply mt-4 pt-4 border-t border-white/10 flex items-center justify-between gap-4;
+  }
+  .career-orbit-footer strong {
+    @apply block text-sm text-white mt-1;
+  }
+  .career-orbit-footer button {
+    @apply bg-white text-ink px-4 py-2 rounded-xl text-sm font-semibold border-0 cursor-pointer hover:bg-accent-light hover:text-accent transition-colors;
+  }
+  .career-card {
+    @apply bg-white border border-border rounded-2xl p-5 shadow-sm hover:-translate-y-1 hover:border-border-2 hover:shadow-md transition-all duration-300;
+  }
+  .category-badge {
+    @apply bg-accent-light text-accent text-[11px] font-bold uppercase tracking-wide px-3 py-1 rounded-full;
+  }
+  .metric-tile {
+    @apply bg-white/85 border border-border rounded-2xl p-4 shadow-sm backdrop-blur;
+  }
+  .planner-panel {
+    @apply bg-ink text-white rounded-[32px] p-5 md:p-6 shadow-2xl border border-white/10 relative overflow-hidden;
+  }
+  .planner-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 12% 10%, rgba(232,245,238,0.16), transparent 32%),
+      radial-gradient(circle at 84% 70%, rgba(253,243,231,0.14), transparent 30%);
+  }
+  .planner-panel > * {
+    position: relative;
+    z-index: 1;
+  }
+  .planner-panel-top {
+    @apply flex items-center justify-between gap-4 pb-5 mb-5 border-b border-white/10;
+  }
+  .planner-panel-top span,
+  .planner-panel-footer span {
+    @apply block text-xs uppercase tracking-widest text-white/45 mb-1;
+  }
+  .planner-panel-top strong,
+  .planner-panel-footer strong {
+    @apply block text-sm text-white;
+  }
+  .planner-score {
+    @apply w-14 h-14 rounded-2xl bg-accent-light text-accent flex items-center justify-center font-serif text-3xl;
+  }
+  .planner-panel-footer {
+    @apply mt-5 pt-5 border-t border-white/10 flex items-center justify-between gap-4;
+  }
+  .planner-panel-footer button {
+    @apply bg-white text-ink px-4 py-2 rounded-xl text-sm font-semibold border-0 cursor-pointer hover:bg-accent-light hover:text-accent transition-colors;
+  }
+  .section-kicker {
+    @apply text-xs font-bold uppercase tracking-[0.22em] text-accent mb-4;
+  }
+  .section-heading-row {
+    @apply flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-8;
+  }
+  .section-heading-row .h2 {
+    @apply mb-0 max-w-2xl;
+  }
+  .section-heading-row p {
+    @apply text-sm md:text-base text-ink-2 leading-relaxed max-w-lg;
+  }
+  .category-strip {
+    @apply grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3;
+  }
+  .category-stat {
+    @apply bg-bg border border-border rounded-2xl p-4 min-h-[96px] flex flex-col justify-between hover:border-border-2 transition-colors;
+  }
+  .category-stat span {
+    @apply text-xs font-semibold text-ink-3;
+  }
+  .category-stat strong {
+    @apply font-serif text-4xl font-normal text-ink leading-none;
+  }
+  .directory-card {
+    @apply bg-white border border-border rounded-2xl p-5 shadow-sm hover:shadow-lg hover:-translate-y-1 hover:border-border-2 transition-all duration-300;
+  }
+  .directory-card h3 {
+    @apply text-xl font-bold tracking-tight mb-2 text-ink;
+  }
+  .directory-card p {
+    @apply text-sm text-ink-2 leading-relaxed mb-5;
+  }
+  .salary-badge {
+    @apply text-xs font-bold text-ink bg-gold-light px-3 py-1 rounded-full whitespace-nowrap;
+  }
+  .tag-row {
+    @apply flex flex-wrap gap-2;
+  }
+  .tag-row span {
+    @apply text-xs font-semibold text-ink-2 bg-bg border border-border rounded-full px-3 py-1;
+  }
+  .exam-stack {
+    @apply mt-5 space-y-2;
+  }
+  .exam-stack div {
+    @apply flex items-center justify-between gap-3 rounded-xl bg-bg border border-border px-3 py-2;
+  }
+  .exam-stack strong {
+    @apply text-sm text-ink;
+  }
+  .exam-stack span {
+    @apply text-xs text-ink-3 capitalize;
+  }
+  .college-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4;
+  }
+  .college-card {
+    @apply bg-white border border-border rounded-2xl p-5 shadow-sm hover:shadow-lg hover:-translate-y-1 hover:border-border-2 transition-all duration-300;
+  }
+  .college-card h3 {
+    @apply text-base font-bold text-ink leading-snug;
+  }
+  .college-card p {
+    @apply text-sm text-ink-3 mt-1;
+  }
+  .type-pill {
+    @apply text-[11px] uppercase tracking-wide font-bold px-3 py-1 rounded-full;
+  }
+  .type-pill.government {
+    @apply bg-accent-light text-accent;
+  }
+  .type-pill.private {
+    @apply bg-[#EEF2FF] text-[#534AB7];
+  }
+  .college-meta {
+    @apply grid grid-cols-2 gap-2;
+  }
+  .college-meta span {
+    @apply rounded-xl bg-bg border border-border px-3 py-2 text-xs font-semibold text-ink-2;
+  }
+  .exam-line {
+    @apply mt-4 text-xs font-semibold text-accent border-t border-border pt-4;
+  }
+  .process-grid {
+    @apply grid grid-cols-1 md:grid-cols-3 gap-4;
+  }
+  .process-card {
+    @apply bg-bg border border-border rounded-2xl p-5 min-h-[180px];
+  }
+  .process-card span {
+    @apply font-serif text-5xl text-border-2 leading-none;
+  }
+  .process-card strong {
+    @apply block text-lg text-ink mt-4 mb-2;
+  }
+  .process-card p {
+    @apply text-sm text-ink-2 leading-relaxed;
+  }
+  .cta-panel {
+    @apply max-w-7xl mx-auto bg-ink text-white rounded-[28px] p-8 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-8 shadow-xl;
+  }
+  .cta-panel h2 {
+    @apply font-serif text-4xl md:text-5xl tracking-tight leading-tight mb-3;
+  }
+  .cta-panel p {
+    @apply text-white/60 max-w-xl;
+  }
+  .cta-panel button {
+    @apply bg-white text-ink px-6 py-3 rounded-xl font-semibold border-0 cursor-pointer hover:bg-accent-light hover:text-accent transition-colors;
+  }
+  .explorer-shell {
+    @apply max-w-7xl mx-auto px-[5%] pt-28 pb-16;
+  }
+  .explorer-hero {
+    @apply bg-white border border-border rounded-[28px] p-6 md:p-8 shadow-sm flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8;
+  }
+  .explorer-hero h1 {
+    @apply font-serif text-4xl md:text-6xl tracking-tight leading-tight text-ink mb-4;
+  }
+  .explorer-hero p {
+    @apply text-base text-ink-2 leading-relaxed max-w-2xl;
+  }
+  .explorer-search {
+    @apply w-full lg:max-w-sm;
+  }
+  .explorer-search label,
+  .college-filter-panel label {
+    @apply block text-xs font-bold uppercase tracking-widest text-ink-3 mb-2;
+  }
+  .explorer-search input,
+  .college-filter-panel select {
+    @apply w-full rounded-2xl border border-border bg-bg px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-accent focus:bg-white;
+  }
+  .filter-bar {
+    @apply flex gap-2 overflow-x-auto py-5;
+  }
+  .filter-bar button {
+    @apply whitespace-nowrap rounded-full border border-border bg-white px-4 py-2 text-sm font-semibold text-ink-2 cursor-pointer transition-all hover:border-border-2 hover:text-ink;
+  }
+  .filter-bar button.active {
+    @apply bg-ink text-white border-ink;
+  }
+  .result-summary {
+    @apply flex flex-wrap items-center justify-between gap-3 mb-5 text-sm font-semibold text-ink-3;
+  }
+  .explorer-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4;
+  }
+  .card-footer-line {
+    @apply mt-5 pt-4 border-t border-border flex items-center justify-between text-xs font-semibold text-ink-3;
+  }
+  .detail-link {
+    @apply mt-4 w-full inline-flex items-center justify-center gap-2 rounded-xl bg-ink px-4 py-3 text-sm font-semibold text-white border-0 cursor-pointer transition-all hover:bg-accent hover:-translate-y-0.5;
+  }
+  .college-filter-panel {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-4 bg-white border border-border rounded-2xl p-4 shadow-sm my-5;
+  }
+  .smart-filter-panel {
+    @apply bg-white border border-border rounded-2xl p-4 md:p-5 shadow-sm mb-5;
+  }
+  .smart-filter-header {
+    @apply flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-5;
+  }
+  .smart-filter-header h2 {
+    @apply text-lg font-bold text-ink mb-1;
+  }
+  .smart-filter-header p {
+    @apply text-sm text-ink-2;
+  }
+  .smart-filter-header button {
+    @apply self-start rounded-xl border border-border bg-bg px-4 py-2 text-sm font-semibold text-ink-2 cursor-pointer hover:border-accent hover:text-accent transition-colors;
+  }
+  .smart-filter-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-4;
+  }
+  .smart-filter-group label {
+    @apply block text-xs font-bold uppercase tracking-widest text-ink-3 mb-2;
+  }
+  .smart-filter-group select {
+    @apply w-full rounded-2xl border border-border bg-bg px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-accent focus:bg-white;
+  }
+  .smart-chip-row {
+    @apply flex flex-wrap gap-2;
+  }
+  .smart-chip-row button {
+    @apply rounded-full border border-border bg-bg px-3 py-2 text-xs font-semibold text-ink-2 cursor-pointer transition-all hover:border-border-2 hover:text-ink;
+  }
+  .smart-chip-row button.active {
+    @apply bg-accent-light border-accent text-accent;
+  }
+  .match-strip {
+    @apply mt-4 rounded-xl bg-accent-light border border-accent-mid px-3 py-2;
+  }
+  .match-strip strong {
+    @apply block text-xs font-bold text-accent;
+  }
+  .match-strip span {
+    @apply block text-xs text-ink-2 mt-1;
+  }
+  .course-chip {
+    @apply text-xs font-semibold text-ink-2 bg-bg border border-border rounded-full px-3 py-1 cursor-pointer hover:border-accent hover:text-accent transition-colors;
+  }
+  .detail-shell {
+    @apply max-w-7xl mx-auto px-[5%] pt-28 pb-16;
+  }
+  .back-link {
+    @apply mb-5 bg-transparent border-0 text-sm font-semibold text-ink-2 cursor-pointer hover:text-accent;
+  }
+  .detail-hero {
+    @apply bg-ink text-white rounded-[30px] p-6 md:p-8 shadow-xl grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-8 items-end;
+  }
+  .detail-hero h1 {
+    @apply font-serif text-5xl md:text-7xl tracking-tight leading-none mt-5 mb-5;
+  }
+  .detail-hero p {
+    @apply text-white/70 text-base md:text-lg leading-relaxed max-w-3xl;
+  }
+  .detail-stat-panel {
+    @apply bg-white/10 border border-white/10 rounded-2xl p-4 grid grid-cols-1 gap-3;
+  }
+  .detail-stat-panel div {
+    @apply bg-white/10 rounded-xl px-4 py-3;
+  }
+  .detail-stat-panel span {
+    @apply block text-xs uppercase tracking-widest text-white/45 mb-1;
+  }
+  .detail-stat-panel strong {
+    @apply block text-xl font-semibold text-white;
+  }
+  .detail-grid {
+    @apply grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-5 mt-6;
+  }
+  .detail-main {
+    @apply space-y-5;
+  }
+  .detail-section,
+  .side-card {
+    @apply bg-white border border-border rounded-2xl p-5 md:p-6 shadow-sm;
+  }
+  .detail-section h2,
+  .side-card h2 {
+    @apply text-xl font-bold text-ink mb-4;
+  }
+  .detail-section p,
+  .side-card p {
+    @apply text-sm text-ink-2 leading-relaxed;
+  }
+  .skill-cloud {
+    @apply flex flex-wrap gap-2;
+  }
+  .skill-cloud span {
+    @apply rounded-full bg-accent-light text-accent border border-accent-mid px-3 py-1.5 text-sm font-semibold;
+  }
+  .exam-accordion {
+    @apply border border-border rounded-2xl overflow-hidden bg-bg;
+  }
+  .exam-accordion > button {
+    @apply w-full flex items-center justify-between gap-4 bg-white border-0 px-4 py-4 text-left cursor-pointer;
+  }
+  .exam-accordion strong {
+    @apply block text-sm text-ink;
+  }
+  .exam-accordion button span {
+    @apply text-xs text-ink-3 capitalize;
+  }
+  .accordion-icon {
+    @apply w-8 h-8 rounded-full bg-bg border border-border flex items-center justify-center text-lg text-ink;
+  }
+  .exam-body {
+    @apply px-4 py-4 border-t border-border;
+  }
+  .exam-body dl {
+    @apply mt-4 space-y-3;
+  }
+  .exam-body dt {
+    @apply text-xs font-bold uppercase tracking-widest text-ink-3 mb-1;
+  }
+  .exam-body dd {
+    @apply text-sm text-ink-2 leading-relaxed;
+  }
+  .detail-side {
+    @apply lg:sticky lg:top-24 self-start;
+  }
+  .linked-college-list {
+    @apply mt-4 space-y-2;
+  }
+  .linked-college-list button {
+    @apply w-full text-left rounded-xl border border-border bg-bg px-4 py-3 cursor-pointer hover:border-accent hover:bg-accent-light transition-colors;
+  }
+  .linked-college-list strong {
+    @apply block text-sm text-ink leading-snug;
+  }
+  .linked-college-list span {
+    @apply block text-xs text-ink-3 mt-1 capitalize;
+  }
+  .empty-state {
+    @apply bg-white border border-border rounded-2xl p-8 text-center shadow-sm;
+  }
+  .empty-state h1 {
+    @apply font-serif text-4xl text-ink mb-3;
+  }
+  .empty-state p {
+    @apply text-ink-2 mb-5;
+  }
+  .empty-state button {
+    @apply bg-ink text-white px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200 hover:bg-accent hover:-translate-y-0.5 inline-flex items-center gap-2 cursor-pointer border-0;
   }
 }
 

@@ -1,8 +1,69 @@
-// Anthropic API utility — PathAI
-const API_KEY = import.meta.env.VITE_ANTHROPIC_API_KEY
+import { matchCareersToProfile } from './recommendations.js'
 
-export async function generateCareerPlan(formData) {
-  const prompt = `You are an expert Indian career counsellor. Based on this student's profile, generate a highly personalised career plan in JSON format.
+// Anthropic API utility - PathAI
+const API_KEY = import.meta.env?.VITE_ANTHROPIC_API_KEY
+
+const uniqueBy = (items, getKey) => {
+  const seen = new Set()
+  return items.filter((item) => {
+    const key = getKey(item)
+    if (seen.has(key)) return false
+    seen.add(key)
+    return true
+  })
+}
+
+const toPlanCareer = (career, index, aiCareer = {}) => ({
+  title: career.career_name,
+  career_name: career.career_name,
+  category: career.category,
+  tag: index === 0 ? 'Best Match' : index === 1 ? 'Strong Alternative' : 'Worth Exploring',
+  description: aiCareer.description || career.description,
+  salaryRange: career.average_salary_india,
+  average_salary_india: career.average_salary_india,
+  timeline: aiCareer.timeline || '6-12 months to build job-ready foundations',
+  whyGood: aiCareer.whyGood || career.match_reasons[0] || career.growth_scope,
+  requiredSkills: career.required_skills,
+  entranceExams: career.entrance_exams.map((exam) => ({
+    exam_name: exam.exam_name,
+    eligibility: exam.eligibility,
+    exam_level: exam.exam_level,
+    conducted_by: exam.conducted_by,
+    difficulty_level: exam.difficulty_level,
+    short_description: exam.short_description
+  })),
+  suggestedColleges: career.suggested_colleges,
+  roadmap: aiCareer.roadmap?.length ? aiCareer.roadmap : buildFallbackRoadmap(career),
+  databaseSource: true
+})
+
+const buildFallbackRoadmap = (career) => [
+  {
+    week: 'Week 1-2',
+    title: 'Understand the path',
+    desc: `Study what ${career.career_name} professionals do in India, review salary expectations, and shortlist the entrance exams or portfolio route needed.`
+  },
+  {
+    week: 'Month 1',
+    title: 'Build core skills',
+    desc: `Focus on ${career.required_skills.slice(0, 2).join(' and ')}. Create a weekly study routine based on your available time.`
+  },
+  {
+    week: 'Month 2-3',
+    title: 'Practice with proof',
+    desc: `Complete projects, mock tests, case work, or practical assignments that prove your ability in ${career.career_name}.`
+  },
+  {
+    week: 'Month 4-6',
+    title: 'Apply and improve',
+    desc: 'Apply for internships, colleges, exams, or entry-level roles. Track feedback and improve your portfolio or exam preparation plan.'
+  }
+]
+
+const buildPrompt = (formData, matchedCareers) => `You are an expert Indian career counsellor.
+
+Use ONLY the provided career database matches. Do not invent new career suggestions.
+Generate roadmap content for these exact 3 careers and keep output as valid JSON only.
 
 Student Profile:
 - Age: ${formData.age}
@@ -15,63 +76,99 @@ Student Profile:
 - Work Style Preference: ${formData.workStyle}
 - Additional Context: ${formData.context || 'none'}
 
-Return ONLY a valid JSON object (no markdown, no backticks, no extra text) with this exact structure:
+Database Career Matches:
+${JSON.stringify(matchedCareers.map((career) => ({
+  career_name: career.career_name,
+  category: career.category,
+  description: career.description,
+  required_skills: career.required_skills,
+  average_salary_india: career.average_salary_india,
+  growth_scope: career.growth_scope,
+  entrance_exams: career.entrance_exams.map((exam) => ({
+    exam_name: exam.exam_name,
+    difficulty_level: exam.difficulty_level,
+    short_description: exam.short_description
+  })),
+  suggested_colleges: career.suggested_colleges.slice(0, 4),
+  match_reasons: career.match_reasons
+})), null, 2)}
+
+Return ONLY this JSON structure:
 {
-  "greeting": "One personalised sentence acknowledging their background and goals",
+  "greeting": "One personalised sentence for the student",
   "careers": [
     {
-      "title": "Career title",
-      "tag": "Best Match",
-      "description": "2 sentences about this path and why it suits this student",
-      "salaryRange": "₹XX,000 – ₹XX,000/month",
-      "timeline": "X–Y months to first income",
-      "whyGood": "One sentence on why this fits their profile",
+      "title": "Must exactly match database career_name",
+      "description": "2 concise sentences using the database career",
+      "timeline": "realistic Indian timeline",
+      "whyGood": "specific reason based on profile",
       "roadmap": [
-        { "week": "Week 1–2", "title": "Phase title", "desc": "Specific actionable tasks" },
-        { "week": "Month 1", "title": "Phase title", "desc": "Specific tasks" },
-        { "week": "Month 2–3", "title": "Phase title", "desc": "Specific tasks" },
-        { "week": "Month 4–6", "title": "Phase title", "desc": "Specific tasks and income milestones" }
-      ]
-    },
-    {
-      "title": "Second career option",
-      "tag": "Alternative",
-      "description": "2 sentences",
-      "salaryRange": "₹XX,000 – ₹XX,000/month",
-      "timeline": "X–Y months to first income",
-      "whyGood": "One sentence",
-      "roadmap": [
-        { "week": "Week 1–2", "title": "Phase title", "desc": "Tasks" },
-        { "week": "Month 1", "title": "Phase title", "desc": "Tasks" },
-        { "week": "Month 2–3", "title": "Phase title", "desc": "Tasks" },
-        { "week": "Month 4–6", "title": "Phase title", "desc": "Tasks" }
+        { "week": "Week 1-2", "title": "Phase title", "desc": "specific actionable tasks" },
+        { "week": "Month 1", "title": "Phase title", "desc": "specific actionable tasks" },
+        { "week": "Month 2-3", "title": "Phase title", "desc": "specific actionable tasks" },
+        { "week": "Month 4-6", "title": "Phase title", "desc": "specific actionable tasks and exam/college/job milestone" }
       ]
     }
   ],
   "skills": [
-    { "name": "Core skill", "currentLevel": 5, "targetWeeks": 6 },
-    { "name": "Skill name", "currentLevel": 0, "targetWeeks": 10 },
-    { "name": "Skill name", "currentLevel": 0, "targetWeeks": 14 },
-    { "name": "Skill name", "currentLevel": 0, "targetWeeks": 18 },
-    { "name": "Advanced skill", "currentLevel": 0, "targetWeeks": 22 }
+    { "name": "Skill from the selected careers", "currentLevel": 0, "targetWeeks": 6 }
   ],
   "tasks": [
-    { "text": "Specific task for today", "type": "today", "category": "Learning" },
-    { "text": "Another today task", "type": "today", "category": "Practice" },
-    { "text": "Weekly task 1", "type": "week", "category": "Building" },
-    { "text": "Weekly task 2", "type": "week", "category": "Networking" },
-    { "text": "Weekly task 3", "type": "week", "category": "Income" }
+    { "text": "Specific task for today", "type": "today", "category": "Learning" }
   ],
   "resources": [
-    { "type": "YouTube", "title": "Channel name", "desc": "What you will learn", "url": "https://youtube.com/@channel" },
-    { "type": "Website", "title": "Site name", "desc": "How to use it", "url": "https://site.com" },
-    { "type": "Free Course", "title": "Course name", "desc": "What it teaches", "url": "https://platform.com" },
-    { "type": "Community", "title": "Community name", "desc": "How it helps", "url": "https://community.com" },
-    { "type": "Tool", "title": "Free tool name", "desc": "How to use for this career", "url": "https://tool.com" }
+    { "type": "YouTube", "title": "Free resource name", "desc": "How it helps", "url": "https://example.com" }
   ]
 }
 
-Guidelines: Focus on realistic Indian income, free resources only, prioritise remote/freelance for Tier-2 cities, give specific actionable tasks.`
+Guidelines:
+- Include exactly 3 careers in the same order as the database matches.
+- Optimize for Indian students, realistic timelines, entrance exams, colleges, internships, and low-cost resources.
+- Keep resources free or audit-friendly.
+- Do not include markdown, comments, or extra text.`
+
+const normalizeAiPlan = (aiPlan, matchedCareers, formData) => {
+  const aiCareers = Array.isArray(aiPlan?.careers) ? aiPlan.careers : []
+  const skills = uniqueBy([...(aiPlan?.skills || []), ...buildFallbackSkills(matchedCareers)], (skill) => skill.name).slice(0, 6)
+  const tasks = uniqueBy([...(aiPlan?.tasks || []), ...buildFallbackTasks(matchedCareers)], (task) => task.text).slice(0, 6)
+  const resources = uniqueBy([...(aiPlan?.resources || []), ...buildFallbackResources()], (resource) => `${resource.type}-${resource.title}`).slice(0, 6)
+
+  return {
+    greeting: aiPlan?.greeting || `Based on your interests in ${formData.interests}, these are the strongest database-backed career matches for you.`,
+    careers: matchedCareers.map((career, index) => {
+      const aiCareer = aiCareers.find((item) => item.title === career.career_name || item.career_name === career.career_name) || aiCareers[index]
+      return toPlanCareer(career, index, aiCareer)
+    }),
+    skills,
+    tasks,
+    resources,
+    source: 'career_database_plus_ai'
+  }
+}
+
+const buildFallbackSkills = (matchedCareers) =>
+  uniqueBy(matchedCareers.flatMap((career) => career.required_skills), (skill) => skill)
+    .slice(0, 6)
+    .map((skill, index) => ({ name: skill, currentLevel: index === 0 ? 10 : 0, targetWeeks: 6 + index * 4 }))
+
+const buildFallbackTasks = (matchedCareers) => [
+  { text: `Read about ${matchedCareers[0].career_name} and write down why it fits your interests`, type: 'today', category: 'Clarity' },
+  { text: `Review the first entrance exam: ${matchedCareers[0].entrance_exams[0]?.exam_name || 'your target exam'}`, type: 'today', category: 'Exam' },
+  { text: `Shortlist 5 colleges from the suggested college list for ${matchedCareers[0].career_name}`, type: 'week', category: 'College' },
+  { text: `Practise one core skill: ${matchedCareers[0].required_skills[0]}`, type: 'week', category: 'Skill' },
+  { text: 'Create a weekly timetable based on your daily time availability', type: 'week', category: 'Planning' }
+]
+
+const buildFallbackResources = () => [
+  { type: 'Website', title: 'National Career Service', desc: 'Explore Indian job roles and career information', url: 'https://www.ncs.gov.in' },
+  { type: 'Free Course', title: 'SWAYAM', desc: 'Free and low-cost Indian online courses from recognised institutions', url: 'https://swayam.gov.in' },
+  { type: 'Website', title: 'NTA Exams', desc: 'Official updates for major Indian entrance exams conducted by NTA', url: 'https://nta.ac.in' },
+  { type: 'Website', title: 'AICTE Internship Portal', desc: 'Find internships and early practical exposure', url: 'https://internship.aicte-india.org' },
+  { type: 'Tool', title: 'LinkedIn', desc: 'Research professionals, colleges, internships, and entry-level roles', url: 'https://www.linkedin.com' }
+]
+
+export async function generateCareerPlan(formData) {
+  const matchedCareers = matchCareersToProfile(formData, 3)
 
   if (!API_KEY || API_KEY === 'your_anthropic_api_key_here') {
     throw new Error('NO_API_KEY')
@@ -87,57 +184,20 @@ Guidelines: Focus on realistic Indian income, free resources only, prioritise re
     },
     body: JSON.stringify({
       model: 'claude-sonnet-4-20250514',
-      max_tokens: 2000,
-      messages: [{ role: 'user', content: prompt }]
+      max_tokens: 3500,
+      messages: [{ role: 'user', content: buildPrompt(formData, matchedCareers) }]
     })
   })
 
   if (!response.ok) throw new Error(`API_ERROR_${response.status}`)
 
   const data = await response.json()
-  const raw = data.content?.map(b => b.text || '').join('')
+  const raw = data.content?.map((block) => block.text || '').join('')
   const clean = raw.replace(/```json|```/g, '').trim()
-  return JSON.parse(clean)
+  return normalizeAiPlan(JSON.parse(clean), matchedCareers, formData)
 }
 
 export function getFallbackPlan(formData) {
-  const i = (formData.interests || '').toLowerCase()
-  let c1, c2
-
-  if (i.includes('design') || i.includes('creat')) {
-    c1 = { title: 'UI/UX Designer', tag: 'Best Match', description: 'Design digital interfaces for apps and websites. High demand with strong freelance opportunities on Fiverr and Upwork.', salaryRange: '₹30,000 – ₹80,000/month', timeline: '4–6 months to first income', whyGood: 'Design suits creative thinkers and pays well with zero coding required.', roadmap: [{ week: 'Week 1–2', title: 'Design fundamentals', desc: 'Study colour theory and typography. Watch The Futur and AJ&Smart on YouTube daily.' }, { week: 'Month 1', title: 'Master Figma', desc: 'Complete free Figma tutorials. Redesign 2 existing apps as practice. Join Figma Community.' }, { week: 'Month 2–3', title: 'Build portfolio', desc: 'Create 5 case studies — 3 redesigns + 2 original. Host on Behance and a free portfolio site.' }, { week: 'Month 4–6', title: 'First clients', desc: 'Create Fiverr gig. Start at ₹5,000/project. Target Indian startups on LinkedIn.' }] }
-    c2 = { title: 'Graphic Designer', tag: 'Quick Income', description: 'Create logos and social media visuals for small businesses. Fastest path to income with Canva skills.', salaryRange: '₹15,000 – ₹40,000/month', timeline: '2–3 months to first income', whyGood: 'Lower barrier to entry — Canva skills alone can get you paying clients quickly.', roadmap: [{ week: 'Week 1–2', title: 'Canva mastery', desc: 'Master Canva Pro. Watch logo design tutorials. Design 5 mock brands for practice.' }, { week: 'Month 1', title: 'Portfolio samples', desc: 'Design 20 mock projects: logos, social posts, brochures. Create your own brand as demo.' }, { week: 'Month 2–3', title: 'First Fiverr orders', desc: 'List gig starting at ₹500. Do first 10 at low price to build reviews quickly.' }, { week: 'Month 4–6', title: 'Scale rates', desc: 'Add Illustrator skills. Move to ₹2,000–5,000/project. Reach local businesses directly.' }] }
-  } else if (i.includes('tech') || i.includes('cod')) {
-    c1 = { title: 'Frontend Web Developer', tag: 'Best Match', description: 'Build websites using HTML, CSS, and JavaScript. Highest income ceiling with excellent remote job prospects in India.', salaryRange: '₹40,000 – ₹1,20,000/month', timeline: '6–8 months to first job', whyGood: 'Tech skills have the best long-term income growth and are learnable entirely for free.', roadmap: [{ week: 'Week 1–2', title: 'HTML & CSS', desc: 'Complete freeCodeCamp HTML/CSS. Build a simple webpage. Code daily for minimum 2 hours.' }, { week: 'Month 1', title: 'JavaScript basics', desc: 'Learn JS on freeCodeCamp. Build: calculator, to-do app, quiz game.' }, { week: 'Month 2–3', title: 'React.js', desc: 'Learn React via Codevolution on YouTube. Build a full project with an API integration.' }, { week: 'Month 4–6', title: 'Job applications', desc: 'Apply on Internshala and LinkedIn. Build 3 portfolio projects. Start Fiverr for quick income.' }] }
-    c2 = { title: 'Data Analyst', tag: 'Alternative', description: 'Analyse business data using Excel, SQL, and Python. In demand across all sectors — not just tech.', salaryRange: '₹35,000 – ₹90,000/month', timeline: '5–7 months to first job', whyGood: 'Data skills are wanted in banking, retail, healthcare — not just IT companies.', roadmap: [{ week: 'Week 1–2', title: 'Excel mastery', desc: 'Master pivot tables, VLOOKUP, charts. Practice with free datasets from Kaggle.' }, { week: 'Month 1', title: 'SQL fundamentals', desc: 'Complete free SQL on Mode Analytics. Practice on HackerRank SQL challenges daily.' }, { week: 'Month 2–3', title: 'Python for data', desc: 'Learn pandas on YouTube. Complete one end-to-end analysis on a Kaggle dataset.' }, { week: 'Month 4–6', title: 'Job prep', desc: 'Build 3 data projects. Apply on Naukri and LinkedIn for analyst roles.' }] }
-  } else {
-    c1 = { title: 'Content Writer + SEO', tag: 'Best Match', description: 'Write blogs and web content for clients worldwide. One of the easiest high-income careers to start with just a laptop and internet.', salaryRange: '₹20,000 – ₹60,000/month', timeline: '2–3 months to first income', whyGood: 'Writing is the fastest path to freelance income with almost zero investment required.', roadmap: [{ week: 'Week 1–2', title: 'Writing & SEO basics', desc: 'Read Neil Patel blog. Write one 800-word article per day. Focus on clarity and structure.' }, { week: 'Month 1', title: 'Build portfolio', desc: 'Publish 10 articles on Medium. Cover 3–4 niches. Learn keyword research with free Google tools.' }, { week: 'Month 2–3', title: 'First clients', desc: 'Apply on ProBlogger and iWriter. Submit 10 pitches per day. Offer first 3 articles at low cost.' }, { week: 'Month 4–6', title: 'Scale income', desc: 'Raise to ₹1–3/word. Add social media writing. Get 2–3 retainer clients.' }] }
-    c2 = { title: 'Digital Marketing', tag: 'Alternative', description: 'Run social media and ad campaigns for businesses. Every small business in India needs digital marketing help right now.', salaryRange: '₹25,000 – ₹70,000/month', timeline: '3–4 months to first income', whyGood: 'High demand locally — every Tier-2 city business wants to go digital.', roadmap: [{ week: 'Week 1–2', title: 'Marketing basics', desc: 'Complete Google Digital Garage course. Learn Facebook Ads on Meta Blueprint (both free).' }, { week: 'Month 1', title: 'Hands-on practice', desc: 'Offer free social media management to a local business. Track and document all results.' }, { week: 'Month 2–3', title: 'Paid campaigns', desc: 'Run ₹500 test campaigns on Google and Meta Ads. Document results for your portfolio.' }, { week: 'Month 4–6', title: 'First paying clients', desc: 'Charge ₹8,000–15,000/month per client. Use referrals from free work to find paid clients.' }] }
-  }
-
-  return {
-    greeting: `Here's your personalised career plan based on your interests in ${formData.interests} and goal of reaching ${formData.income}.`,
-    careers: [c1, c2],
-    skills: [
-      { name: 'Core Technical Skill', currentLevel: 10, targetWeeks: 6 },
-      { name: 'Portfolio Building', currentLevel: 5, targetWeeks: 10 },
-      { name: 'Client Communication', currentLevel: 15, targetWeeks: 14 },
-      { name: 'Freelance Pitching', currentLevel: 0, targetWeeks: 18 },
-      { name: 'Advanced Specialisation', currentLevel: 0, targetWeeks: 24 }
-    ],
-    tasks: [
-      { text: 'Watch one tutorial video (30–60 min) on your core skill and take notes', type: 'today', category: 'Learning' },
-      { text: 'Practise by building or writing something new — not just watching', type: 'today', category: 'Practice' },
-      { text: 'Research 3 potential clients or job listings and save them', type: 'week', category: 'Income' },
-      { text: 'Add one new piece to your portfolio or practice folder', type: 'week', category: 'Portfolio' },
-      { text: 'Join one relevant online community (Discord, Reddit, or Facebook Group)', type: 'week', category: 'Networking' }
-    ],
-    resources: [
-      { type: 'YouTube', title: 'FreeCodeCamp', desc: 'High-quality free coding and tech tutorials', url: 'https://youtube.com/@freecodecamp' },
-      { type: 'Free Course', title: 'Google Digital Garage', desc: 'Free digital skills courses with Google certificates', url: 'https://learndigital.withgoogle.com/digitalgarage' },
-      { type: 'Website', title: 'Coursera (Audit Mode)', desc: 'Audit top university courses entirely for free', url: 'https://coursera.org' },
-      { type: 'Community', title: 'r/freelance_forhire', desc: 'Find your first clients and get freelancer advice', url: 'https://reddit.com/r/freelance_forhire' },
-      { type: 'Tool', title: 'Canva Free Plan', desc: 'Design portfolios and social posts for free', url: 'https://canva.com' }
-    ]
-  }
+  const matchedCareers = matchCareersToProfile(formData, 3)
+  return normalizeAiPlan(null, matchedCareers, formData)
 }
