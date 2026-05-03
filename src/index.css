@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: #FAFAF8; color: #1A1916; }
+  * { box-sizing: border-box; }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-ink text-white px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200 hover:bg-accent hover:-translate-y-0.5 inline-flex items-center gap-2 cursor-pointer border-0;
+  }
+  .btn-secondary {
+    @apply bg-transparent text-ink px-6 py-3 rounded-xl font-medium text-sm border border-border-2 transition-all duration-200 hover:border-ink hover:bg-bg-2 cursor-pointer;
+  }
+  .chip {
+    @apply px-4 py-2 rounded-full border border-border text-ink-2 text-sm font-medium cursor-pointer transition-all duration-200 hover:border-border-2 bg-white select-none;
+  }
+  .chip.selected {
+    @apply bg-accent-light border-accent text-accent;
+  }
+  .card {
+    @apply bg-white border border-border rounded-2xl p-6;
+  }
+  .section-label {
+    @apply text-xs font-semibold uppercase tracking-widest text-ink-3 mb-4;
+  }
+  .h2 {
+    @apply font-serif text-4xl md:text-5xl tracking-tight leading-tight mb-4;
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.loader-ring {
+  width: 48px; height: 48px;
+  border: 3px solid #E2E0D8;
+  border-top-color: #1B6B4A;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up {
+  animation: fadeUp 0.5s ease both;
+}
+.fade-up-1 { animation-delay: 0.1s; }
+.fade-up-2 { animation-delay: 0.2s; }
+.fade-up-3 { animation-delay: 0.3s; }
+.fade-up-4 { animation-delay: 0.4s; }
