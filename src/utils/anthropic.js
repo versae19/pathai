@@ -1,4 +1,4 @@
-import { matchCareersToProfile } from './recommendations.js'
+import { careerDecisionEngine } from './recommendations.js'
 
 // Anthropic API utility - PathAI
 const API_KEY = import.meta.env?.VITE_ANTHROPIC_API_KEY
@@ -23,6 +23,9 @@ const toPlanCareer = (career, index, aiCareer = {}) => ({
   average_salary_india: career.average_salary_india,
   timeline: aiCareer.timeline || '6-12 months to build job-ready foundations',
   whyGood: aiCareer.whyGood || career.match_reasons[0] || career.growth_scope,
+  matchScore: career.match_score,
+  whyBest: career.why_best || [],
+  whyLessSuitableThanBest: career.why_less_suitable_than_rank_1 || [],
   requiredSkills: career.required_skills,
   entranceExams: career.entrance_exams.map((exam) => ({
     exam_name: exam.exam_name,
@@ -60,9 +63,9 @@ const buildFallbackRoadmap = (career) => [
   }
 ]
 
-const buildPrompt = (formData, matchedCareers) => `You are an expert Indian career counsellor.
+const buildPrompt = (formData, decision) => `You are an expert Indian career counsellor.
 
-Use ONLY the provided career database matches. Do not invent new career suggestions.
+Use ONLY the provided rule-based Career Decision Engine results. Do not invent new career suggestions.
 Generate roadmap content for these exact 3 careers and keep output as valid JSON only.
 
 Student Profile:
@@ -76,14 +79,21 @@ Student Profile:
 - Work Style Preference: ${formData.workStyle}
 - Additional Context: ${formData.context || 'none'}
 
-Database Career Matches:
-${JSON.stringify(matchedCareers.map((career) => ({
+Career Decision Engine Result:
+${JSON.stringify({
+  engine: decision.engine,
+  inputs_used: decision.inputs_used,
+  top_careers: decision.topCareers.map((career) => ({
   career_name: career.career_name,
   category: career.category,
+    rank: career.rank,
+    match_score: career.match_score,
   description: career.description,
   required_skills: career.required_skills,
   average_salary_india: career.average_salary_india,
   growth_scope: career.growth_scope,
+    why_best: career.why_best,
+    why_less_suitable_than_rank_1: career.why_less_suitable_than_rank_1,
   entrance_exams: career.entrance_exams.map((exam) => ({
     exam_name: exam.exam_name,
     difficulty_level: exam.difficulty_level,
@@ -91,7 +101,9 @@ ${JSON.stringify(matchedCareers.map((career) => ({
   })),
   suggested_colleges: career.suggested_colleges.slice(0, 4),
   match_reasons: career.match_reasons
-})), null, 2)}
+  })),
+  less_suitable_options: decision.lessSuitableOptions
+}, null, 2)}
 
 Return ONLY this JSON structure:
 {
@@ -123,11 +135,14 @@ Return ONLY this JSON structure:
 
 Guidelines:
 - Include exactly 3 careers in the same order as the database matches.
+- Career suggestions must exactly match the rule-based top_careers list.
+- Do not change rankings, scores, exams, or colleges.
 - Optimize for Indian students, realistic timelines, entrance exams, colleges, internships, and low-cost resources.
 - Keep resources free or audit-friendly.
 - Do not include markdown, comments, or extra text.`
 
-const normalizeAiPlan = (aiPlan, matchedCareers, formData) => {
+const normalizeAiPlan = (aiPlan, decision, formData) => {
+  const matchedCareers = decision.topCareers
   const aiCareers = Array.isArray(aiPlan?.careers) ? aiPlan.careers : []
   const skills = uniqueBy([...(aiPlan?.skills || []), ...buildFallbackSkills(matchedCareers)], (skill) => skill.name).slice(0, 6)
   const tasks = uniqueBy([...(aiPlan?.tasks || []), ...buildFallbackTasks(matchedCareers)], (task) => task.text).slice(0, 6)
@@ -142,6 +157,18 @@ const normalizeAiPlan = (aiPlan, matchedCareers, formData) => {
     skills,
     tasks,
     resources,
+    decisionEngine: {
+      engine: decision.engine,
+      inputs_used: decision.inputs_used,
+      top_careers: decision.topCareers.map((career) => ({
+        career_name: career.career_name,
+        rank: career.rank,
+        score: career.match_score,
+        why_best: career.why_best,
+        why_less_suitable_than_rank_1: career.why_less_suitable_than_rank_1
+      })),
+      less_suitable_options: decision.lessSuitableOptions
+    },
     source: 'career_database_plus_ai'
   }
 }
@@ -168,7 +195,7 @@ const buildFallbackResources = () => [
 ]
 
 export async function generateCareerPlan(formData) {
-  const matchedCareers = matchCareersToProfile(formData, 3)
+  const decision = careerDecisionEngine(formData, 3)
 
   if (!API_KEY || API_KEY === 'your_anthropic_api_key_here') {
     throw new Error('NO_API_KEY')
@@ -185,7 +212,7 @@ export async function generateCareerPlan(formData) {
     body: JSON.stringify({
       model: 'claude-sonnet-4-20250514',
       max_tokens: 3500,
-      messages: [{ role: 'user', content: buildPrompt(formData, matchedCareers) }]
+      messages: [{ role: 'user', content: buildPrompt(formData, decision) }]
     })
   })
 
@@ -194,10 +221,10 @@ export async function generateCareerPlan(formData) {
   const data = await response.json()
   const raw = data.content?.map((block) => block.text || '').join('')
   const clean = raw.replace(/```json|```/g, '').trim()
-  return normalizeAiPlan(JSON.parse(clean), matchedCareers, formData)
+  return normalizeAiPlan(JSON.parse(clean), decision, formData)
 }
 
 export function getFallbackPlan(formData) {
-  const matchedCareers = matchCareersToProfile(formData, 3)
-  return normalizeAiPlan(null, matchedCareers, formData)
+  const decision = careerDecisionEngine(formData, 3)
+  return normalizeAiPlan(null, decision, formData)
 }

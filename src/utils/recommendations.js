@@ -128,6 +128,15 @@ const getCareerSearchText = (career) => [
   career.entrance_exams.map((exam) => exam.exam_name).join(' ')
 ].join(' ').toLowerCase()
 
+const getProfileSearchText = (profile = {}) => [
+  parseInterestList(profile.interests).join(' '),
+  profile.skills,
+  profile.salaryGoal || profile.income,
+  profile.timeAvailability || profile.time,
+  profile.education,
+  profile.context
+].filter(Boolean).join(' ').toLowerCase()
+
 const parseInterestList = (interests) => {
   if (Array.isArray(interests)) return interests.filter(Boolean)
   return String(interests || '').split(',').map((interest) => interest.trim()).filter(Boolean)
@@ -162,14 +171,7 @@ export function searchCareers(careers, query) {
 
 export function scoreCareer(career, profile = {}) {
   const interests = parseInterestList(profile.interests)
-  const profileText = [
-    interests.join(' '),
-    profile.skills,
-    profile.salaryGoal || profile.income,
-    profile.timeAvailability || profile.time,
-    profile.education,
-    profile.context
-  ].filter(Boolean).join(' ').toLowerCase()
+  const profileText = getProfileSearchText(profile)
 
   const preferredCategories = interests.flatMap((interest) => CATEGORY_BY_INTEREST[interest] || [])
   const salaryGoal = normalize(profile.salaryGoal || profile.income)
@@ -237,6 +239,60 @@ export function scoreCareer(career, profile = {}) {
   }
 }
 
+const buildBestReasons = (career, profile, scoreReasons) => {
+  const reasons = [...scoreReasons]
+  const salaryGoal = normalize(profile.salaryGoal || profile.income)
+  const timeAvailability = normalize(profile.timeAvailability || profile.time)
+
+  if (salaryGoal.includes('1,00,000') && HIGH_INCOME_CAREERS.has(career.career_name)) {
+    reasons.push(`${career.career_name} has a stronger long-term salary ceiling for your income goal.`)
+  }
+
+  if ((timeAvailability.includes('1') || timeAvailability.includes('2')) && QUICK_START_CAREERS.has(career.career_name)) {
+    reasons.push('It can be explored with smaller daily learning blocks.')
+  }
+
+  if ((timeAvailability.includes('full') || timeAvailability.includes('8')) && LONG_PREP_CATEGORIES.has(career.category)) {
+    reasons.push('Your available time supports deeper exam or college preparation.')
+  }
+
+  if (!reasons.length) reasons.push(`It is the strongest rule-based match from the current career database.`)
+
+  return uniqueBy(reasons, (reason) => reason).slice(0, 3)
+}
+
+const buildLessSuitableReasons = (career, profile, topCareer) => {
+  const interests = parseInterestList(profile.interests)
+  const preferredCategories = interests.flatMap((interest) => CATEGORY_BY_INTEREST[interest] || [])
+  const salaryGoal = normalize(profile.salaryGoal || profile.income)
+  const timeAvailability = normalize(profile.timeAvailability || profile.time)
+  const profileText = getProfileSearchText(profile)
+  const reasons = []
+
+  if (!preferredCategories.includes(career.category)) {
+    reasons.push(`It is less aligned with your selected interests than ${topCareer.career_name}.`)
+  }
+
+  if (salaryGoal.includes('1,00,000') && !HIGH_INCOME_CAREERS.has(career.career_name)) {
+    reasons.push('It may take longer to reach your high income goal from entry level.')
+  }
+
+  if ((timeAvailability.includes('1') || timeAvailability.includes('2')) && LONG_PREP_CATEGORIES.has(career.category)) {
+    reasons.push('It usually needs heavier exam preparation than your current daily time allows.')
+  }
+
+  const directKeywordMatch = (CAREER_KEYWORDS[career.career_name] || []).some((keyword) => profileText.includes(keyword))
+  if (!directKeywordMatch) {
+    reasons.push('Your profile has fewer direct skill or keyword matches for this path.')
+  }
+
+  if (!reasons.length) {
+    reasons.push(`It scored lower than ${topCareer.career_name} on the current interest, salary, and time rules.`)
+  }
+
+  return uniqueBy(reasons, (reason) => reason).slice(0, 2)
+}
+
 export function recommendCareers({
   careers = careerData,
   query = '',
@@ -245,13 +301,15 @@ export function recommendCareers({
   salaryGoal = '',
   timeAvailability = '',
   skills = '',
+  education = '',
+  context = '',
   limit
 } = {}) {
   const filtered = searchCareers(careers, query).filter((career) => category === ALL_FILTER || career.category === category)
 
   const ranked = filtered
     .map((career) => {
-      const match = scoreCareer(career, { interests, salaryGoal, timeAvailability, skills })
+      const match = scoreCareer(career, { interests, salaryGoal, timeAvailability, skills, education, context })
       return {
         ...career,
         recommendation_score: match.score,
@@ -269,6 +327,8 @@ export function matchCareersToProfile(formData, limit = 3) {
     interests: formData.interests,
     salaryGoal: formData.income,
     timeAvailability: formData.time,
+    education: formData.education,
+    context: formData.context,
     skills: formData.skills,
     limit
   }).map((career) => ({
@@ -277,3 +337,49 @@ export function matchCareersToProfile(formData, limit = 3) {
   }))
 }
 
+export function careerDecisionEngine(formData, limit = 3) {
+  const profile = {
+    interests: formData.interests,
+    salaryGoal: formData.income,
+    timeAvailability: formData.time,
+    education: formData.education,
+    skills: formData.skills,
+    context: formData.context
+  }
+
+  const ranked = recommendCareers({
+    interests: profile.interests,
+    salaryGoal: profile.salaryGoal,
+    timeAvailability: profile.timeAvailability,
+    skills: profile.skills,
+    education: profile.education,
+    context: profile.context
+  })
+
+  const topCareers = ranked.slice(0, limit)
+  const topCareer = topCareers[0]
+  const lessSuitableOptions = ranked.slice(limit, limit + 4).map((career) => ({
+    career_name: career.career_name,
+    category: career.category,
+    score: career.recommendation_score,
+    why_less_suitable: buildLessSuitableReasons(career, profile, topCareer)
+  }))
+
+  return {
+    engine: 'rule_based_scoring_v1',
+    inputs_used: {
+      interests: parseInterestList(profile.interests),
+      salary_goal: profile.salaryGoal || '',
+      time_availability: profile.timeAvailability || '',
+      education: profile.education || ''
+    },
+    topCareers: topCareers.map((career, index) => ({
+      ...career,
+      rank: index + 1,
+      match_score: career.recommendation_score,
+      why_best: buildBestReasons(career, profile, career.match_reasons || []),
+      why_less_suitable_than_rank_1: index === 0 ? [] : buildLessSuitableReasons(career, profile, topCareer)
+    })),
+    lessSuitableOptions
+  }
+}

@@ -200,6 +200,46 @@ export default function DashboardPage({ formData, planData, setPlanData }) {
               ))}
             </div>
 
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-8">
+              <div className="bg-white border border-border rounded-2xl p-6">
+                <div className="flex items-center justify-between gap-3 mb-4">
+                  <h3 className="text-base font-bold">Why this career fits</h3>
+                  {career.matchScore !== undefined && (
+                    <span className="text-xs font-bold text-accent bg-accent-light px-3 py-1 rounded-full">
+                      Score {career.matchScore}
+                    </span>
+                  )}
+                </div>
+                <ul className="space-y-2">
+                  {(career.whyBest || [career.whyGood]).filter(Boolean).map((reason, index) => (
+                    <li key={index} className="text-sm text-ink-2 leading-relaxed flex gap-2">
+                      <span className="text-accent font-bold">•</span>
+                      <span>{reason}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="bg-white border border-border rounded-2xl p-6">
+                <h3 className="text-base font-bold mb-4">Why other options ranked lower</h3>
+                <div className="space-y-3">
+                  {(career.whyLessSuitableThanBest?.length
+                    ? [{ career_name: career.title, why_less_suitable: career.whyLessSuitableThanBest }]
+                    : planData.decisionEngine?.less_suitable_options || []
+                  ).slice(0, 3).map((option) => (
+                    <div key={option.career_name} className="rounded-xl bg-bg border border-border p-4">
+                      <h4 className="text-sm font-bold text-ink mb-2">{option.career_name}</h4>
+                      <ul className="space-y-1">
+                        {option.why_less_suitable.map((reason, index) => (
+                          <li key={index} className="text-xs text-ink-2 leading-relaxed">- {reason}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
             {/* Roadmap */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-8">
               <div className="bg-white border border-border rounded-2xl p-6">
