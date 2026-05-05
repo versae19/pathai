@@ -1,3 +1,7 @@
+// fees_numeric = total programme cost midpoint in INR lakhs (used for budget filtering & ROI)
+// roi_score    = 1–10, derived from (placement_average_salary / fees_numeric); higher is better
+// tier         = Tier 1 | Tier 2 | Tier 3
+
 export const collegeData = [
   {
     college_name: 'Indian Institute of Technology Bombay',
@@ -5,8 +9,12 @@ export const collegeData = [
     courses_offered: ['Software Engineer', 'Mechanical Engineer', 'Civil Engineer', 'Electronics and Communication Engineer', 'AI/ML Engineer', 'Data Scientist', 'Cloud Engineer'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['JEE Advanced', 'GATE', 'UCEED'],
-    approximate_fees: 'INR 8-12 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 8–12 lakh total',
+    type: 'government',
+    tier: 'Tier 1',
+    fees_numeric: 10,
+    placement_average_salary: 'INR 25 LPA',
+    roi_score: 9,
   },
   {
     college_name: 'Indian Institute of Technology Delhi',
@@ -14,8 +22,12 @@ export const collegeData = [
     courses_offered: ['Software Engineer', 'Mechanical Engineer', 'Civil Engineer', 'Electronics and Communication Engineer', 'AI/ML Engineer', 'Data Scientist', 'Product Manager'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['JEE Advanced', 'GATE', 'UCEED'],
-    approximate_fees: 'INR 8-12 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 8–12 lakh total',
+    type: 'government',
+    tier: 'Tier 1',
+    fees_numeric: 10,
+    placement_average_salary: 'INR 22 LPA',
+    roi_score: 9,
   },
   {
     college_name: 'Indian Institute of Technology Madras',
@@ -23,8 +35,12 @@ export const collegeData = [
     courses_offered: ['Software Engineer', 'Mechanical Engineer', 'Civil Engineer', 'AI/ML Engineer', 'Data Scientist', 'Renewable Energy Engineer'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['JEE Advanced', 'GATE', 'IIT JAM'],
-    approximate_fees: 'INR 8-12 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 8–12 lakh total',
+    type: 'government',
+    tier: 'Tier 1',
+    fees_numeric: 10,
+    placement_average_salary: 'INR 20 LPA',
+    roi_score: 9,
   },
   {
     college_name: 'Indian Institute of Technology Kanpur',
@@ -32,8 +48,12 @@ export const collegeData = [
     courses_offered: ['Software Engineer', 'Mechanical Engineer', 'Electronics and Communication Engineer', 'AI/ML Engineer', 'Aerospace Engineer', 'Data Scientist'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['JEE Advanced', 'GATE', 'IIT JAM'],
-    approximate_fees: 'INR 8-12 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 8–12 lakh total',
+    type: 'government',
+    tier: 'Tier 1',
+    fees_numeric: 10,
+    placement_average_salary: 'INR 20 LPA',
+    roi_score: 9,
   },
   {
     college_name: 'Indian Institute of Technology Kharagpur',
@@ -41,8 +61,12 @@ export const collegeData = [
     courses_offered: ['Software Engineer', 'Civil Engineer', 'Mechanical Engineer', 'Chemical Engineer', 'Architect', 'Lawyer'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['JEE Advanced', 'GATE', 'NATA'],
-    approximate_fees: 'INR 8-12 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 8–12 lakh total',
+    type: 'government',
+    tier: 'Tier 1',
+    fees_numeric: 10,
+    placement_average_salary: 'INR 18 LPA',
+    roi_score: 9,
   },
   {
     college_name: 'Indian Institute of Technology Roorkee',
@@ -50,8 +74,12 @@ export const collegeData = [
     courses_offered: ['Civil Engineer', 'Mechanical Engineer', 'Software Engineer', 'Architect', 'Renewable Energy Engineer'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['JEE Advanced', 'GATE', 'NATA'],
-    approximate_fees: 'INR 8-12 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 8–12 lakh total',
+    type: 'government',
+    tier: 'Tier 1',
+    fees_numeric: 10,
+    placement_average_salary: 'INR 16 LPA',
+    roi_score: 8,
   },
   {
     college_name: 'Indian Institute of Science',
@@ -59,8 +87,12 @@ export const collegeData = [
     courses_offered: ['AI/ML Engineer', 'Data Scientist', 'Renewable Energy Engineer', 'Aerospace Engineer', 'Biotechnologist'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['JEE Advanced', 'GATE', 'IIT JAM'],
-    approximate_fees: 'INR 1-3 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 1–3 lakh total',
+    type: 'government',
+    tier: 'Tier 1',
+    fees_numeric: 2,
+    placement_average_salary: 'INR 20 LPA',
+    roi_score: 10,
   },
   {
     college_name: 'National Institute of Technology Tiruchirappalli',
@@ -68,8 +100,12 @@ export const collegeData = [
     courses_offered: ['Software Engineer', 'Mechanical Engineer', 'Civil Engineer', 'Electronics and Communication Engineer', 'Chemical Engineer'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['JEE Main', 'GATE'],
-    approximate_fees: 'INR 6-8 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 6–8 lakh total',
+    type: 'government',
+    tier: 'Tier 2',
+    fees_numeric: 7,
+    placement_average_salary: 'INR 12 LPA',
+    roi_score: 9,
   },
   {
     college_name: 'National Institute of Technology Karnataka Surathkal',
@@ -77,8 +113,12 @@ export const collegeData = [
     courses_offered: ['Software Engineer', 'Mechanical Engineer', 'Civil Engineer', 'Electronics and Communication Engineer', 'Data Scientist'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['JEE Main', 'GATE'],
-    approximate_fees: 'INR 6-8 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 6–8 lakh total',
+    type: 'government',
+    tier: 'Tier 2',
+    fees_numeric: 7,
+    placement_average_salary: 'INR 11 LPA',
+    roi_score: 8,
   },
   {
     college_name: 'National Institute of Technology Warangal',
@@ -86,8 +126,12 @@ export const collegeData = [
     courses_offered: ['Software Engineer', 'Mechanical Engineer', 'Civil Engineer', 'Electronics and Communication Engineer', 'Chemical Engineer'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['JEE Main', 'GATE'],
-    approximate_fees: 'INR 6-8 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 6–8 lakh total',
+    type: 'government',
+    tier: 'Tier 2',
+    fees_numeric: 7,
+    placement_average_salary: 'INR 11 LPA',
+    roi_score: 8,
   },
   {
     college_name: 'International Institute of Information Technology Hyderabad',
@@ -95,8 +139,12 @@ export const collegeData = [
     courses_offered: ['Software Engineer', 'AI/ML Engineer', 'Data Scientist', 'Cybersecurity Analyst', 'Cloud Engineer'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['JEE Main', 'UGEE', 'GATE'],
-    approximate_fees: 'INR 14-18 lakh total',
-    type: 'private'
+    approximate_fees: 'INR 14–18 lakh total',
+    type: 'private',
+    tier: 'Tier 1',
+    fees_numeric: 16,
+    placement_average_salary: 'INR 22 LPA',
+    roi_score: 8,
   },
   {
     college_name: 'Birla Institute of Technology and Science Pilani',
@@ -104,8 +152,12 @@ export const collegeData = [
     courses_offered: ['Software Engineer', 'Mechanical Engineer', 'Electronics and Communication Engineer', 'Chemical Engineer', 'Data Scientist'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['BITSAT', 'GATE'],
-    approximate_fees: 'INR 20-28 lakh total',
-    type: 'private'
+    approximate_fees: 'INR 20–28 lakh total',
+    type: 'private',
+    tier: 'Tier 1',
+    fees_numeric: 24,
+    placement_average_salary: 'INR 18 LPA',
+    roi_score: 6,
   },
   {
     college_name: 'Vellore Institute of Technology',
@@ -113,8 +165,12 @@ export const collegeData = [
     courses_offered: ['Software Engineer', 'Mechanical Engineer', 'Electronics and Communication Engineer', 'AI/ML Engineer', 'Cybersecurity Analyst'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['VITEEE'],
-    approximate_fees: 'INR 8-20 lakh total',
-    type: 'private'
+    approximate_fees: 'INR 8–20 lakh total',
+    type: 'private',
+    tier: 'Tier 3',
+    fees_numeric: 14,
+    placement_average_salary: 'INR 8 LPA',
+    roi_score: 5,
   },
   {
     college_name: 'Delhi Technological University',
@@ -122,8 +178,12 @@ export const collegeData = [
     courses_offered: ['Software Engineer', 'Mechanical Engineer', 'Civil Engineer', 'Electronics and Communication Engineer', 'Product Manager'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['JEE Main', 'GATE'],
-    approximate_fees: 'INR 8-10 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 8–10 lakh total',
+    type: 'government',
+    tier: 'Tier 2',
+    fees_numeric: 9,
+    placement_average_salary: 'INR 12 LPA',
+    roi_score: 8,
   },
   {
     college_name: 'College of Engineering Pune Technological University',
@@ -131,8 +191,12 @@ export const collegeData = [
     courses_offered: ['Software Engineer', 'Mechanical Engineer', 'Civil Engineer', 'Electronics and Communication Engineer', 'Robotics Engineer'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['MHT CET', 'JEE Main', 'GATE'],
-    approximate_fees: 'INR 4-6 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 4–6 lakh total',
+    type: 'government',
+    tier: 'Tier 2',
+    fees_numeric: 5,
+    placement_average_salary: 'INR 8 LPA',
+    roi_score: 8,
   },
   {
     college_name: 'AIIMS Delhi',
@@ -140,8 +204,12 @@ export const collegeData = [
     courses_offered: ['Doctor', 'Nurse', 'Physiotherapist', 'Medical Lab Technologist'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['NEET UG', 'INI CET', 'AIIMS BSc Nursing'],
-    approximate_fees: 'INR 10,000-1 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 10,000–1 lakh total',
+    type: 'government',
+    tier: 'Tier 1',
+    fees_numeric: 0.5,
+    placement_average_salary: 'INR 12 LPA',
+    roi_score: 10,
   },
   {
     college_name: 'Christian Medical College Vellore',
@@ -149,8 +217,12 @@ export const collegeData = [
     courses_offered: ['Doctor', 'Nurse', 'Physiotherapist', 'Medical Lab Technologist'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['NEET UG', 'NEET PG', 'University Entrance Exams'],
-    approximate_fees: 'INR 2-8 lakh total',
-    type: 'private'
+    approximate_fees: 'INR 2–8 lakh total',
+    type: 'private',
+    tier: 'Tier 2',
+    fees_numeric: 5,
+    placement_average_salary: 'INR 10 LPA',
+    roi_score: 9,
   },
   {
     college_name: 'Armed Forces Medical College',
@@ -158,8 +230,12 @@ export const collegeData = [
     courses_offered: ['Doctor', 'Nurse', 'Defence Officer'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['NEET UG', 'NEET PG'],
-    approximate_fees: 'INR 1-3 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 1–3 lakh total',
+    type: 'government',
+    tier: 'Tier 2',
+    fees_numeric: 2,
+    placement_average_salary: 'INR 10 LPA',
+    roi_score: 10,
   },
   {
     college_name: 'JIPMER Puducherry',
@@ -167,8 +243,12 @@ export const collegeData = [
     courses_offered: ['Doctor', 'Nurse', 'Medical Lab Technologist'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['NEET UG', 'INI CET', 'JIPMER Nursing'],
-    approximate_fees: 'INR 50,000-2 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 50,000–2 lakh total',
+    type: 'government',
+    tier: 'Tier 1',
+    fees_numeric: 1,
+    placement_average_salary: 'INR 9 LPA',
+    roi_score: 10,
   },
   {
     college_name: 'Maulana Azad Medical College',
@@ -176,8 +256,12 @@ export const collegeData = [
     courses_offered: ['Doctor', 'Nurse', 'Pharmacist', 'Medical Lab Technologist'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['NEET UG', 'NEET PG'],
-    approximate_fees: 'INR 50,000-2 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 50,000–2 lakh total',
+    type: 'government',
+    tier: 'Tier 2',
+    fees_numeric: 1.5,
+    placement_average_salary: 'INR 8 LPA',
+    roi_score: 10,
   },
   {
     college_name: 'King George Medical University',
@@ -185,8 +269,12 @@ export const collegeData = [
     courses_offered: ['Doctor', 'Dentist', 'Nurse', 'Physiotherapist'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['NEET UG', 'NEET PG', 'NEET MDS'],
-    approximate_fees: 'INR 2-6 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 2–6 lakh total',
+    type: 'government',
+    tier: 'Tier 2',
+    fees_numeric: 4,
+    placement_average_salary: 'INR 8 LPA',
+    roi_score: 9,
   },
   {
     college_name: 'Institute of Medical Sciences BHU',
@@ -194,8 +282,12 @@ export const collegeData = [
     courses_offered: ['Doctor', 'Dentist', 'Nurse', 'Pharmacist'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['NEET UG', 'NEET PG', 'CUET'],
-    approximate_fees: 'INR 1-4 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 1–4 lakh total',
+    type: 'government',
+    tier: 'Tier 2',
+    fees_numeric: 2.5,
+    placement_average_salary: 'INR 7 LPA',
+    roi_score: 9,
   },
   {
     college_name: 'Kasturba Medical College Manipal',
@@ -203,8 +295,12 @@ export const collegeData = [
     courses_offered: ['Doctor', 'Nurse', 'Physiotherapist', 'Medical Lab Technologist'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['NEET UG', 'NEET PG'],
-    approximate_fees: 'INR 40-80 lakh total',
-    type: 'private'
+    approximate_fees: 'INR 40–80 lakh total',
+    type: 'private',
+    tier: 'Tier 3',
+    fees_numeric: 60,
+    placement_average_salary: 'INR 10 LPA',
+    roi_score: 1,
   },
   {
     college_name: 'Sri Ram College of Commerce',
@@ -212,8 +308,12 @@ export const collegeData = [
     courses_offered: ['Chartered Accountant', 'Financial Analyst', 'Investment Banker', 'Economist'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['CUET'],
-    approximate_fees: 'INR 1-2 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 1–2 lakh total',
+    type: 'government',
+    tier: 'Tier 2',
+    fees_numeric: 1.5,
+    placement_average_salary: 'INR 10 LPA',
+    roi_score: 10,
   },
   {
     college_name: 'Lady Shri Ram College for Women',
@@ -221,8 +321,12 @@ export const collegeData = [
     courses_offered: ['Psychologist', 'Journalist', 'Economist', 'Public Policy Analyst'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['CUET'],
-    approximate_fees: 'INR 1-2 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 1–2 lakh total',
+    type: 'government',
+    tier: 'Tier 2',
+    fees_numeric: 1.5,
+    placement_average_salary: 'INR 7 LPA',
+    roi_score: 10,
   },
   {
     college_name: 'Hindu College',
@@ -230,17 +334,25 @@ export const collegeData = [
     courses_offered: ['Economist', 'Journalist', 'Teacher', 'Psychologist', 'Public Policy Analyst'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['CUET'],
-    approximate_fees: 'INR 75,000-2 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 75,000–2 lakh total',
+    type: 'government',
+    tier: 'Tier 2',
+    fees_numeric: 1.5,
+    placement_average_salary: 'INR 6 LPA',
+    roi_score: 10,
   },
   {
-    college_name: 'St. Xavier’s College Mumbai',
+    college_name: 'St. Xavier\'s College Mumbai',
     location: { city: 'Mumbai', state: 'Maharashtra' },
     courses_offered: ['Journalist', 'Psychologist', 'Economist', 'Digital Marketer'],
     admission_process: 'merit',
     entrance_exams_accepted: ['CUET', 'University Entrance Exams'],
-    approximate_fees: 'INR 1-4 lakh total',
-    type: 'private'
+    approximate_fees: 'INR 1–4 lakh total',
+    type: 'private',
+    tier: 'Tier 3',
+    fees_numeric: 2.5,
+    placement_average_salary: 'INR 6 LPA',
+    roi_score: 9,
   },
   {
     college_name: 'Narsee Monjee Institute of Management Studies',
@@ -248,8 +360,12 @@ export const collegeData = [
     courses_offered: ['Investment Banker', 'Financial Analyst', 'Digital Marketer', 'Product Manager'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['NMAT', 'NPAT', 'CUET'],
-    approximate_fees: 'INR 8-25 lakh total',
-    type: 'private'
+    approximate_fees: 'INR 8–25 lakh total',
+    type: 'private',
+    tier: 'Tier 2',
+    fees_numeric: 16,
+    placement_average_salary: 'INR 12 LPA',
+    roi_score: 6,
   },
   {
     college_name: 'Symbiosis Centre for Management Studies',
@@ -257,8 +373,12 @@ export const collegeData = [
     courses_offered: ['Digital Marketer', 'Financial Analyst', 'Product Manager', 'Hotel Manager'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['SET', 'SNAP'],
-    approximate_fees: 'INR 8-18 lakh total',
-    type: 'private'
+    approximate_fees: 'INR 8–18 lakh total',
+    type: 'private',
+    tier: 'Tier 2',
+    fees_numeric: 13,
+    placement_average_salary: 'INR 10 LPA',
+    roi_score: 6,
   },
   {
     college_name: 'Indian Institute of Management Ahmedabad',
@@ -266,8 +386,12 @@ export const collegeData = [
     courses_offered: ['Investment Banker', 'Financial Analyst', 'Product Manager', 'Management Consultant'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['CAT', 'GMAT'],
-    approximate_fees: 'INR 25-35 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 25–35 lakh total',
+    type: 'government',
+    tier: 'Tier 1',
+    fees_numeric: 30,
+    placement_average_salary: 'INR 35 LPA',
+    roi_score: 8,
   },
   {
     college_name: 'Indian Institute of Management Bangalore',
@@ -275,8 +399,12 @@ export const collegeData = [
     courses_offered: ['Investment Banker', 'Financial Analyst', 'Product Manager', 'Management Consultant'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['CAT', 'GMAT'],
-    approximate_fees: 'INR 25-35 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 25–35 lakh total',
+    type: 'government',
+    tier: 'Tier 1',
+    fees_numeric: 30,
+    placement_average_salary: 'INR 33 LPA',
+    roi_score: 8,
   },
   {
     college_name: 'Indian Institute of Management Calcutta',
@@ -284,8 +412,12 @@ export const collegeData = [
     courses_offered: ['Investment Banker', 'Financial Analyst', 'Product Manager', 'Management Consultant'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['CAT', 'GMAT'],
-    approximate_fees: 'INR 25-35 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 25–35 lakh total',
+    type: 'government',
+    tier: 'Tier 1',
+    fees_numeric: 30,
+    placement_average_salary: 'INR 32 LPA',
+    roi_score: 7,
   },
   {
     college_name: 'Faculty of Management Studies, University of Delhi',
@@ -293,8 +425,12 @@ export const collegeData = [
     courses_offered: ['Investment Banker', 'Financial Analyst', 'Digital Marketer', 'Management Consultant'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['CAT'],
-    approximate_fees: 'INR 2-4 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 2–4 lakh total',
+    type: 'government',
+    tier: 'Tier 2',
+    fees_numeric: 3,
+    placement_average_salary: 'INR 28 LPA',
+    roi_score: 10,
   },
   {
     college_name: 'National Law School of India University',
@@ -302,8 +438,12 @@ export const collegeData = [
     courses_offered: ['Lawyer', 'Public Policy Analyst'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['CLAT'],
-    approximate_fees: 'INR 12-18 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 12–18 lakh total',
+    type: 'government',
+    tier: 'Tier 1',
+    fees_numeric: 15,
+    placement_average_salary: 'INR 12 LPA',
+    roi_score: 6,
   },
   {
     college_name: 'NALSAR University of Law',
@@ -311,8 +451,12 @@ export const collegeData = [
     courses_offered: ['Lawyer', 'Public Policy Analyst'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['CLAT'],
-    approximate_fees: 'INR 10-16 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 10–16 lakh total',
+    type: 'government',
+    tier: 'Tier 2',
+    fees_numeric: 13,
+    placement_average_salary: 'INR 10 LPA',
+    roi_score: 6,
   },
   {
     college_name: 'National Law University Delhi',
@@ -320,8 +464,12 @@ export const collegeData = [
     courses_offered: ['Lawyer', 'Public Policy Analyst'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['AILET'],
-    approximate_fees: 'INR 10-16 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 10–16 lakh total',
+    type: 'government',
+    tier: 'Tier 2',
+    fees_numeric: 13,
+    placement_average_salary: 'INR 10 LPA',
+    roi_score: 6,
   },
   {
     college_name: 'The West Bengal National University of Juridical Sciences',
@@ -329,8 +477,12 @@ export const collegeData = [
     courses_offered: ['Lawyer', 'Public Policy Analyst'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['CLAT'],
-    approximate_fees: 'INR 10-16 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 10–16 lakh total',
+    type: 'government',
+    tier: 'Tier 2',
+    fees_numeric: 13,
+    placement_average_salary: 'INR 9 LPA',
+    roi_score: 5,
   },
   {
     college_name: 'National Institute of Design Ahmedabad',
@@ -338,8 +490,12 @@ export const collegeData = [
     courses_offered: ['Graphic Designer', 'UI/UX Designer', 'Animation and VFX Artist'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['NID DAT'],
-    approximate_fees: 'INR 10-18 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 10–18 lakh total',
+    type: 'government',
+    tier: 'Tier 1',
+    fees_numeric: 14,
+    placement_average_salary: 'INR 9 LPA',
+    roi_score: 5,
   },
   {
     college_name: 'IDC School of Design, IIT Bombay',
@@ -347,8 +503,12 @@ export const collegeData = [
     courses_offered: ['UI/UX Designer', 'Graphic Designer', 'Product Manager'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['UCEED', 'CEED'],
-    approximate_fees: 'INR 8-12 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 8–12 lakh total',
+    type: 'government',
+    tier: 'Tier 1',
+    fees_numeric: 10,
+    placement_average_salary: 'INR 15 LPA',
+    roi_score: 8,
   },
   {
     college_name: 'National Institute of Fashion Technology Delhi',
@@ -356,8 +516,12 @@ export const collegeData = [
     courses_offered: ['Fashion Designer', 'Graphic Designer', 'Digital Marketer'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['NIFT Entrance Exam'],
-    approximate_fees: 'INR 12-18 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 12–18 lakh total',
+    type: 'government',
+    tier: 'Tier 1',
+    fees_numeric: 15,
+    placement_average_salary: 'INR 8 LPA',
+    roi_score: 5,
   },
   {
     college_name: 'Srishti Manipal Institute of Art, Design and Technology',
@@ -365,8 +529,12 @@ export const collegeData = [
     courses_offered: ['Graphic Designer', 'UI/UX Designer', 'Animation and VFX Artist'],
     admission_process: 'interview',
     entrance_exams_accepted: ['University Entrance Exams'],
-    approximate_fees: 'INR 16-24 lakh total',
-    type: 'private'
+    approximate_fees: 'INR 16–24 lakh total',
+    type: 'private',
+    tier: 'Tier 3',
+    fees_numeric: 20,
+    placement_average_salary: 'INR 6 LPA',
+    roi_score: 2,
   },
   {
     college_name: 'Film and Television Institute of India',
@@ -374,8 +542,12 @@ export const collegeData = [
     courses_offered: ['Animation and VFX Artist', 'Journalist', 'Graphic Designer'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['JET', 'Interview'],
-    approximate_fees: 'INR 1-4 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 1–4 lakh total',
+    type: 'government',
+    tier: 'Tier 2',
+    fees_numeric: 2.5,
+    placement_average_salary: 'INR 7 LPA',
+    roi_score: 9,
   },
   {
     college_name: 'Indian Agricultural Research Institute',
@@ -383,8 +555,12 @@ export const collegeData = [
     courses_offered: ['Agricultural Scientist', 'Biotechnologist'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['ICAR AIEEA', 'CUET', 'GATE'],
-    approximate_fees: 'INR 50,000-2 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 50,000–2 lakh total',
+    type: 'government',
+    tier: 'Tier 2',
+    fees_numeric: 1.5,
+    placement_average_salary: 'INR 6 LPA',
+    roi_score: 10,
   },
   {
     college_name: 'Tamil Nadu Agricultural University',
@@ -392,8 +568,12 @@ export const collegeData = [
     courses_offered: ['Agricultural Scientist', 'Biotechnologist', 'Food Technologist'],
     admission_process: 'merit',
     entrance_exams_accepted: ['State Agriculture Admission', 'ICAR AIEEA'],
-    approximate_fees: 'INR 1-4 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 1–4 lakh total',
+    type: 'government',
+    tier: 'Tier 2',
+    fees_numeric: 2.5,
+    placement_average_salary: 'INR 5 LPA',
+    roi_score: 9,
   },
   {
     college_name: 'National Dairy Research Institute',
@@ -401,8 +581,12 @@ export const collegeData = [
     courses_offered: ['Food Technologist', 'Veterinarian', 'Agricultural Scientist'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['ICAR AIEEA', 'CUET'],
-    approximate_fees: 'INR 1-3 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 1–3 lakh total',
+    type: 'government',
+    tier: 'Tier 2',
+    fees_numeric: 2,
+    placement_average_salary: 'INR 5 LPA',
+    roi_score: 9,
   },
   {
     college_name: 'Indian Veterinary Research Institute',
@@ -410,8 +594,12 @@ export const collegeData = [
     courses_offered: ['Veterinarian', 'Biotechnologist', 'Agricultural Scientist'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['NEET UG', 'ICAR AIEEA'],
-    approximate_fees: 'INR 1-3 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 1–3 lakh total',
+    type: 'government',
+    tier: 'Tier 2',
+    fees_numeric: 2,
+    placement_average_salary: 'INR 5 LPA',
+    roi_score: 9,
   },
   {
     college_name: 'School of Planning and Architecture Delhi',
@@ -419,8 +607,12 @@ export const collegeData = [
     courses_offered: ['Architect', 'Civil Engineer'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['NATA', 'JEE Main Paper 2', 'GATE'],
-    approximate_fees: 'INR 4-8 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 4–8 lakh total',
+    type: 'government',
+    tier: 'Tier 2',
+    fees_numeric: 6,
+    placement_average_salary: 'INR 7 LPA',
+    roi_score: 8,
   },
   {
     college_name: 'CEPT University',
@@ -428,8 +620,12 @@ export const collegeData = [
     courses_offered: ['Architect', 'Civil Engineer', 'UI/UX Designer'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['NATA', 'JEE Main Paper 2', 'University Entrance Exams'],
-    approximate_fees: 'INR 12-20 lakh total',
-    type: 'private'
+    approximate_fees: 'INR 12–20 lakh total',
+    type: 'private',
+    tier: 'Tier 2',
+    fees_numeric: 16,
+    placement_average_salary: 'INR 7 LPA',
+    roi_score: 4,
   },
   {
     college_name: 'National Institute of Hotel Management and Catering Technology Pusa',
@@ -437,8 +633,12 @@ export const collegeData = [
     courses_offered: ['Hotel Manager', 'Digital Marketer'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['NCHM JEE'],
-    approximate_fees: 'INR 3-6 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 3–6 lakh total',
+    type: 'government',
+    tier: 'Tier 2',
+    fees_numeric: 4.5,
+    placement_average_salary: 'INR 6 LPA',
+    roi_score: 8,
   },
   {
     college_name: 'Tata Institute of Social Sciences',
@@ -446,8 +646,12 @@ export const collegeData = [
     courses_offered: ['Psychologist', 'Social Worker', 'Public Policy Analyst'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['CUET PG', 'TISS Entrance Process'],
-    approximate_fees: 'INR 1-4 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 1–4 lakh total',
+    type: 'government',
+    tier: 'Tier 1',
+    fees_numeric: 2.5,
+    placement_average_salary: 'INR 8 LPA',
+    roi_score: 9,
   },
   {
     college_name: 'Indian Institute of Mass Communication',
@@ -455,8 +659,12 @@ export const collegeData = [
     courses_offered: ['Journalist', 'Digital Marketer', 'Public Policy Analyst'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['IIMC Entrance Exam', 'CUET PG'],
-    approximate_fees: 'INR 1-3 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 1–3 lakh total',
+    type: 'government',
+    tier: 'Tier 2',
+    fees_numeric: 2,
+    placement_average_salary: 'INR 6 LPA',
+    roi_score: 9,
   },
   {
     college_name: 'Indian Statistical Institute',
@@ -464,8 +672,12 @@ export const collegeData = [
     courses_offered: ['Data Scientist', 'Financial Analyst', 'Actuary', 'Economist'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['ISI Admission Test'],
-    approximate_fees: 'INR 50,000-2 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 50,000–2 lakh total',
+    type: 'government',
+    tier: 'Tier 1',
+    fees_numeric: 1,
+    placement_average_salary: 'INR 15 LPA',
+    roi_score: 10,
   },
   {
     college_name: 'National Forensic Sciences University',
@@ -473,8 +685,12 @@ export const collegeData = [
     courses_offered: ['Cybersecurity Analyst', 'Lawyer', 'IPS Officer'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['CUET', 'University Entrance Exams'],
-    approximate_fees: 'INR 2-8 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 2–8 lakh total',
+    type: 'government',
+    tier: 'Tier 2',
+    fees_numeric: 5,
+    placement_average_salary: 'INR 7 LPA',
+    roi_score: 8,
   },
   {
     college_name: 'Indian Institute of Space Science and Technology',
@@ -482,8 +698,12 @@ export const collegeData = [
     courses_offered: ['Aerospace Engineer', 'Electronics and Communication Engineer', 'AI/ML Engineer'],
     admission_process: 'exam-based',
     entrance_exams_accepted: ['JEE Advanced', 'GATE'],
-    approximate_fees: 'INR 4-8 lakh total',
-    type: 'government'
+    approximate_fees: 'INR 4–8 lakh total',
+    type: 'government',
+    tier: 'Tier 1',
+    fees_numeric: 6,
+    placement_average_salary: 'INR 12 LPA',
+    roi_score: 9,
   },
   {
     college_name: 'Amity University Noida',
@@ -491,8 +711,12 @@ export const collegeData = [
     courses_offered: ['Digital Marketer', 'Graphic Designer', 'Psychologist', 'Biotechnologist', 'Animation and VFX Artist'],
     admission_process: 'merit',
     entrance_exams_accepted: ['CUET', 'University Entrance Exams', 'Interview'],
-    approximate_fees: 'INR 6-20 lakh total',
-    type: 'private'
+    approximate_fees: 'INR 6–20 lakh total',
+    type: 'private',
+    tier: 'Tier 3',
+    fees_numeric: 13,
+    placement_average_salary: 'INR 5 LPA',
+    roi_score: 3,
   }
 ]
 

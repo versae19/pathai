@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import Navbar from '../components/Navbar'
-import { findCareerBySlug, getCollegesForCareer } from '../utils/dataHelpers'
+import { findCareerBySlug, getCollegesForCareer, getCareerSlug } from '../utils/dataHelpers'
 
 function ExamAccordion({ exam, defaultOpen }) {
   const [open, setOpen] = useState(defaultOpen)
@@ -110,6 +110,17 @@ export default function CareerDetailPage() {
           </div>
 
           <aside className="detail-side fade-up fade-up-2">
+            <div className="side-card mb-4">
+              <h2>Exam strategy planner</h2>
+              <p>Get a month-by-month preparation roadmap, backup exams, and key resources for {career.career_name}.</p>
+              <button
+                className="detail-link w-full justify-center mt-4"
+                onClick={() => navigate(`/exam-planner?career=${getCareerSlug(career)}`)}
+              >
+                Plan exam strategy
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
             <div className="side-card">
               <h2>Top linked colleges</h2>
               <p>Filtered from colleges that offer courses aligned with {career.career_name}.</p>

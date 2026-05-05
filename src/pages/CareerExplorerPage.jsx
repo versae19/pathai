@@ -51,6 +51,14 @@ export default function CareerExplorerPage() {
             <h1>Browse {careerData.length} Indian career paths</h1>
             <p>Compare categories, skills, salary ranges, exams, and linked colleges before choosing a roadmap.</p>
           </div>
+          <div className="flex flex-col gap-4">
+            <button
+              onClick={() => navigate('/compare')}
+              className="btn-secondary self-start"
+            >
+              Compare careers
+            </button>
+          </div>
           <div className="explorer-search">
             <label htmlFor="career-search">Search careers</label>
             <input

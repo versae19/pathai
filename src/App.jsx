@@ -5,6 +5,8 @@ import FormPage from './pages/FormPage'
 import DashboardPage from './pages/DashboardPage'
 import CareerExplorerPage from './pages/CareerExplorerPage'
 import CareerDetailPage from './pages/CareerDetailPage'
+import CareerComparisonPage from './pages/CareerComparisonPage'
+import ExamPlannerPage from './pages/ExamPlannerPage'
 import CollegeExplorerPage from './pages/CollegeExplorerPage'
 
 export default function App() {
@@ -16,6 +18,8 @@ export default function App() {
       <Route path="/" element={<LandingPage />} />
       <Route path="/careers" element={<CareerExplorerPage />} />
       <Route path="/careers/:careerSlug" element={<CareerDetailPage />} />
+      <Route path="/compare" element={<CareerComparisonPage />} />
+      <Route path="/exam-planner" element={<ExamPlannerPage />} />
       <Route path="/colleges" element={<CollegeExplorerPage />} />
       <Route
         path="/plan"

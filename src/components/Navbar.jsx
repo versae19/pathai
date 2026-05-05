@@ -51,6 +51,18 @@ export default function Navbar() {
           Colleges
         </button>
         <button
+          onClick={() => navigate('/compare')}
+          className="hidden md:block text-sm text-ink-2 font-medium hover:text-ink transition-colors bg-transparent border-0 cursor-pointer"
+        >
+          Compare
+        </button>
+        <button
+          onClick={() => navigate('/exam-planner')}
+          className="hidden md:block text-sm text-ink-2 font-medium hover:text-ink transition-colors bg-transparent border-0 cursor-pointer"
+        >
+          Exam Planner
+        </button>
+        <button
           onClick={() => scrollTo('how-it-works')}
           className="hidden md:block text-sm text-ink-2 font-medium hover:text-ink transition-colors bg-transparent border-0 cursor-pointer"
         >
