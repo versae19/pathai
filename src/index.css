@@ -433,6 +433,18 @@
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0)   scale(1); }
+}
+/* Category photo card: reveal explore label on hover */
+.category-photo-btn:hover .category-explore-label {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+.category-photo-btn:hover img {
+  opacity: 0.6 !important;
+}
 .fade-up {
   animation: fadeUp 0.5s ease both;
 }

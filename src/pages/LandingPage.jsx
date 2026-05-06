@@ -1,14 +1,48 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import CareerForm from '../components/CareerForm'
 import careerData, { careerCategories } from '../data/careerData'
 import collegeData from '../data/collegeData'
+import { getCareerSlug } from '../utils/dataHelpers'
 
 const categoryCounts = careerCategories.map((category) => ({
   category,
   count: careerData.filter((career) => career.category === category).length
 }))
+
+const CATEGORY_META = {
+  'Engineering': {
+    image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=800&q=80',
+    fallback: '#1e3a5f',
+    sub: 'JEE · GATE · B.Tech',
+  },
+  'Medical': {
+    image: 'https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&w=800&q=80',
+    fallback: '#134e2c',
+    sub: 'NEET · AIIMS · PG',
+  },
+  'Commerce': {
+    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80',
+    fallback: '#7c2d12',
+    sub: 'CA · MBA · Banking',
+  },
+  'Arts': {
+    image: 'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=800&q=80',
+    fallback: '#4a1942',
+    sub: 'Law · Design · Media',
+  },
+  'Government Jobs': {
+    image: 'https://images.unsplash.com/photo-1568385247005-0a4ca6754afd?auto=format&fit=crop&w=800&q=80',
+    fallback: '#1e293b',
+    sub: 'UPSC · SSC · Defence',
+  },
+  'Emerging Careers': {
+    image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80',
+    fallback: '#1e1b4b',
+    sub: 'AI · Data · Product',
+  },
+}
 
 const spotlightCareers = [
   'AI/ML Engineer',
@@ -19,19 +53,12 @@ const spotlightCareers = [
   'Product Manager'
 ].map((name) => careerData.find((career) => career.career_name === name)).filter(Boolean)
 
-const featuredColleges = [
-  'Indian Institute of Technology Bombay',
-  'AIIMS Delhi',
-  'Indian Institute of Management Ahmedabad',
-  'National Law School of India University',
-  'National Institute of Design Ahmedabad',
-  'Indian Statistical Institute'
-].map((name) => collegeData.find((college) => college.college_name === name)).filter(Boolean)
 
 const examNames = new Set(careerData.flatMap((career) => career.entrance_exams.map((exam) => exam.exam_name)))
 
 export default function LandingPage() {
   const navigate = useNavigate()
+  const [activeCategory, setActiveCategory] = useState('')
 
   return (
     <div className="min-h-screen bg-bg">
@@ -90,85 +117,134 @@ export default function LandingPage() {
             <p>Filter-ready records with skills, salary ranges, growth scope, entrance exams, and college links.</p>
           </div>
 
-          <div className="category-strip">
-            {categoryCounts.map((item) => (
-              <div key={item.category} className="category-stat">
-                <span>{item.category}</span>
-                <strong>{item.count}</strong>
-              </div>
-            ))}
-          </div>
+          {/* Photo category cards */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-2">
+            {categoryCounts.map((item) => {
+              const meta = CATEGORY_META[item.category] || { image: '', fallback: '#1e293b', sub: '' }
+              const active = item.category === activeCategory
+              return (
+                <button
+                  key={item.category}
+                  onClick={() => setActiveCategory((c) => c === item.category ? '' : item.category)}
+                  className="category-photo-btn relative overflow-hidden rounded-2xl h-44 md:h-52 text-left group transition-all duration-300 focus:outline-none"
+                  style={{
+                    backgroundColor: meta.fallback,
+                    boxShadow: active ? '0 0 0 3px #1B6B4A, 0 8px 32px rgba(27,107,74,0.25)' : '0 2px 12px rgba(0,0,0,0.10)',
+                    transform: active ? 'scale(1.02)' : '',
+                  }}
+                >
+                  {/* Background image */}
+                  <img
+                    src={meta.image}
+                    alt=""
+                    className="absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+                    style={{ opacity: active ? 0.55 : 0.45 }}
+                  />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mt-8">
-            {spotlightCareers.map((career) => (
-              <article key={career.career_name} className="directory-card">
-                <div className="flex items-center justify-between gap-3 mb-4">
-                  <span className="category-badge">{career.category}</span>
-                  <span className="salary-badge">{career.average_salary_india}</span>
-                </div>
-                <h3>{career.career_name}</h3>
-                <p>{career.description}</p>
-                <div className="tag-row">
-                  {career.required_skills.slice(0, 3).map((skill) => <span key={skill}>{skill}</span>)}
-                </div>
-                <div className="exam-stack">
-                  {career.entrance_exams.slice(0, 2).map((exam) => (
-                    <div key={exam.exam_name}>
-                      <strong>{exam.exam_name}</strong>
-                      <span>{exam.exam_level} · {exam.difficulty_level}</span>
+                  {/* Gradient overlay */}
+                  <div
+                    className="absolute inset-0 transition-opacity duration-300"
+                    style={{
+                      background: 'linear-gradient(160deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.82) 100%)',
+                    }}
+                  />
+
+                  {/* Active tint */}
+                  {active && (
+                    <div className="absolute inset-0" style={{ background: 'rgba(27,107,74,0.22)' }} />
+                  )}
+
+                  {/* Content */}
+                  <div className="absolute inset-0 p-5 flex flex-col justify-between">
+                    {/* Top row */}
+                    <div className="flex justify-between items-start">
+                      <span
+                        className="text-xs font-bold px-2.5 py-1 rounded-full backdrop-blur-sm transition-all duration-200"
+                        style={{
+                          background: active ? 'rgba(27,107,74,0.85)' : 'rgba(255,255,255,0.18)',
+                          color: '#fff',
+                        }}
+                      >
+                        {item.count} careers
+                      </span>
+                      {active && (
+                        <span className="text-white text-base" style={{ lineHeight: 1 }}>✓</span>
+                      )}
                     </div>
-                  ))}
-                </div>
-              </article>
-            ))}
-          </div>
-          <div className="mt-8 text-center">
-            <button className="btn-primary" onClick={() => navigate('/careers')}>
-              Open full career explorer
-              <span aria-hidden="true">→</span>
-            </button>
-          </div>
-        </div>
-      </section>
 
-      <section id="college-network" className="py-20 px-[5%] bg-bg-2">
-        <div className="max-w-7xl mx-auto">
-          <div className="section-kicker">College network</div>
-          <div className="section-heading-row">
-            <h2 className="h2">Top colleges linked to careers</h2>
-            <p>Each college record includes location, admission route, fees, accepted exams, type, and career paths.</p>
-          </div>
-
-          <div className="college-grid">
-            {featuredColleges.map((college) => (
-              <article key={college.college_name} className="college-card">
-                <div className="flex items-start justify-between gap-4 mb-4">
-                  <div>
-                    <h3>{college.college_name}</h3>
-                    <p>{college.location.city}, {college.location.state}</p>
+                    {/* Bottom text */}
+                    <div>
+                      <p className="text-xs mb-1.5 font-medium" style={{ color: 'rgba(255,255,255,0.6)' }}>
+                        {meta.sub}
+                      </p>
+                      <h3 className="text-white text-lg font-bold leading-tight tracking-tight">
+                        {item.category}
+                      </h3>
+                      <p
+                        className="category-explore-label text-xs mt-1.5 font-semibold transition-all duration-200"
+                        style={{
+                          color: active ? '#6ee7b7' : 'rgba(255,255,255,0.5)',
+                          opacity: active ? 1 : 0,
+                          transform: active ? 'translateY(0)' : 'translateY(4px)',
+                        }}
+                      >
+                        {active ? 'Showing results ↓' : 'Tap to explore →'}
+                      </p>
+                    </div>
                   </div>
-                  <span className={`type-pill ${college.type}`}>{college.type}</span>
-                </div>
-                <div className="college-meta">
-                  <span>{college.admission_process}</span>
-                  <span>{college.approximate_fees}</span>
-                </div>
-                <div className="tag-row mt-4">
-                  {college.courses_offered.slice(0, 4).map((course) => <span key={course}>{course}</span>)}
-                </div>
-                <div className="exam-line">
-                  {college.entrance_exams_accepted.slice(0, 3).join(' · ')}
-                </div>
-              </article>
-            ))}
+                </button>
+              )
+            })}
           </div>
-          <div className="mt-8 text-center">
-            <button className="btn-secondary bg-white" onClick={() => navigate('/colleges')}>
-              Open college explorer
-            </button>
-          </div>
+
+          {/* Animated career catalogue — only visible when a category is selected */}
+          {activeCategory && (
+            <>
+              <div key={activeCategory} className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mt-8">
+                {careerData
+                  .filter((c) => c.category === activeCategory)
+                  .map((career, i) => (
+                    <article
+                      key={career.career_name}
+                      className="directory-card cursor-pointer"
+                      style={{ animationDelay: `${i * 45}ms`, animation: 'cardIn 0.35s ease both' }}
+                      onClick={() => navigate(`/careers/${getCareerSlug(career)}`)}
+                    >
+                      <div className="flex items-center justify-between gap-3 mb-4">
+                        <span className="category-badge">{career.category}</span>
+                        <span className="salary-badge">{career.average_salary_india}</span>
+                      </div>
+                      <h3>{career.career_name}</h3>
+                      <p>{career.description}</p>
+                      <div className="tag-row">
+                        {career.required_skills.slice(0, 3).map((skill) => <span key={skill}>{skill}</span>)}
+                      </div>
+                      <div className="exam-stack">
+                        {career.entrance_exams.slice(0, 2).map((exam) => (
+                          <div key={exam.exam_name}>
+                            <strong>{exam.exam_name}</strong>
+                            <span>{exam.exam_level} · {exam.difficulty_level}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="mt-4 flex items-center gap-1 text-xs font-bold text-accent">
+                        View full details <span aria-hidden="true">→</span>
+                      </div>
+                    </article>
+                  ))}
+              </div>
+
+              <div className="mt-8 text-center">
+                <button className="btn-primary" onClick={() => navigate('/careers')}>
+                  Open full career explorer
+                  <span aria-hidden="true">→</span>
+                </button>
+              </div>
+            </>
+          )}
         </div>
       </section>
+
 
       <section id="how-it-works" className="py-20 px-[5%] bg-white">
         <div className="max-w-7xl mx-auto">
