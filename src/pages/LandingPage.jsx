@@ -191,7 +191,7 @@ export default function LandingPage() {
                 </div>
                 <h2 className="font-serif text-2xl leading-snug" style={{ color: '#1A1916' }}>Build your personalised roadmap</h2>
               </div>
-              <CareerForm compact onComplete={(fd) => navigate('/dashboard', { state: { formData: fd } })} />
+              <CareerForm compact />
             </div>
           </div>
         </div>

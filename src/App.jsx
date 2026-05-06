@@ -23,7 +23,7 @@ export default function App() {
         <Route path="/compare" element={<CareerComparisonPage />} />
         <Route path="/exam-planner" element={<ExamPlannerPage />} />
         <Route path="/colleges" element={<CollegeExplorerPage />} />
-        <Route path="/plan" element={<FormPage onComplete={(fd) => setFormData(fd)} />} />
+        <Route path="/plan" element={<FormPage />} />
         <Route
           path="/dashboard"
           element={<DashboardPage formData={formData} planData={planData} setPlanData={setPlanData} />}
