@@ -54,7 +54,7 @@ function TaskItem({ task, checked, onToggle }) {
         checked={checked}
         onChange={onToggle}
         className="w-4 h-4 cursor-pointer flex-shrink-0"
-        style={{ accentColor: '#1B6B4A' }}
+        style={{ accentColor: '#4f46e5' }}
       />
       <span className={`text-sm flex-1 ${checked ? 'line-through text-ink-3' : ''}`}>{task.text}</span>
       <span className={`text-xs font-bold px-2 py-1 rounded-full flex-shrink-0 ${task.type === 'today' ? 'bg-accent-light text-accent' : 'bg-gold-light text-gold'}`}>
@@ -100,13 +100,13 @@ export default function DashboardPage({ formData, planData, setPlanData }) {
 
   const toggleTask = (i) => setCheckedTasks(c => ({ ...c, [i]: !c[i] }))
 
-  const resTypeColor = { YouTube: '#CC0000', Website: '#185FA5', 'Free Course': '#1B6B4A', Community: '#C97B2A', Tool: '#534AB7' }
+  const resTypeColor = { YouTube: '#CC0000', Website: '#185FA5', 'Free Course': '#4f46e5', Community: '#C97B2A', Tool: '#534AB7' }
 
   if (loading) {
     return (
       <div className="min-h-screen bg-bg flex">
         <div className="w-60 bg-white border-r border-border p-5 hidden md:flex flex-col">
-          <div className="font-serif text-xl mb-6 pb-4 border-b border-border">Path<span className="text-accent">AI</span></div>
+          <div className="font-serif text-xl mb-6 pb-4 border-b border-border">LAKSHYA</div>
           {NAV_ITEMS.map(n => (
             <div key={n.id} className="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm text-ink-3 mb-1">{n.icon}{n.label}</div>
           ))}
@@ -129,7 +129,7 @@ export default function DashboardPage({ formData, planData, setPlanData }) {
       {/* SIDEBAR desktop */}
       <aside className="hidden md:flex flex-col w-60 bg-white border-r border-border p-5 sticky top-0 h-screen overflow-y-auto flex-shrink-0">
         <div className="font-serif text-xl mb-1 cursor-pointer" onClick={() => navigate('/')}>
-          Path<span className="text-accent">AI</span>
+          LAKSHYA
         </div>
         <p className="text-xs text-ink-3 mb-5 pb-4 border-b border-border">Career Planner</p>
 
@@ -376,7 +376,7 @@ export default function DashboardPage({ formData, planData, setPlanData }) {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {planData.resources.map((r, i) => (
                 <div key={i} className="bg-white border border-border rounded-xl p-5 hover:border-border-2 hover:-translate-y-0.5 transition-all duration-200">
-                  <div className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: resTypeColor[r.type] || '#1B6B4A' }}>
+                  <div className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: resTypeColor[r.type] || '#4f46e5' }}>
                     {r.type}
                   </div>
                   <h4 className="text-sm font-bold mb-1">{r.title}</h4>

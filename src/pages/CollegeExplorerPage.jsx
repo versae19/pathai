@@ -17,8 +17,8 @@ const BUDGET_OPTIONS = [
 const TIER_OPTIONS = [ALL, 'Tier 1', 'Tier 2', 'Tier 3']
 
 function roiLabel(score) {
-  if (score >= 9) return { text: 'Excellent ROI', cls: 'text-[#1B6B4A] bg-[#E8F5EE] border-[#D1EDDC]' }
-  if (score >= 7) return { text: 'Strong ROI',    cls: 'text-[#2A6B4A] bg-[#E4F4EC] border-[#C5E8D5]' }
+  if (score >= 9) return { text: 'Excellent ROI', cls: 'text-[#4f46e5] bg-[#ede9fe] border-[#ddd6fe]' }
+  if (score >= 7) return { text: 'Strong ROI',    cls: 'text-[#4338ca] bg-[#eef2ff] border-[#e0e7ff]' }
   if (score >= 5) return { text: 'Good ROI',      cls: 'text-[#7B5E1A] bg-[#FDF3E7] border-[#F0D9B5]' }
   if (score >= 3) return { text: 'Moderate ROI',  cls: 'text-[#B84F1A] bg-[#FDF0EB] border-[#F5D5C5]' }
   return                 { text: 'Low ROI',        cls: 'text-[#8B1F3A] bg-[#FCEEF2] border-[#F5C8D6]' }

@@ -8,7 +8,7 @@ import { getCareerSlug } from '../utils/dataHelpers'
 // ─── Constants ────────────────────────────────────────────────────────────────
 
 const PHASE_COLORS = {
-  green:  { bg: 'bg-[#E8F5EE]', border: 'border-[#D1EDDC]', dot: 'bg-[#1B6B4A]', text: 'text-[#1B6B4A]', badge: 'bg-[#1B6B4A] text-white' },
+  green:  { bg: 'bg-[#ede9fe]', border: 'border-[#ddd6fe]', dot: 'bg-[#4f46e5]', text: 'text-[#4f46e5]', badge: 'bg-[#4f46e5] text-white' },
   blue:   { bg: 'bg-[#EEF2FF]', border: 'border-[#C7D2FE]', dot: 'bg-[#3730A3]', text: 'text-[#3730A3]', badge: 'bg-[#3730A3] text-white' },
   amber:  { bg: 'bg-[#FDF3E7]', border: 'border-[#F0D9B5]', dot: 'bg-[#92400E]', text: 'text-[#92400E]', badge: 'bg-[#92400E] text-white' },
   orange: { bg: 'bg-[#FFF7ED]', border: 'border-[#FED7AA]', dot: 'bg-[#C2410C]', text: 'text-[#C2410C]', badge: 'bg-[#C2410C] text-white' },
@@ -17,7 +17,7 @@ const PHASE_COLORS = {
 }
 
 const DIFF_COLORS = {
-  'Easy':      'text-[#1B6B4A] bg-[#E8F5EE] border-[#D1EDDC]',
+  'Easy':      'text-[#4f46e5] bg-[#ede9fe] border-[#ddd6fe]',
   'Medium':    'text-[#92400E] bg-[#FDF3E7] border-[#F0D9B5]',
   'Hard':      'text-[#C2410C] bg-[#FFF7ED] border-[#FED7AA]',
   'Very Hard': 'text-[#9F1239] bg-[#FFF1F2] border-[#FECDD3]',

@@ -11,9 +11,9 @@ export default {
         sans: ['"DM Sans"', 'sans-serif'],
       },
       colors: {
-        accent: '#1B6B4A',
-        'accent-light': '#E8F5EE',
-        'accent-mid': '#D1EDDC',
+        accent: '#4f46e5',
+        'accent-light': '#ede9fe',
+        'accent-mid': '#ddd6fe',
         gold: '#C97B2A',
         'gold-light': '#FDF3E7',
         ink: '#1A1916',

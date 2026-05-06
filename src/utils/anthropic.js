@@ -1,6 +1,6 @@
 import { careerDecisionEngine } from './recommendations.js'
 
-// Anthropic API utility - PathAI
+// Anthropic API utility - Lakshya
 const API_KEY = import.meta.env?.VITE_ANTHROPIC_API_KEY
 
 const uniqueBy = (items, getKey) => {

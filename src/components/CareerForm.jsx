@@ -300,7 +300,7 @@ export default function CareerForm({ onComplete, onCancel, compact = false }) {
           <div
             key={d}
             className="h-1 flex-1 rounded-full transition-all duration-300"
-            style={{ background: d <= step ? '#1B6B4A' : '#E2E0D8' }}
+            style={{ background: d <= step ? '#4f46e5' : '#E2E0D8' }}
           />
         ))}
       </div>
@@ -429,7 +429,7 @@ export default function CareerForm({ onComplete, onCancel, compact = false }) {
         <div className="fade-up">
           {!compact && <div className="section-label">Step 4 of 4</div>}
           <h2 className={h2Cls}>Goals & priorities</h2>
-          <p className={descCls}>What matters most? This helps PathAI tailor {filledByLabel} career plan.</p>
+          <p className={descCls}>What matters most? This helps Lakshya tailor {filledByLabel} career plan.</p>
 
           <div className={sp}>
             <div>
@@ -443,7 +443,7 @@ export default function CareerForm({ onComplete, onCancel, compact = false }) {
 
             <div>
               <label className={labelCls}>
-                Anything else PathAI should know? <span className="font-normal text-ink-3">(optional)</span>
+                Anything else we should know? <span className="font-normal text-ink-3">(optional)</span>
               </label>
               <textarea
                 className="w-full px-4 py-3 rounded-xl border border-border text-base font-sans bg-white text-ink focus:border-accent outline-none transition-colors resize-none"
@@ -456,10 +456,10 @@ export default function CareerForm({ onComplete, onCancel, compact = false }) {
 
             <div className="bg-accent-light border border-accent-mid rounded-xl p-4">
               <p className={`font-semibold text-accent mb-1 ${compact ? 'text-xs' : 'text-sm'}`}>
-                Your AI career plan is ready to generate
+                Your career plan is ready to generate
               </p>
               <p className={`text-ink-2 ${compact ? 'text-xs' : 'text-sm'}`}>
-                PathAI will analyse {filledByLabel} profile and create a personalised roadmap with matched career paths, a weekly action plan, and exam guidance.
+                Lakshya will analyse {filledByLabel} profile and create a personalised roadmap with matched career paths, a weekly action plan, and exam guidance.
               </p>
             </div>
           </div>
