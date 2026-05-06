@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
+import CareerForm from '../components/CareerForm'
 import careerData, { careerCategories } from '../data/careerData'
 import collegeData from '../data/collegeData'
 
@@ -36,36 +37,23 @@ export default function LandingPage() {
     <div className="min-h-screen bg-bg">
       <Navbar />
 
-      <section className="hero-surface relative min-h-screen flex items-center pt-28 pb-16 px-[5%] overflow-hidden">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_0.9fr] gap-12 items-center w-full">
-          <div>
+      <section className="hero-surface relative pt-28 pb-16 px-[5%] overflow-hidden">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-12 items-start w-full">
+          <div className="lg:pt-4">
             <div className="fade-up inline-flex items-center gap-2 bg-white border border-border text-ink-2 text-xs font-bold px-4 py-2 rounded-full mb-7 tracking-wide shadow-sm">
               <span className="w-2 h-2 rounded-full bg-accent" />
               India-focused career, exam, and college intelligence
             </div>
 
-            <h1 className="fade-up fade-up-1 font-serif text-5xl md:text-7xl tracking-tight leading-[1.02] mb-6 text-ink max-w-3xl">
+            <h1 className="fade-up fade-up-1 font-serif text-5xl md:text-6xl tracking-tight leading-[1.02] mb-6 text-ink">
               Plan a career with the colleges, exams, and skills behind it.
             </h1>
 
-            <p className="fade-up fade-up-2 text-lg text-ink-2 max-w-2xl mb-9 leading-relaxed">
-              PathAI now maps Indian career paths to entrance exams, realistic entry salaries, and relevant colleges, so students can compare options before committing years of effort.
+            <p className="fade-up fade-up-2 text-lg text-ink-2 mb-9 leading-relaxed">
+              PathAI maps Indian career paths to entrance exams, realistic entry salaries, and relevant colleges, so students can compare options before committing years of effort.
             </p>
 
-            <div className="fade-up fade-up-3 flex flex-wrap gap-4">
-              <button className="btn-primary text-base px-7 py-3.5" onClick={() => navigate('/plan')}>
-                Build my roadmap
-                <span aria-hidden="true">→</span>
-              </button>
-              <button
-                className="btn-secondary text-base px-6 py-3.5 bg-white"
-                onClick={() => navigate('/careers')}
-              >
-                View database
-              </button>
-            </div>
-
-            <div className="fade-up fade-up-4 grid grid-cols-3 gap-3 mt-12 max-w-xl">
+            <div className="fade-up fade-up-3 grid grid-cols-3 gap-3 max-w-sm">
               {[
                 [careerData.length, 'Career paths'],
                 [collegeData.length, 'Colleges'],
@@ -80,36 +68,15 @@ export default function LandingPage() {
           </div>
 
           <div className="fade-up fade-up-2">
-            <div className="planner-panel">
-              <div className="planner-panel-top">
-                <div>
-                  <span>Live database preview</span>
-                  <strong>Career fit index</strong>
-                </div>
-                <div className="planner-score">92</div>
+            <div className="bg-white border border-border rounded-3xl shadow-lg p-6 md:p-8">
+              <div className="mb-5">
+                <p className="text-xs font-bold text-accent tracking-wide uppercase mb-1">Free career planner</p>
+                <h2 className="font-serif text-xl text-ink leading-snug">Build your personalised roadmap</h2>
               </div>
-
-              <div className="space-y-3">
-                {spotlightCareers.slice(0, 4).map((career) => (
-                  <div key={career.career_name} className="career-preview-row">
-                    <div>
-                      <div className="text-sm font-bold text-white">{career.career_name}</div>
-                      <div className="text-xs text-white/55 mt-1">{career.category} · {career.average_salary_india}</div>
-                    </div>
-                    <div className="exam-pill">{career.entrance_exams[0]?.exam_name}</div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="planner-panel-footer">
-                <div>
-                  <span>Linked colleges</span>
-                  <strong>{collegeData.length} institutions indexed</strong>
-                </div>
-                <button onClick={() => navigate('/colleges')}>
-                  Explore
-                </button>
-              </div>
+              <CareerForm
+                compact
+                onComplete={(fd) => navigate('/dashboard', { state: { formData: fd } })}
+              />
             </div>
           </div>
         </div>
