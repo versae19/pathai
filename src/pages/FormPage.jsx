@@ -14,10 +14,10 @@ export default function FormPage() {
       <div className="max-w-3xl mx-auto px-5 pt-24 pb-20">
         <div className="mb-8">
           <h1 className="font-serif text-3xl md:text-4xl tracking-tight text-ink mb-2">
-            Find your path
+            Explore careers
           </h1>
           <p className="text-sm text-ink-2">
-            Explore career options based on your education, or get a step-by-step roadmap for your dream career.
+            Browse career options based on your education, or get a step-by-step roadmap for your dream career.
           </p>
         </div>
         <CareerForm

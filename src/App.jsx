@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import { ThemeProvider } from './context/ThemeContext'
 import LandingPage from './pages/LandingPage'
 import FormPage from './pages/FormPage'
@@ -10,12 +10,19 @@ import CareerComparisonPage from './pages/CareerComparisonPage'
 import ExamPlannerPage from './pages/ExamPlannerPage'
 import CollegeExplorerPage from './pages/CollegeExplorerPage'
 
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => { window.scrollTo(0, 0) }, [pathname])
+  return null
+}
+
 export default function App() {
   const [planData, setPlanData] = useState(null)
   const [formData, setFormData] = useState(null)
 
   return (
     <ThemeProvider>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/careers" element={<CareerExplorerPage />} />

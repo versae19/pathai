@@ -40,10 +40,14 @@ function matchesBudget(college, budget) {
   return true
 }
 
-// Best ROI strip – top 6 by roi_score desc, then fees_numeric asc
-const bestRoiColleges = [...collegeData]
-  .sort((a, b) => b.roi_score - a.roi_score || a.fees_numeric - b.fees_numeric)
-  .slice(0, 6)
+function matchesCourseFilter(college, course) {
+  if (course === ALL) return true
+  const q = course.toLowerCase()
+  return college.courses_offered.some(c => {
+    const s = c.toLowerCase()
+    return s === q || q.includes(s) || s.includes(q)
+  })
+}
 
 export default function CollegeExplorerPage() {
   const navigate = useNavigate()
@@ -53,6 +57,7 @@ export default function CollegeExplorerPage() {
   const [course,   setCourse]   = useState(searchParams.get('course')   || ALL)
   const [budget,   setBudget]   = useState(ALL)
   const [tier,     setTier]     = useState(ALL)
+  const [viewMode, setViewMode] = useState(searchParams.get('course') ? 'statewise' : 'grid')
 
   const locations = useMemo(() => {
     const states = collegeData.map((c) => c.location.state)
@@ -80,11 +85,22 @@ export default function CollegeExplorerPage() {
         college.courses_offered.join(' ')
       ].join(' ').toLowerCase().includes(q)
       const matchesLocation = location === ALL || college.location.state === location
-      const matchesCourse   = course   === ALL || college.courses_offered.includes(course)
+      const matchesCourse   = matchesCourseFilter(college, course)
       const matchesTier     = tier     === ALL || college.tier === tier
       return matchesQuery && matchesLocation && matchesCourse && matchesTier && matchesBudget(college, budget)
     })
   }, [query, location, course, budget, tier])
+
+  const byState = useMemo(() => {
+    const map = {}
+    colleges.forEach(c => {
+      const s = c.location.state
+      if (!map[s]) map[s] = { govt: [], pvt: [] }
+      if (c.type === 'government') map[s].govt.push(c)
+      else map[s].pvt.push(c)
+    })
+    return Object.entries(map).sort((a, b) => a[0].localeCompare(b[0]))
+  }, [colleges])
 
   return (
     <div className="min-h-screen bg-bg">
@@ -107,45 +123,6 @@ export default function CollegeExplorerPage() {
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search IIT, AIIMS, Delhi, CLAT…"
             />
-          </div>
-        </section>
-
-        {/* Best ROI strip */}
-        <section className="fade-up fade-up-1 mt-6">
-          <div className="flex items-center justify-between mb-3">
-            <h2 className="text-base font-bold text-ink">Best ROI colleges</h2>
-            <span className="text-xs font-semibold text-ink-3">Ranked by placement salary vs total fees</span>
-          </div>
-          <div className="flex gap-3 overflow-x-auto pb-1 -mx-1 px-1">
-            {bestRoiColleges.map((college) => {
-              const roi = roiLabel(college.roi_score)
-              return (
-                <div
-                  key={college.college_name}
-                  className="shrink-0 w-56 bg-white border border-border rounded-2xl p-4 shadow-sm flex flex-col gap-2"
-                >
-                  <div className="flex items-start justify-between gap-2">
-                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${tierBadge(college.tier)}`}>
-                      {college.tier}
-                    </span>
-                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${roi.cls}`}>
-                      {roi.text}
-                    </span>
-                  </div>
-                  <p className="text-sm font-bold text-ink leading-snug line-clamp-2">{college.college_name}</p>
-                  <div className="mt-auto pt-2 border-t border-border flex items-center justify-between gap-2">
-                    <div>
-                      <span className="block text-[10px] uppercase tracking-widest text-ink-3">Avg salary</span>
-                      <span className="block text-sm font-bold text-ink">{college.placement_average_salary}</span>
-                    </div>
-                    <div className="text-right">
-                      <span className="block text-[10px] uppercase tracking-widest text-ink-3">Fees</span>
-                      <span className="block text-xs font-semibold text-ink-2">₹{college.fees_numeric} L</span>
-                    </div>
-                  </div>
-                </div>
-              )
-            })}
           </div>
         </section>
 
@@ -209,17 +186,112 @@ export default function CollegeExplorerPage() {
 
         <section className="result-summary fade-up fade-up-2">
           <span>{colleges.length} colleges found</span>
-          <span>
-            {[
-              course   !== ALL ? course   : null,
-              tier     !== ALL ? tier     : null,
-              budget   !== ALL ? BUDGET_OPTIONS.find((o) => o.value === budget)?.label : null,
-              location !== ALL ? location : null,
-            ].filter(Boolean).join(' · ') || 'All colleges'}
-          </span>
+          <div className="flex items-center gap-3">
+            <span>
+              {[
+                course   !== ALL ? course   : null,
+                tier     !== ALL ? tier     : null,
+                budget   !== ALL ? BUDGET_OPTIONS.find((o) => o.value === budget)?.label : null,
+                location !== ALL ? location : null,
+              ].filter(Boolean).join(' · ') || 'All colleges'}
+            </span>
+            <div className="flex rounded-xl border border-border bg-bg p-0.5 ml-2">
+              {[
+                { value: 'statewise', label: 'By State' },
+                { value: 'grid',      label: 'Grid' },
+              ].map(v => (
+                <button
+                  key={v.value}
+                  type="button"
+                  onClick={() => setViewMode(v.value)}
+                  className={`px-3 py-1 rounded-lg text-[11px] font-bold border-0 cursor-pointer transition-all
+                    ${viewMode === v.value ? 'bg-white shadow-sm text-ink' : 'bg-transparent text-ink-3 hover:text-ink'}`}
+                >
+                  {v.label}
+                </button>
+              ))}
+            </div>
+          </div>
         </section>
 
-        {/* Grid */}
+        {/* State-wise view */}
+        {viewMode === 'statewise' && (
+          <section className="fade-up fade-up-2 space-y-6 mt-2">
+            {byState.length === 0 && (
+              <p className="text-sm text-ink-3 text-center py-10">No colleges match the current filters.</p>
+            )}
+            {byState.map(([state, { govt, pvt }]) => (
+              <div key={state} className="rounded-2xl border border-border bg-white overflow-hidden">
+                {/* State header */}
+                <div className="px-5 py-3.5 bg-bg border-b border-border flex items-center justify-between">
+                  <span className="text-sm font-bold text-ink">{state}</span>
+                  <span className="text-[11px] font-semibold text-ink-3">
+                    {govt.length + pvt.length} institute{govt.length + pvt.length !== 1 ? 's' : ''}
+                    {govt.length > 0 && ` · ${govt.length} govt`}
+                    {pvt.length > 0 && ` · ${pvt.length} private`}
+                  </span>
+                </div>
+
+                {/* Government colleges */}
+                {govt.length > 0 && (
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-ink-3 px-5 pt-4 pb-2">Government</p>
+                    <div className="divide-y divide-border">
+                      {govt.map(c => {
+                        const roi = roiLabel(c.roi_score)
+                        return (
+                          <div key={c.college_name} className="flex items-center gap-4 px-5 py-3">
+                            <div className="flex-1 min-w-0">
+                              <p className="text-sm font-bold text-ink leading-snug truncate">{c.college_name}</p>
+                              <p className="text-[11px] text-ink-3">{c.location.city} · {c.approximate_fees}</p>
+                            </div>
+                            <div className="text-right shrink-0">
+                              <p className="text-[10px] uppercase tracking-widest text-ink-3">Avg placement</p>
+                              <p className="text-sm font-bold text-ink">{c.placement_average_salary || 'N/A'}</p>
+                            </div>
+                            <span className={`shrink-0 text-[10px] font-bold px-2 py-0.5 rounded-full border ${roi.cls}`}>
+                              {roi.text}
+                            </span>
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </div>
+                )}
+
+                {/* Private colleges */}
+                {pvt.length > 0 && (
+                  <div className={govt.length > 0 ? 'border-t border-border' : ''}>
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-ink-3 px-5 pt-4 pb-2">Private</p>
+                    <div className="divide-y divide-border">
+                      {pvt.map(c => {
+                        const roi = roiLabel(c.roi_score)
+                        return (
+                          <div key={c.college_name} className="flex items-center gap-4 px-5 py-3">
+                            <div className="flex-1 min-w-0">
+                              <p className="text-sm font-bold text-ink leading-snug truncate">{c.college_name}</p>
+                              <p className="text-[11px] text-ink-3">{c.location.city} · {c.approximate_fees}</p>
+                            </div>
+                            <div className="text-right shrink-0">
+                              <p className="text-[10px] uppercase tracking-widest text-ink-3">Avg placement</p>
+                              <p className="text-sm font-bold text-ink">{c.placement_average_salary || 'N/A'}</p>
+                            </div>
+                            <span className={`shrink-0 text-[10px] font-bold px-2 py-0.5 rounded-full border ${roi.cls}`}>
+                              {roi.text}
+                            </span>
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </section>
+        )}
+
+        {/* Grid view */}
+        {viewMode === 'grid' && (
         <section className="college-grid">
           {colleges.map((college, index) => {
             const roi = roiLabel(college.roi_score)
@@ -280,6 +352,7 @@ export default function CollegeExplorerPage() {
             )
           })}
         </section>
+        )}
       </main>
     </div>
   )

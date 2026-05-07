@@ -1022,6 +1022,319 @@ export const careerData = [
     growth_scope: 'Growing scope in FMCG, dairy, packaged foods, nutrition brands, food safety labs, and entrepreneurship.',
     entrance_exams: buildEntranceExams(['ICAR AIEEA', 'CUET', 'State CETs']),
     top_colleges: []
+  },
+
+  // ── Engineering catalogue additions ──────────────────────────────────────
+
+  {
+    career_name: 'Computer Science Engineer',
+    category: 'Engineering',
+    description: 'Computer science engineers study algorithms, operating systems, computer networks, databases, and software architecture. It is the broadest and most in-demand engineering branch, leading to roles in product companies, startups, and research labs.',
+    required_skills: ['Data Structures & Algorithms', 'Programming (C++/Java/Python)', 'Operating Systems', 'DBMS', 'Computer Networks'],
+    average_salary_india: 'INR 6-30 LPA',
+    growth_scope: 'Extremely high demand across product companies, SaaS, fintech, AI, cloud, gaming, and global remote roles.',
+    entrance_exams: buildEntranceExams(['JEE Main', 'JEE Advanced', 'BITSAT', 'VITEEE', 'State CETs']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Information Technology Engineer',
+    category: 'Engineering',
+    description: 'IT engineers work on networking, cloud infrastructure, enterprise software, and system administration. This branch is closely linked to CSE but leans more toward applied systems and business technology.',
+    required_skills: ['Networking', 'Cloud Basics', 'Database Administration', 'Scripting', 'Cybersecurity Basics'],
+    average_salary_india: 'INR 5-25 LPA',
+    growth_scope: 'Strong demand in IT services, cloud, telecom, enterprise software, and managed services companies.',
+    entrance_exams: buildEntranceExams(['JEE Main', 'BITSAT', 'VITEEE', 'State CETs']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Electrical Engineer',
+    category: 'Engineering',
+    description: 'Electrical engineers design and maintain power systems, motors, transformers, control equipment, and electrical installations. The branch is fundamental to energy, manufacturing, railways, and smart grids.',
+    required_skills: ['Circuit Theory', 'Power Systems', 'Electrical Machines', 'Control Systems', 'PLC Programming'],
+    average_salary_india: 'INR 5-14 LPA',
+    growth_scope: 'Stable demand in power utilities, EV industry, railways, defence, and heavy manufacturing PSUs.',
+    entrance_exams: buildEntranceExams(['JEE Main', 'JEE Advanced', 'GATE', 'State CETs', 'UPSC ESE']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Artificial Intelligence & ML Engineer',
+    category: 'Engineering',
+    description: 'AI & ML engineers build intelligent systems — recommendation engines, image recognition, NLP models, and autonomous agents. This is the fastest-growing specialisation in software engineering today.',
+    required_skills: ['Python', 'Machine Learning', 'Deep Learning', 'Linear Algebra', 'PyTorch / TensorFlow'],
+    average_salary_india: 'INR 8-35 LPA',
+    growth_scope: 'Exceptional growth across product companies, fintech, healthcare AI, autonomous systems, and GenAI startups.',
+    entrance_exams: buildEntranceExams(['JEE Main', 'JEE Advanced', 'BITSAT', 'GATE']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Data Science Engineer',
+    category: 'Engineering',
+    description: 'Data science engineers build data pipelines, machine learning models, and analytics platforms. They bridge raw data collection with business insight generation at scale.',
+    required_skills: ['Python / R', 'SQL', 'Statistics', 'Machine Learning', 'Data Visualization'],
+    average_salary_india: 'INR 7-28 LPA',
+    growth_scope: 'High demand in e-commerce, banking, healthcare, logistics, media, and every data-driven industry.',
+    entrance_exams: buildEntranceExams(['JEE Main', 'GATE', 'State CETs']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Cybersecurity Engineer',
+    category: 'Engineering',
+    description: 'Cybersecurity engineers design and implement security systems to protect networks, applications, and data from attacks. They work on firewalls, intrusion detection, vulnerability testing, and incident response.',
+    required_skills: ['Networking', 'Linux', 'Ethical Hacking', 'Cryptography', 'SIEM Tools'],
+    average_salary_india: 'INR 6-25 LPA',
+    growth_scope: 'Very high growth driven by rising cyber attacks, BFSI compliance, government security mandates, and cloud adoption.',
+    entrance_exams: buildEntranceExams(['JEE Main', 'GATE', 'State CETs']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Cloud Computing Engineer',
+    category: 'Engineering',
+    description: 'Cloud computing engineers design, deploy, and manage cloud infrastructure on platforms like AWS, Azure, and GCP. The role includes DevOps, CI/CD pipelines, and scalable architecture for software products.',
+    required_skills: ['Linux', 'AWS / Azure / GCP', 'Docker & Kubernetes', 'Terraform', 'CI/CD'],
+    average_salary_india: 'INR 6-28 LPA',
+    growth_scope: 'Exceptional growth as every company — from startups to enterprises — migrates to the cloud.',
+    entrance_exams: buildEntranceExams(['JEE Main', 'GATE', 'State CETs']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Internet of Things (IoT) Engineer',
+    category: 'Engineering',
+    description: 'IoT engineers connect physical devices — sensors, machines, appliances — to the internet and cloud platforms. They build smart home systems, industrial IoT, healthcare monitors, and smart city infrastructure.',
+    required_skills: ['Embedded C', 'Raspberry Pi / Arduino', 'MQTT Protocol', 'Cloud Integration', 'Circuit Design'],
+    average_salary_india: 'INR 5-20 LPA',
+    growth_scope: 'Growing rapidly in smart manufacturing, healthcare, agriculture, logistics, smart cities, and consumer electronics.',
+    entrance_exams: buildEntranceExams(['JEE Main', 'BITSAT', 'GATE', 'State CETs']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Robotics & Automation Engineer',
+    category: 'Engineering',
+    description: 'Robotics and automation engineers design intelligent machines for manufacturing, surgery, warehousing, and exploration. The field merges mechanical design, electronics, control systems, and AI.',
+    required_skills: ['Mechatronics', 'ROS (Robot OS)', 'Python / C++', 'Control Systems', 'Computer Vision'],
+    average_salary_india: 'INR 6-22 LPA',
+    growth_scope: 'Fast growing in EV manufacturing, warehouse automation, defence drones, surgical robots, and agri-tech.',
+    entrance_exams: buildEntranceExams(['JEE Main', 'JEE Advanced', 'GATE']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Biotechnology Engineer',
+    category: 'Engineering',
+    description: 'Biotechnology engineers combine biology, genetics, and engineering to develop vaccines, medicines, biofuels, and genetically modified crops. They work in pharma, agri-biotech, diagnostics, and research labs.',
+    required_skills: ['Molecular Biology', 'Genetic Engineering', 'Bioprocess Engineering', 'Lab Techniques', 'Bioinformatics'],
+    average_salary_india: 'INR 4-18 LPA',
+    growth_scope: 'Growing scope in pharma, vaccines, crop biotech, diagnostics, biofuels, and higher studies abroad.',
+    entrance_exams: buildEntranceExams(['JEE Main', 'ICAR AIEEA', 'GATE', 'CUET']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Biomedical Engineer',
+    category: 'Engineering',
+    description: 'Biomedical engineers develop medical devices, imaging systems, prosthetics, and hospital equipment. They work at the intersection of medicine and engineering, improving patient care through technology.',
+    required_skills: ['Anatomy Basics', 'Signal Processing', 'Medical Imaging', 'Electronics', 'Regulatory Standards'],
+    average_salary_india: 'INR 4-15 LPA',
+    growth_scope: 'Growing scope in medical device companies, hospital equipment, wearables, diagnostics, and research institutions.',
+    entrance_exams: buildEntranceExams(['JEE Main', 'GATE', 'CUET', 'State CETs']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Metallurgical & Materials Engineer',
+    category: 'Engineering',
+    description: 'Metallurgical and materials engineers study and develop metals, alloys, ceramics, polymers, and composites for use in aerospace, automotive, defence, and construction industries.',
+    required_skills: ['Material Science', 'Thermodynamics', 'Corrosion Engineering', 'Quality Testing', 'Process Metallurgy'],
+    average_salary_india: 'INR 5-18 LPA',
+    growth_scope: 'Strong demand in steel plants, ISRO, DRDO, aerospace, automotive, and materials research labs.',
+    entrance_exams: buildEntranceExams(['JEE Main', 'JEE Advanced', 'GATE', 'UPSC ESE']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Mining Engineer',
+    category: 'Engineering',
+    description: 'Mining engineers design safe and efficient methods for extracting coal, iron ore, gold, and other minerals from the earth. They work in underground and open-cast mines, ensuring safety, compliance, and productivity.',
+    required_skills: ['Geology Basics', 'Blasting Techniques', 'Mine Planning', 'Safety Regulations', 'Surveying'],
+    average_salary_india: 'INR 6-20 LPA',
+    growth_scope: 'Steady demand in Coal India, NMDC, SCCL, private mining companies, and mineral exploration firms.',
+    entrance_exams: buildEntranceExams(['JEE Main', 'JEE Advanced', 'GATE', 'UPSC ESE']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Petroleum Engineer',
+    category: 'Engineering',
+    description: 'Petroleum engineers work on exploration, drilling, and extraction of oil and natural gas. They work with ONGC, BPCL, Reliance, and global energy companies on offshore and onshore projects.',
+    required_skills: ['Reservoir Engineering', 'Drilling Operations', 'Fluid Mechanics', 'Geology', 'Simulation Software'],
+    average_salary_india: 'INR 8-25 LPA',
+    growth_scope: 'High salaries in oil & gas sector with scope in ONGC, IOCL, private refineries, and international projects.',
+    entrance_exams: buildEntranceExams(['JEE Main', 'JEE Advanced', 'GATE', 'State CETs']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Environmental Engineer',
+    category: 'Engineering',
+    description: 'Environmental engineers develop solutions for pollution control, water treatment, waste management, and climate resilience. They work with government agencies, environmental consultancies, and industries.',
+    required_skills: ['Environmental Science', 'Water Treatment', 'Air Quality Management', 'GIS Tools', 'EIA Reports'],
+    average_salary_india: 'INR 4-12 LPA',
+    growth_scope: 'Growing demand in pollution control boards, green infrastructure, climate consulting, and ESG compliance.',
+    entrance_exams: buildEntranceExams(['JEE Main', 'GATE', 'State CETs', 'CUET']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Agricultural Engineer',
+    category: 'Engineering',
+    description: 'Agricultural engineers design irrigation systems, farm machinery, storage facilities, and agri-tech solutions for Indian farming. They help modernise agriculture for efficiency and sustainability.',
+    required_skills: ['Soil Science', 'Irrigation Design', 'Farm Machinery', 'GIS & Remote Sensing', 'Agri-tech'],
+    average_salary_india: 'INR 4-12 LPA',
+    growth_scope: 'Good scope in government agri departments, agri-tech startups, irrigation boards, and international aid organisations.',
+    entrance_exams: buildEntranceExams(['JEE Main', 'ICAR AIEEA', 'GATE', 'State CETs']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Food Technology Engineer',
+    category: 'Engineering',
+    description: 'Food technology engineers apply engineering principles to food processing, preservation, packaging, and safety. They work in FMCG companies, food labs, dairy plants, and beverage industries.',
+    required_skills: ['Food Science', 'Processing Technology', 'Quality Assurance', 'Microbiology', 'Packaging Design'],
+    average_salary_india: 'INR 4-14 LPA',
+    growth_scope: 'Growing scope in Nestle, ITC, Amul, packaged food startups, export units, and government food testing labs.',
+    entrance_exams: buildEntranceExams(['JEE Main', 'ICAR AIEEA', 'GATE', 'State CETs']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Textile Engineer',
+    category: 'Engineering',
+    description: "Textile engineers develop fibres, fabrics, and manufacturing processes for India's massive textile and apparel industry. They work in mills, garment factories, and technical textiles for medical and defence uses.",
+    required_skills: ['Fibre Science', 'Weaving Technology', 'Dyeing & Finishing', 'Quality Testing', 'Garment Tech'],
+    average_salary_india: 'INR 3-12 LPA',
+    growth_scope: 'Scope in mills, technical textiles, fashion industry, medical textiles, export units, and government schemes.',
+    entrance_exams: buildEntranceExams(['JEE Main', 'GATE', 'State CETs']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Automobile / Automotive Engineer',
+    category: 'Engineering',
+    description: "Automotive engineers design vehicles, drivetrains, EV systems, and safety features. India's auto sector — Tata, Maruti, Mahindra, and global OEMs — employs tens of thousands of automotive engineers.",
+    required_skills: ['Vehicle Dynamics', 'CAD/CAM', 'IC Engines', 'EV Systems', 'Manufacturing Processes'],
+    average_salary_india: 'INR 4-16 LPA',
+    growth_scope: 'Strong growth in EV transition, two-wheeler electrification, automotive software, and global R&D centres in India.',
+    entrance_exams: buildEntranceExams(['JEE Main', 'GATE', 'State CETs']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Naval Architecture & Marine Engineer',
+    category: 'Engineering',
+    description: 'Naval architects and marine engineers design ships, submarines, offshore platforms, and port facilities. They work for the Indian Navy, Coast Guard, shipping companies, and shipyards.',
+    required_skills: ['Ship Design', 'Fluid Mechanics', 'Structural Analysis', 'Marine Propulsion', 'Stability Calculations'],
+    average_salary_india: 'INR 5-20 LPA',
+    growth_scope: 'Scope in Indian Navy, Mazagon Dock, L&T Shipbuilding, Coast Guard, and global shipping companies.',
+    entrance_exams: buildEntranceExams(['JEE Main', 'JEE Advanced', 'GATE']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Instrumentation & Control Engineer',
+    category: 'Engineering',
+    description: 'Instrumentation engineers design sensors, measurement systems, process control equipment, and automation instruments for oil refineries, chemical plants, and manufacturing units.',
+    required_skills: ['Process Control', 'PLC / SCADA', 'Sensors & Transducers', 'Signal Conditioning', 'Calibration'],
+    average_salary_india: 'INR 5-16 LPA',
+    growth_scope: 'Good scope in oil refineries, chemical plants, power stations, ISRO, DRDO, and process automation companies.',
+    entrance_exams: buildEntranceExams(['JEE Main', 'GATE', 'State CETs', 'UPSC ESE']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Industrial & Production Engineer',
+    category: 'Engineering',
+    description: 'Industrial engineers optimise manufacturing systems, supply chains, inventory, and workforce productivity. They are central to making factories efficient, safe, and cost-effective.',
+    required_skills: ['Operations Research', 'Lean Manufacturing', 'Six Sigma', 'Supply Chain', 'Simulation'],
+    average_salary_india: 'INR 4-14 LPA',
+    growth_scope: 'Broad scope in manufacturing, logistics, FMCG, automotive, e-commerce operations, and management consulting.',
+    entrance_exams: buildEntranceExams(['JEE Main', 'GATE', 'State CETs']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Structural Engineer',
+    category: 'Engineering',
+    description: 'Structural engineers ensure that buildings, bridges, towers, and dams can safely carry loads without failure. They work on everything from residential housing to large-scale infrastructure projects.',
+    required_skills: ['Structural Analysis', 'AutoCAD / STAAD Pro', 'Concrete Design', 'Steel Design', 'Earthquake Engineering'],
+    average_salary_india: 'INR 5-15 LPA',
+    growth_scope: 'Strong demand in real estate, government infrastructure, bridges, metro projects, and consulting firms.',
+    entrance_exams: buildEntranceExams(['JEE Main', 'GATE', 'State CETs', 'UPSC ESE']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Electrical & Electronics Engineer',
+    category: 'Engineering',
+    description: 'EEE engineers combine power systems with consumer electronics, spanning power plants, motors, control systems, and embedded products. They work across energy, manufacturing, and product companies.',
+    required_skills: ['Electrical Machines', 'Power Electronics', 'Embedded Systems', 'Control Systems', 'Circuit Design'],
+    average_salary_india: 'INR 5-16 LPA',
+    growth_scope: 'Good scope in power utilities, EV tech, consumer electronics, ISRO, DRDO, and smart grid companies.',
+    entrance_exams: buildEntranceExams(['JEE Main', 'GATE', 'State CETs', 'UPSC ESE']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Renewable Energy Engineer',
+    category: 'Engineering',
+    description: 'Renewable energy engineers design and deploy solar, wind, hydro, and green hydrogen energy systems. They support India\'s transition to clean energy through technical design, project management, and grid integration.',
+    required_skills: ['Solar PV Design', 'Wind Systems', 'Grid Integration', 'Energy Auditing', 'Project Management'],
+    average_salary_india: 'INR 5-18 LPA',
+    growth_scope: 'Strong growth in solar EPC, green hydrogen, energy storage, climate-tech startups, and government energy projects.',
+    entrance_exams: buildEntranceExams(['JEE Main', 'JEE Advanced', 'GATE']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Nuclear Engineer',
+    category: 'Engineering',
+    description: 'Nuclear engineers work on nuclear reactors, radiation safety, isotope production, and nuclear medicine applications. India\'s growing nuclear power programme through NPCIL and BARC offers strong career options.',
+    required_skills: ['Nuclear Physics', 'Reactor Theory', 'Radiation Safety', 'Thermal Hydraulics', 'Material Science'],
+    average_salary_india: 'INR 7-22 LPA',
+    growth_scope: 'Scope in BARC, NPCIL, ISRO, nuclear medicine, and emerging advanced reactor programmes in India.',
+    entrance_exams: buildEntranceExams(['JEE Advanced', 'GATE']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Geotechnical / Geomatics Engineer',
+    category: 'Engineering',
+    description: 'Geotechnical engineers study soil and rock to design safe foundations for buildings, tunnels, dams, and roads. Geomatics engineers use GPS, GIS, and remote sensing to map and survey land.',
+    required_skills: ['Soil Mechanics', 'Rock Mechanics', 'GIS & Remote Sensing', 'Foundation Design', 'Surveying'],
+    average_salary_india: 'INR 4-14 LPA',
+    growth_scope: 'Scope in construction, smart cities, highway projects, mining, disaster management, and space agencies.',
+    entrance_exams: buildEntranceExams(['JEE Main', 'GATE', 'State CETs']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Polymer / Plastic Technology Engineer',
+    category: 'Engineering',
+    description: 'Polymer engineers develop and process plastics, rubbers, and synthetic materials for packaging, automotive, medical, and electronics industries. They work on sustainable bioplastics and recycling technologies.',
+    required_skills: ['Polymer Chemistry', 'Moulding Processes', 'Material Testing', 'Compounding', 'Quality Assurance'],
+    average_salary_india: 'INR 4-14 LPA',
+    growth_scope: 'Scope in FMCG packaging, automotive, medical devices, and fast-growing sustainable materials startups.',
+    entrance_exams: buildEntranceExams(['JEE Main', 'GATE', 'State CETs']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Ceramic & Glass Technology Engineer',
+    category: 'Engineering',
+    description: 'Ceramic engineers develop advanced ceramics and glass products for semiconductors, aerospace, biomedical implants, and construction. India\'s ceramics industry — tiles, glass, refractories — is a growing sector.',
+    required_skills: ['Materials Science', 'Sintering & Firing', 'Characterisation Techniques', 'Quality Testing', 'Process Design'],
+    average_salary_india: 'INR 4-12 LPA',
+    growth_scope: 'Scope in semiconductor companies, aerospace materials, tile & glass industries, and advanced materials research.',
+    entrance_exams: buildEntranceExams(['JEE Main', 'GATE', 'State CETs']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Paint & Coatings Technology Engineer',
+    category: 'Engineering',
+    description: 'Paint technology engineers formulate paints, varnishes, industrial coatings, and surface treatments for automotive, construction, and protective applications. They work with companies like Asian Paints, Berger, and Kansai Nerolac.',
+    required_skills: ['Chemistry', 'Rheology', 'Formulation Science', 'Application Techniques', 'Quality Control'],
+    average_salary_india: 'INR 4-12 LPA',
+    growth_scope: 'Scope in decorative paints, automotive coatings, industrial protective coatings, and R&D labs.',
+    entrance_exams: buildEntranceExams(['JEE Main', 'GATE', 'State CETs']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Game / AR / VR Developer (Engineering)',
+    category: 'Engineering',
+    description: 'Game and AR/VR engineers build immersive experiences — video games, augmented reality apps, virtual reality training simulations — for entertainment, education, defence, and healthcare.',
+    required_skills: ['Unity / Unreal Engine', 'C# / C++', '3D Mathematics', 'Graphics Programming', 'UX for Immersive Media'],
+    average_salary_india: 'INR 4-20 LPA',
+    growth_scope: 'Growing scope in gaming studios, AR/VR startups, metaverse platforms, training simulators, and global gaming companies.',
+    entrance_exams: buildEntranceExams(['JEE Main', 'BITSAT', 'State CETs']),
+    top_colleges: []
   }
 ]
 

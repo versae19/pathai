@@ -45,16 +45,14 @@ export default function Navbar() {
   }
 
   const getBg = () => {
-    if (useDarkStyle) return 'rgba(4,4,18,0.6)'
-    if (useLightHomeStyle) return 'rgba(246,245,255,0.65)'
-    if (scrolled && isDark) return 'rgba(6,6,24,0.97)'
-    if (scrolled) return 'rgba(250,250,255,0.97)'
-    return 'rgba(250,250,255,0.75)'
+    if (isDark) return useDarkStyle ? 'rgba(4,4,18,0.7)' : 'rgba(6,6,24,0.97)'
+    if (useLightHomeStyle) return 'rgba(246,245,255,0.7)'
+    return 'rgba(250,250,255,0.98)'
   }
 
   const getBorder = () => {
-    if (!scrolled) return '1px solid transparent'
-    return useDarkStyle || isDark
+    if (isHome && !scrolled) return '1px solid transparent'
+    return isDark
       ? '1px solid rgba(255,255,255,0.07)'
       : '1px solid rgba(0,0,0,0.07)'
   }

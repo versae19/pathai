@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { exploreOptions, getRoadmap, ALL_CAREER_NAMES, getTenthCatalogue, getTwelfthCatalogue, getGradCatalogue } from '../utils/careerEngine'
+import { slugify } from '../utils/dataHelpers'
 
 // ── Constants ──────────────────────────────────────────────────────────────────
 
@@ -449,6 +450,7 @@ function RoadmapResult({ roadmap }) {
 // ── 10th Comprehensive Catalogue ─────────────────────────────────────────────
 
 function ComprehensiveExplore({ categories, intro, streamLabel }) {
+  const navigate = useNavigate()
   const [openCat, setOpenCat] = useState(null)
   const [selectedCareer, setSelectedCareer] = useState(null)
 
@@ -520,7 +522,7 @@ function ComprehensiveExplore({ categories, intro, streamLabel }) {
                     </span>
                   </div>
                   <p className="text-xs text-ink-2 leading-relaxed mb-3.5">{selectedCareer.desc}</p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
                     <div>
                       <p className="text-[10px] font-bold uppercase tracking-widest text-ink-3 mb-1.5">{streamLabel}</p>
                       <p className="text-xs font-semibold text-ink">{selectedCareer.stream}</p>
@@ -539,6 +541,31 @@ function ComprehensiveExplore({ categories, intro, streamLabel }) {
                       </div>
                     )}
                   </div>
+                  {cat.id === 'engineering' ? (
+                    <button
+                      type="button"
+                      className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-bold border-0 cursor-pointer transition-all"
+                      style={{ background: cat.color.dot, color: '#fff' }}
+                      onClick={() => navigate(`/careers/${slugify(selectedCareer.name)}`)}
+                    >
+                      Explore Career
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-3.5 h-3.5">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  ) : (
+                    <button
+                      type="button"
+                      className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-bold border-0 cursor-pointer transition-all"
+                      style={{ background: cat.color.dot, color: '#fff' }}
+                      onClick={() => navigate(`/colleges?course=${encodeURIComponent(selectedCareer.name)}`)}
+                    >
+                      View colleges for {selectedCareer.name}
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-3.5 h-3.5">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  )}
                 </div>
               )}
 
@@ -694,19 +721,6 @@ export default function CareerForm({ onCancel, compact = false, initialState = n
               </div>
             </div>
           )}
-
-          <div>
-            <label className={lbl}>
-              Interests <span className="font-normal text-ink-3 normal-case tracking-normal">(optional — helps us rank results)</span>
-            </label>
-            <div className="flex flex-wrap gap-2">
-              {INTERESTS.map(o => (
-                <Chip key={o.value} label={o.label}
-                  selected={interestsA.includes(o.value)}
-                  onClick={() => toggleInterest(o.value)} />
-              ))}
-            </div>
-          </div>
 
           {error && <div className="p-3 bg-red-50 border border-red-200 rounded-xl text-xs text-red-700">{error}</div>}
 
