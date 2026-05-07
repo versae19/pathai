@@ -272,6 +272,14 @@ export const entranceExamDetails = {
     difficulty_level: 'hard',
     short_description: 'Professional certification for financial risk management careers.'
   },
+  'NISM Certifications': {
+    exam_name: 'NISM Certifications',
+    eligibility: 'No minimum qualification required; open to anyone working in or entering the securities market.',
+    exam_level: 'national',
+    conducted_by: 'National Institute of Securities Markets (NISM)',
+    difficulty_level: 'medium',
+    short_description: 'SEBI-mandated certifications for securities market professionals — covers mutual funds, equity, derivatives, and research.'
+  },
   CLAT: {
     exam_name: 'CLAT',
     eligibility: 'Class 12 for undergraduate law programs or LLB degree for postgraduate law programs, with minimum marks as notified.',
@@ -304,6 +312,14 @@ export const entranceExamDetails = {
     difficulty_level: 'medium',
     short_description: 'CUET-based entrance route for law programs at participating universities.'
   },
+  'Judicial Services Exam': {
+    exam_name: 'Judicial Services Exam',
+    eligibility: 'LLB degree (3-year or 5-year integrated) with minimum marks as notified by the respective state Public Service Commission.',
+    exam_level: 'state',
+    conducted_by: 'State Public Service Commissions (varies by state)',
+    difficulty_level: 'hard',
+    short_description: 'State-level exam for recruitment of Civil Judges and Judicial Magistrates in district courts across India.'
+  },
   'IIMC Entrance Exam': {
     exam_name: 'IIMC Entrance Exam',
     eligibility: 'Bachelor degree or final-year graduation for postgraduate journalism and mass communication programs.',
@@ -311,6 +327,38 @@ export const entranceExamDetails = {
     conducted_by: 'Indian Institute of Mass Communication or the notified admission authority',
     difficulty_level: 'medium',
     short_description: 'Entrance route for journalism, advertising, PR, and communication programs at IIMC.'
+  },
+  'FTII Entrance Exam': {
+    exam_name: 'FTII Entrance Exam',
+    eligibility: 'Bachelor degree in any discipline; age and specific qualification requirements vary by course.',
+    exam_level: 'national',
+    conducted_by: 'Film and Television Institute of India, Pune',
+    difficulty_level: 'hard',
+    short_description: 'Highly competitive entrance for film direction, cinematography, editing, sound, and screenwriting programs at India\'s premier film school.'
+  },
+  'SRFTI Entrance Exam': {
+    exam_name: 'SRFTI Entrance Exam',
+    eligibility: 'Bachelor degree for most programs; specific eligibility varies by specialisation.',
+    exam_level: 'national',
+    conducted_by: 'Satyajit Ray Film and Television Institute, Kolkata',
+    difficulty_level: 'hard',
+    short_description: 'Entrance exam for film direction, cinematography, editing, sound recording, and production design programs at SRFTI Kolkata.'
+  },
+  'AJK MCRC Entrance': {
+    exam_name: 'AJK MCRC Entrance',
+    eligibility: 'Bachelor degree for postgraduate programs; Class 12 for undergraduate mass communication courses.',
+    exam_level: 'university',
+    conducted_by: 'AJK Mass Communication Research Centre, Jamia Millia Islamia',
+    difficulty_level: 'medium',
+    short_description: 'Entrance for journalism, documentary filmmaking, and mass communication programs at Jamia Millia Islamia\'s reputed media school.'
+  },
+  'MICA Entrance (MICAT)': {
+    exam_name: 'MICA Entrance (MICAT)',
+    eligibility: 'Bachelor degree in any discipline with valid CAT / XAT / GMAT score.',
+    exam_level: 'national',
+    conducted_by: 'MICA — The School of Ideas, Ahmedabad',
+    difficulty_level: 'hard',
+    short_description: 'Two-stage entrance (MICAT + GE-PI) for the flagship PGDM-C program in communications management and advertising.'
   },
   'University Journalism Entrance Exams': {
     exam_name: 'University Journalism Entrance Exams',
@@ -527,6 +575,110 @@ export const entranceExamDetails = {
     conducted_by: 'Indian Statistical Institute',
     difficulty_level: 'hard',
     short_description: 'Highly selective entrance test for statistics, mathematics, data science, and quantitative programs.'
+  },
+  'UGC NET': {
+    exam_name: 'UGC NET',
+    eligibility: 'Master degree with at least 55% marks (50% for reserved categories) in relevant subjects.',
+    exam_level: 'national',
+    conducted_by: 'National Testing Agency (NTA) on behalf of University Grants Commission',
+    difficulty_level: 'hard',
+    short_description: 'Qualification exam for Assistant Professor eligibility and Junior Research Fellowship in Indian universities and colleges.'
+  },
+  SET: {
+    exam_name: 'SET',
+    eligibility: 'Master degree with minimum marks as per state eligibility criteria.',
+    exam_level: 'state',
+    conducted_by: 'Respective state universities or state education departments',
+    difficulty_level: 'medium',
+    short_description: 'State-level eligibility test for Assistant Professor appointments in colleges within the respective state.'
+  },
+  'RCI Registration': {
+    exam_name: 'RCI Registration',
+    eligibility: 'Recognized degree or diploma in special education or rehabilitation from an RCI-approved institution.',
+    exam_level: 'national',
+    conducted_by: 'Rehabilitation Council of India (RCI)',
+    difficulty_level: 'medium',
+    short_description: 'Mandatory professional registration for special educators and rehabilitation professionals in India.'
+  },
+  'NIS Patiala Diploma': {
+    exam_name: 'NIS Patiala Diploma',
+    eligibility: 'Class 12 pass with sports background or relevant experience as defined by NIS Patiala for each coaching diploma.',
+    exam_level: 'national',
+    conducted_by: 'National Institute of Sports, Patiala',
+    difficulty_level: 'medium',
+    short_description: 'Coaching diploma programs across various sports disciplines for aspiring sports coaches and trainers.'
+  },
+  'QCI Yoga Certification': {
+    exam_name: 'QCI Yoga Certification',
+    eligibility: 'Yoga practice background and completion of a recognised yoga training program as per QCI-AYUSH standards.',
+    exam_level: 'national',
+    conducted_by: 'Quality Council of India (QCI) under AYUSH Ministry',
+    difficulty_level: 'medium',
+    short_description: 'National certification for yoga professionals setting quality standards for yoga instructors in India.'
+  },
+  'AYUSH Ministry Courses': {
+    exam_name: 'AYUSH Ministry Courses',
+    eligibility: 'Varies by course; generally Class 12 or equivalent for diploma programs.',
+    exam_level: 'national',
+    conducted_by: 'Ministry of AYUSH and affiliated institutions',
+    difficulty_level: 'easy',
+    short_description: 'Government-recognized diploma and certificate programs in yoga, naturopathy, and wellness practices.'
+  },
+  'SAI NIS Academy': {
+    exam_name: 'SAI NIS Academy',
+    eligibility: 'Selection based on sports performance, age criteria, and trials as specified by Sports Authority of India.',
+    exam_level: 'national',
+    conducted_by: 'Sports Authority of India (SAI)',
+    difficulty_level: 'hard',
+    short_description: 'Elite sports training academies run by SAI for identifying and developing national-level athletes.'
+  },
+  'IHM Entrance': {
+    exam_name: 'IHM Entrance',
+    eligibility: 'Class 12 or equivalent pass with English; criteria vary by state IHM.',
+    exam_level: 'state',
+    conducted_by: 'Respective state Institute of Hotel Management',
+    difficulty_level: 'medium',
+    short_description: 'State-level hotel management entrance for admission to IHMs not covered under NCHM JEE.'
+  },
+  'Airline Recruitment': {
+    exam_name: 'Airline Recruitment',
+    eligibility: 'Age and educational criteria vary by airline; typically Class 12 pass with English proficiency and no spectacles.',
+    exam_level: 'university',
+    conducted_by: 'Individual airlines (Air India, IndiGo, SpiceJet, etc.)',
+    difficulty_level: 'medium',
+    short_description: 'Airline-specific selection process for cabin crew including written test, group discussion, and interview.'
+  },
+  'Google / Meta / HubSpot Certifications': {
+    exam_name: 'Google / Meta / HubSpot Certifications',
+    eligibility: 'Open to anyone; no formal qualification required for most certifications.',
+    exam_level: 'national',
+    conducted_by: 'Google, Meta Blueprint, HubSpot Academy, and similar platforms',
+    difficulty_level: 'easy',
+    short_description: 'Industry-recognised digital marketing certifications covering SEO, paid ads, content, and analytics.'
+  },
+  'CEH Certification': {
+    exam_name: 'CEH Certification',
+    eligibility: 'Two years of information security experience or completion of official EC-Council training.',
+    exam_level: 'national',
+    conducted_by: 'EC-Council',
+    difficulty_level: 'hard',
+    short_description: 'Certified Ethical Hacker certification validating skills in penetration testing and ethical hacking.'
+  },
+  'AWS / Azure Certifications': {
+    exam_name: 'AWS / Azure Certifications',
+    eligibility: 'Open to anyone with basic IT knowledge; foundational exams have no prerequisites.',
+    exam_level: 'national',
+    conducted_by: 'Amazon Web Services and Microsoft Azure',
+    difficulty_level: 'medium',
+    short_description: 'Cloud platform certifications (AWS Solutions Architect, Azure Fundamentals, etc.) widely valued by employers.'
+  },
+  'MAAC / Arena Animation Admission': {
+    exam_name: 'MAAC / Arena Animation Admission',
+    eligibility: 'Class 10 or Class 12 pass; specific criteria depend on the program.',
+    exam_level: 'university',
+    conducted_by: 'MAAC (Maya Academy of Advanced Cinematics) and Arena Animation institutes',
+    difficulty_level: 'easy',
+    short_description: 'Admission process for game design and 3D animation courses at top animation institutes in India.'
   }
 }
 
@@ -575,7 +727,7 @@ export const careerData = [
   },
   {
     career_name: 'AI/ML Engineer',
-    category: 'Engineering',
+    category: 'Emerging Careers',
     description: 'AI/ML engineers build machine learning models and intelligent features for software products. This path requires strong programming, mathematics, and experimentation skills.',
     required_skills: ['Python', 'Machine Learning', 'Deep Learning', 'Statistics', 'MLOps Basics'],
     average_salary_india: 'INR 6-12 LPA',
@@ -685,7 +837,7 @@ export const careerData = [
   },
   {
     career_name: 'Lawyer',
-    category: 'Arts',
+    category: 'Government Jobs',
     description: 'Lawyers advise clients, draft legal documents, argue cases, and work on civil, criminal, corporate, or constitutional matters. The career rewards research, reasoning, and persuasive communication.',
     required_skills: ['Legal Research', 'Writing', 'Argumentation', 'Critical Thinking', 'Client Communication'],
     average_salary_india: 'INR 3-8 LPA',
@@ -695,7 +847,7 @@ export const careerData = [
   },
   {
     career_name: 'Journalist',
-    category: 'Arts',
+    category: 'Media',
     description: 'Journalists research, verify, write, and present news across digital, print, TV, and audio platforms. The field suits curious students who enjoy communication, public affairs, and storytelling.',
     required_skills: ['Reporting', 'Writing', 'Research', 'Interviewing', 'Media Ethics'],
     average_salary_india: 'INR 2.5-5 LPA',
@@ -705,7 +857,7 @@ export const careerData = [
   },
   {
     career_name: 'Psychologist',
-    category: 'Arts',
+    category: 'Education',
     description: 'Psychologists study human behavior and support people with emotional, educational, workplace, or clinical challenges. It requires higher education and supervised training for specialized practice.',
     required_skills: ['Psychological Assessment', 'Counselling Basics', 'Research Methods', 'Empathy', 'Ethics'],
     average_salary_india: 'INR 3-6 LPA',
@@ -715,7 +867,7 @@ export const careerData = [
   },
   {
     career_name: 'Graphic Designer',
-    category: 'Arts',
+    category: 'Design',
     description: 'Graphic designers create visual assets for brands, social media, advertisements, packaging, and digital products. It is a portfolio-led career where skills and work samples matter strongly.',
     required_skills: ['Visual Design', 'Typography', 'Color Theory', 'Canva', 'Adobe Photoshop'],
     average_salary_india: 'INR 2.5-5 LPA',
@@ -725,7 +877,7 @@ export const careerData = [
   },
   {
     career_name: 'Teacher',
-    category: 'Arts',
+    category: 'Education',
     description: 'Teachers help students learn academic subjects, life skills, and exam preparation through structured instruction. The profession offers social impact, stability, and options in schools, coaching, and online education.',
     required_skills: ['Subject Knowledge', 'Communication', 'Lesson Planning', 'Classroom Management', 'Assessment'],
     average_salary_india: 'INR 2.5-5 LPA',
@@ -784,6 +936,36 @@ export const careerData = [
     top_colleges: []
   },
   {
+    career_name: 'Judiciary / Judge',
+    category: 'Government Jobs',
+    description: 'Judges adjudicate civil and criminal disputes, interpret laws, and deliver verdicts at district courts, high courts, and the Supreme Court. Entry is through Judicial Services Examinations after completing an LLB degree.',
+    required_skills: ['Legal Reasoning', 'Constitutional Law', 'Judgement Writing', 'Procedural Law', 'Impartiality'],
+    average_salary_india: 'INR 6-15 LPA',
+    growth_scope: 'Clear promotion ladder from Civil Judge to District Judge, High Court Judge, and Supreme Court Judge. High job security and social respect.',
+    entrance_exams: buildEntranceExams(['CLAT', 'Judicial Services Exam']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Foreign Service Officer (IFS)',
+    category: 'Government Jobs',
+    description: 'Indian Foreign Service (IFS) officers represent India in embassies and consulates abroad, negotiate international agreements, protect Indian interests, and manage bilateral and multilateral relations.',
+    required_skills: ['International Relations', 'Diplomatic Communication', 'General Studies', 'Language Skills', 'Negotiation'],
+    average_salary_india: 'INR 8-20 LPA',
+    growth_scope: 'Exceptional career with postings across 190+ countries. Clear hierarchy from Third Secretary to Ambassador. One of India\'s most prestigious civil services.',
+    entrance_exams: buildEntranceExams(['UPSC CSE']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Income Tax / GST Officer',
+    category: 'Government Jobs',
+    description: 'Income Tax and GST officers enforce tax laws, conduct assessments and audits, investigate evasion, and ensure compliance across individuals and businesses. Recruited through SSC CGL and UPSC examinations.',
+    required_skills: ['Tax Law Knowledge', 'Financial Analysis', 'Investigation', 'Report Writing', 'Computer Proficiency'],
+    average_salary_india: 'INR 5-12 LPA',
+    growth_scope: 'Good growth in Income Tax Department, GST Council, and CBDT. Senior officers handle policy and high-value investigations.',
+    entrance_exams: buildEntranceExams(['SSC CGL', 'UPSC CSE']),
+    top_colleges: []
+  },
+  {
     career_name: 'Data Scientist',
     category: 'Emerging Careers',
     description: 'Data scientists use statistics, programming, and machine learning to extract insights and build predictive models. The role is valuable in tech, finance, healthcare, ecommerce, and consulting.',
@@ -815,7 +997,7 @@ export const careerData = [
   },
   {
     career_name: 'UI/UX Designer',
-    category: 'Emerging Careers',
+    category: 'Design',
     description: 'UI/UX designers create user-friendly digital products through research, wireframes, prototypes, and interface design. The career blends creativity, psychology, business, and technology.',
     required_skills: ['User Research', 'Wireframing', 'Figma', 'Visual Design', 'Usability Testing'],
     average_salary_india: 'INR 4-8 LPA',
@@ -855,7 +1037,7 @@ export const careerData = [
   },
   {
     career_name: 'Architect',
-    category: 'Engineering',
+    category: 'Design',
     description: 'Architects design buildings, campuses, interiors, and urban spaces while balancing function, safety, and aesthetics. It suits students interested in design, mathematics, drawing, and built environments.',
     required_skills: ['Design Thinking', 'Sketching', 'AutoCAD', 'Building Materials', 'Spatial Planning'],
     average_salary_india: 'INR 3-6 LPA',
@@ -910,7 +1092,47 @@ export const careerData = [
     required_skills: ['Molecular Biology', 'Genetics', 'Lab Techniques', 'Data Analysis', 'Research Methods'],
     average_salary_india: 'INR 3-6 LPA',
     growth_scope: 'Good scope in pharma, vaccines, diagnostics, agriculture biotech, research labs, and higher studies.',
-    entrance_exams: buildEntranceExams(['CUET', 'NEET UG', 'IIT JAM', 'GATE']),
+    entrance_exams: buildEntranceExams(['CUET', 'NEET UG', 'IIT JAM']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Ayurvedic Doctor (BAMS)',
+    category: 'Medical',
+    description: 'Ayurvedic doctors practise India\'s ancient system of medicine alongside modern healthcare. The 5.5-year BAMS degree is recognised by the Ministry of AYUSH and enables work in government hospitals, clinics, and wellness centres.',
+    required_skills: ['Ayurvedic Principles', 'Pharmacognosy', 'Patient Diagnosis', 'Herbal Medicine', 'Anatomy & Physiology'],
+    average_salary_india: 'INR 3-8 LPA',
+    growth_scope: 'Growing demand in wellness, preventive healthcare, government AYUSH hospitals, yoga tourism, and integrative medicine globally.',
+    entrance_exams: buildEntranceExams(['NEET UG', 'CUET']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Dietitian / Nutritionist',
+    category: 'Medical',
+    description: 'Dietitians and nutritionists plan therapeutic and wellness diets for patients, athletes, and the general public. They work in hospitals, clinics, sports teams, food companies, and digital health platforms.',
+    required_skills: ['Nutritional Science', 'Biochemistry', 'Clinical Assessment', 'Diet Planning', 'Patient Counselling'],
+    average_salary_india: 'INR 3-8 LPA',
+    growth_scope: 'Rapid growth through fitness culture, chronic disease management, corporate wellness, food industry, and telemedicine nutrition services.',
+    entrance_exams: buildEntranceExams(['CUET', 'State Paramedical Entrance Exams']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Optometrist',
+    category: 'Medical',
+    description: 'Optometrists diagnose and manage vision disorders, prescribe corrective lenses, and detect early signs of eye disease. The 4-year B.Optom degree prepares students for eye clinics, hospitals, and optical retail chains.',
+    required_skills: ['Optics & Refraction', 'Eye Anatomy', 'Visual Acuity Testing', 'Contact Lens Fitting', 'Patient Care'],
+    average_salary_india: 'INR 3-7 LPA',
+    growth_scope: 'Growing demand driven by screen use, ageing population, eye hospital chains like Sankara Nethralaya, Aravind, and LV Prasad, plus international optometry opportunities.',
+    entrance_exams: buildEntranceExams(['CUET', 'State Paramedical Entrance Exams']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Radiographer / Radiologist Tech',
+    category: 'Medical',
+    description: 'Radiographers operate medical imaging equipment — X-ray, MRI, CT, and ultrasound machines — to produce diagnostic images. They are essential to every hospital and diagnostic centre.',
+    required_skills: ['Radiology Physics', 'Imaging Techniques', 'Anatomy', 'Patient Positioning', 'Radiation Safety'],
+    average_salary_india: 'INR 3-8 LPA',
+    growth_scope: 'Excellent scope as imaging is central to modern diagnosis; demand in hospitals, diagnostics chains, teleradiology, and medical equipment companies.',
+    entrance_exams: buildEntranceExams(['CUET', 'State Paramedical Entrance Exams', 'NEET UG']),
     top_colleges: []
   },
   {
@@ -934,6 +1156,66 @@ export const careerData = [
     top_colleges: []
   },
   {
+    career_name: 'Industrial / Product Designer',
+    category: 'Design',
+    description: 'Industrial and product designers conceptualise and develop everyday physical objects — from furniture and appliances to medical devices and consumer electronics. The role blends aesthetics, ergonomics, materials science, and manufacturing knowledge.',
+    required_skills: ['Sketching', 'CAD / SolidWorks', 'Prototyping', 'Ergonomics', 'Materials Knowledge'],
+    average_salary_india: 'INR 4-10 LPA',
+    growth_scope: 'Growing scope in consumer electronics, automotive design, furniture, medical devices, and design consultancies. Strong freelance and startup ecosystem.',
+    entrance_exams: buildEntranceExams(['NID DAT', 'UCEED', 'CEED']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Interior Designer',
+    category: 'Design',
+    description: 'Interior designers plan and create functional, aesthetically pleasing spaces — from homes and offices to hotels and retail showrooms. The role combines spatial planning, colour theory, materials, and client communication.',
+    required_skills: ['Space Planning', 'AutoCAD', 'Colour Theory', '3D Visualisation', 'Client Briefing'],
+    average_salary_india: 'INR 3-8 LPA',
+    growth_scope: 'Strong demand driven by real estate boom, hospitality sector, co-working spaces, and high-end residential projects. Good freelance potential.',
+    entrance_exams: buildEntranceExams(['NID DAT', 'NIFT Entrance Exam', 'CEED', 'CUET']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Jewellery Designer',
+    category: 'Design',
+    description: 'Jewellery designers create gold, silver, and gemstone ornaments for luxury brands, retail chains, and independent ateliers. The career blends artistic vision with gemology, metalworking, and commercial production knowledge.',
+    required_skills: ['Sketching', 'Gemology Basics', 'CAD for Jewellery', 'Metal Crafting', 'Trend Awareness'],
+    average_salary_india: 'INR 3-10 LPA',
+    growth_scope: 'Good scope in established jewellery brands (Tanishq, Kalyan, Malabar), export houses, luxury ateliers, and independent design studios.',
+    entrance_exams: buildEntranceExams(['NIFT Entrance Exam', 'NID DAT', 'CUET']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Textile / Apparel Designer',
+    category: 'Design',
+    description: 'Textile and apparel designers develop fabrics, surface prints, weave patterns, and garment constructions for fashion brands, home décor, and export houses. The role combines artistic sensibility with production and material knowledge.',
+    required_skills: ['Textile Knowledge', 'Print Design', 'Pattern Making', 'Colour Mixing', 'CAD for Textiles'],
+    average_salary_india: 'INR 3-8 LPA',
+    growth_scope: 'Strong demand from India\'s textile export industry, fast fashion brands, handloom revival projects, and sustainable fabric startups.',
+    entrance_exams: buildEntranceExams(['NIFT Entrance Exam', 'NID DAT', 'CUET']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Illustrator / Comic Artist',
+    category: 'Design',
+    description: 'Illustrators and comic artists create original visual narratives for books, magazines, animation, games, and digital media. The career is portfolio-driven and spans editorial illustration, children\'s books, graphic novels, and brand storytelling.',
+    required_skills: ['Drawing', 'Digital Illustration', 'Composition', 'Storytelling', 'Adobe Illustrator / Procreate'],
+    average_salary_india: 'INR 3-12 LPA',
+    growth_scope: 'Growing demand in children\'s publishing, OTT content creation, gaming, edtech illustration, social media branding, and independent IP creation.',
+    entrance_exams: buildEntranceExams(['NID DAT', 'UCEED', 'CUET']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Stock Market Analyst',
+    category: 'Commerce',
+    description: 'Stock market analysts research equities, derivatives, and financial instruments to guide investment decisions for retail investors, brokerages, and wealth management firms.',
+    required_skills: ['Financial Analysis', 'Technical Analysis', 'Excel', 'Research', 'Risk Assessment'],
+    average_salary_india: 'INR 4-8 LPA',
+    growth_scope: 'Growing demand in brokerages, mutual funds, PMS, hedge funds, and fintech platforms. CFA and NISM certifications boost employability.',
+    entrance_exams: buildEntranceExams(['NISM Certifications', 'CFA', 'CUET']),
+    top_colleges: []
+  },
+  {
     career_name: 'Management Consultant',
     category: 'Commerce',
     description: 'Management consultants solve business problems related to growth, operations, cost, and strategy. The role is competitive and suits students with strong communication and analytical skills.',
@@ -944,8 +1226,88 @@ export const careerData = [
     top_colleges: []
   },
   {
+    career_name: 'Film Director',
+    category: 'Media',
+    description: 'Film directors are the creative vision behind films, OTT series, short films, and commercials — guiding actors, crew, and story from script to screen. The path combines formal film school training with hands-on experience.',
+    required_skills: ['Storytelling', 'Visual Composition', 'Actor Direction', 'Script Analysis', 'Collaborative Leadership'],
+    average_salary_india: 'INR 5-50+ LPA',
+    growth_scope: 'Strong demand driven by OTT boom (Netflix, Amazon, Hotstar). Independent short films lead to feature breaks. Advertising film direction offers stable income alongside creative film work.',
+    entrance_exams: buildEntranceExams(['FTII Entrance Exam', 'SRFTI Entrance Exam', 'AJK MCRC Entrance']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Cinematographer / DOP',
+    category: 'Media',
+    description: 'Cinematographers (Directors of Photography) control the visual language of films — camera angles, lighting, framing, and movement that turn scripts into cinema. FTII Pune is the premier training ground in India.',
+    required_skills: ['Camera Operation', 'Lighting Design', 'Visual Storytelling', 'Colour Grading', 'Technical Equipment'],
+    average_salary_india: 'INR 4-25 LPA',
+    growth_scope: 'Growing opportunities in OTT, advertising, documentary, music videos, and corporate film. Senior DOPs on big productions earn significantly more.',
+    entrance_exams: buildEntranceExams(['FTII Entrance Exam', 'SRFTI Entrance Exam', 'AJK MCRC Entrance']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Photographer',
+    category: 'Media',
+    description: 'Photographers capture images for fashion, editorial, weddings, wildlife, photojournalism, and fine art. The career blends artistic vision with technical mastery of light, optics, and post-processing.',
+    required_skills: ['Camera Technique', 'Lighting', 'Composition', 'Adobe Lightroom / Photoshop', 'Client Communication'],
+    average_salary_india: 'INR 3-20 LPA',
+    growth_scope: 'Good scope in fashion, advertising, wildlife, journalism, and wedding photography. Strong social media presence and portfolio drive independent practice growth.',
+    entrance_exams: buildEntranceExams(['NID DAT', 'AJK MCRC Entrance', 'CUET']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Screenwriter / Script Writer',
+    category: 'Media',
+    description: 'Screenwriters create the stories, dialogue, and structure of films, web series, and OTT content. India\'s booming content industry has created unprecedented demand for strong storytellers across Hindi, regional, and English-language platforms.',
+    required_skills: ['Storytelling', 'Dialogue Writing', 'Story Structure', 'Character Development', 'Script Formatting'],
+    average_salary_india: 'INR 4-30 LPA',
+    growth_scope: 'Rapidly growing field driven by OTT platforms needing original content. Strong writers can work on multiple projects simultaneously and command premium fees.',
+    entrance_exams: buildEntranceExams(['FTII Entrance Exam', 'AJK MCRC Entrance', 'CUET']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Video Editor',
+    category: 'Media',
+    description: 'Video editors assemble raw footage into compelling films, series, ads, reels, and YouTube content. The role is central to every media production and ranges from broadcast TV editing to fast-turnaround social media content creation.',
+    required_skills: ['Adobe Premiere Pro', 'DaVinci Resolve', 'Storytelling through Editing', 'Sound Sync', 'Colour Grading Basics'],
+    average_salary_india: 'INR 3-15 LPA',
+    growth_scope: 'Very high demand across OTT, YouTube, advertising, corporate video, and news. Editors who master colour grading and motion graphics command premium salaries.',
+    entrance_exams: buildEntranceExams(['FTII Entrance Exam', 'AJK MCRC Entrance', 'CUET']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Sound Designer / Music Producer',
+    category: 'Media',
+    description: 'Sound designers and music producers create the audio experience of films, series, games, and digital content — from background scores and sound effects to full album production. India\'s music industry, game audio, and OTT boom create diverse opportunities.',
+    required_skills: ['DAW (Ableton / Logic Pro)', 'Sound Mixing', 'Music Theory', 'Foley & SFX', 'Film Scoring'],
+    average_salary_india: 'INR 3-20 LPA',
+    growth_scope: 'Growing demand in OTT content, game audio, advertising jingles, independent music, and live sound. Streaming platforms have democratised music distribution for independent producers.',
+    entrance_exams: buildEntranceExams(['FTII Entrance Exam', 'CUET', 'AJK MCRC Entrance']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Documentary Filmmaker',
+    category: 'Media',
+    description: 'Documentary filmmakers research, shoot, and narrate real stories — social issues, science, history, nature, and human interest — for film festivals, OTT platforms, and broadcast television. FTII and Jamia (AJK MCRC) are the premier training institutions.',
+    required_skills: ['Research & Investigation', 'Interview Techniques', 'Camera & Field Production', 'Editing', 'Story Structure'],
+    average_salary_india: 'INR 3-15 LPA',
+    growth_scope: 'Growing scope with Netflix, Amazon, BBC, NatGeo, and Al Jazeera commissioning Indian documentary content. Grants from NFDC and international film funds support independent documentary projects.',
+    entrance_exams: buildEntranceExams(['FTII Entrance Exam', 'SRFTI Entrance Exam', 'AJK MCRC Entrance']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Advertising Creative Director',
+    category: 'Media',
+    description: 'Advertising creative directors lead the creative vision of brand campaigns — conceiving big ideas, guiding art directors and copywriters, and delivering work across TV, digital, print, and experiential formats.',
+    required_skills: ['Conceptual Thinking', 'Brand Strategy', 'Copywriting', 'Art Direction', 'Client Presentation'],
+    average_salary_india: 'INR 8-40 LPA',
+    growth_scope: 'High-paying senior roles in advertising agencies, brand consulting firms, and in-house creative teams. MICA and premier design school graduates are highly sought after.',
+    entrance_exams: buildEntranceExams(['MICA Entrance (MICAT)', 'NID DAT', 'CUET']),
+    top_colleges: []
+  },
+  {
     career_name: 'Fashion Designer',
-    category: 'Arts',
+    category: 'Design',
     description: 'Fashion designers create apparel, textiles, accessories, and visual collections for brands or independent labels. It is a creative career driven by portfolio quality, trend awareness, and production knowledge.',
     required_skills: ['Sketching', 'Textile Knowledge', 'Pattern Making', 'Trend Research', 'Branding'],
     average_salary_india: 'INR 3-6 LPA',
@@ -955,7 +1317,7 @@ export const careerData = [
   },
   {
     career_name: 'Animation and VFX Artist',
-    category: 'Arts',
+    category: 'Media',
     description: 'Animation and VFX artists create motion graphics, 3D assets, effects, and visual storytelling for films, games, ads, and OTT content. The field rewards portfolio strength and software skills.',
     required_skills: ['Storyboarding', '3D Modelling', 'After Effects', 'Maya/Blender', 'Visual Storytelling'],
     average_salary_india: 'INR 3-6 LPA',
@@ -965,7 +1327,7 @@ export const careerData = [
   },
   {
     career_name: 'Social Worker',
-    category: 'Arts',
+    category: 'Education',
     description: 'Social workers support communities through welfare programs, counselling, development projects, and rights-based interventions. The career fits students interested in public service and social impact.',
     required_skills: ['Community Work', 'Counselling Basics', 'Documentation', 'Empathy', 'Program Coordination'],
     average_salary_india: 'INR 2.5-5 LPA',
@@ -995,7 +1357,7 @@ export const careerData = [
   },
   {
     career_name: 'Hotel Manager',
-    category: 'Emerging Careers',
+    category: 'Hospitality',
     description: 'Hotel managers oversee hospitality operations including guest services, food and beverage, housekeeping, events, and revenue. The role suits students with service mindset and operational discipline.',
     required_skills: ['Hospitality Operations', 'Communication', 'Customer Service', 'Team Management', 'Revenue Awareness'],
     average_salary_india: 'INR 3-6 LPA',
@@ -1021,6 +1383,238 @@ export const careerData = [
     average_salary_india: 'INR 3-6 LPA',
     growth_scope: 'Growing scope in FMCG, dairy, packaged foods, nutrition brands, food safety labs, and entrepreneurship.',
     entrance_exams: buildEntranceExams(['ICAR AIEEA', 'CUET', 'State CETs']),
+    top_colleges: []
+  },
+
+  // ── Sports & Fitness ───────────────────────────────────────────────────────
+
+  {
+    career_name: 'Professional Cricketer',
+    category: 'Sports',
+    description: 'Professional cricketers compete at district, state, and national levels aiming for IPL and national team selection. Success requires elite skill, physical conditioning, and consistent performance in domestic tournaments.',
+    required_skills: ['Batting or Bowling Technique', 'Fitness', 'Game Strategy', 'Mental Resilience', 'Teamwork'],
+    average_salary_india: 'INR 5-Unlimited',
+    growth_scope: 'High earnings at IPL and national levels; also scope in coaching, commentary, and sports management post-career.',
+    entrance_exams: buildEntranceExams(['SAI NIS Academy', 'No mandatory entrance exam']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Football / Hockey Player',
+    category: 'Sports',
+    description: 'Football and hockey players pursue careers through academy trials, state selections, and national leagues. India has a growing football scene (ISL) and a strong hockey legacy at international levels.',
+    required_skills: ['Sport-specific Technique', 'Physical Fitness', 'Tactical Awareness', 'Team Coordination', 'Agility'],
+    average_salary_india: 'INR 3-20 LPA',
+    growth_scope: 'Growing scope with ISL expansion, Hockey India League, and rising international exposure for Indian players.',
+    entrance_exams: buildEntranceExams(['SAI NIS Academy', 'No mandatory entrance exam']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Tennis / Badminton Player',
+    category: 'Sports',
+    description: 'Tennis and badminton players compete on national and international circuits, representing India in Davis Cup, Thomas Cup, and grand slam events. Top players earn from prize money, endorsements, and academies.',
+    required_skills: ['Technical Skill', 'Physical Conditioning', 'Match Strategy', 'Mental Toughness', 'Footwork'],
+    average_salary_india: 'INR 4-Unlimited',
+    growth_scope: 'Rising earnings through international tournaments, endorsements, and coaching academies for top-ranked players.',
+    entrance_exams: buildEntranceExams(['SAI NIS Academy', 'No mandatory entrance exam']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Athlete (Track & Field)',
+    category: 'Sports',
+    description: 'Track and field athletes compete in sprints, middle distance, long distance, throws, and jumps at national and international levels including Olympics and Commonwealth Games.',
+    required_skills: ['Endurance or Speed', 'Technique', 'Strength Training', 'Race Tactics', 'Recovery Management'],
+    average_salary_india: 'INR 3-15 LPA',
+    growth_scope: 'Good scope through SAI academies, Army sports quota, TOPS scheme, and national championship medals.',
+    entrance_exams: buildEntranceExams(['SAI NIS Academy', 'No mandatory entrance exam']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Sports Coach / Trainer',
+    category: 'Sports',
+    description: 'Sports coaches and trainers design training programs, develop athlete skills, and guide performance. They work at academies, schools, sports clubs, and professional franchises.',
+    required_skills: ['Sport Knowledge', 'Training Program Design', 'Communication', 'Performance Analysis', 'Motivational Skills'],
+    average_salary_india: 'INR 3-15 LPA',
+    growth_scope: 'Growing demand in sports academies, IPL franchise support staff, fitness centres, schools, and online coaching.',
+    entrance_exams: buildEntranceExams(['NIS Patiala Diploma', 'No mandatory entrance exam']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Sports Physiotherapist',
+    category: 'Sports',
+    description: 'Sports physiotherapists treat injuries sustained in sport, design rehabilitation programs, and support injury prevention for athletes. They work with sports teams, clinics, and national federations.',
+    required_skills: ['Musculoskeletal Assessment', 'Rehabilitation', 'Sports Taping', 'Exercise Therapy', 'Injury Prevention'],
+    average_salary_india: 'INR 4-15 LPA',
+    growth_scope: 'Strong scope with IPL, national teams, private sports clinics, and corporate wellness programmes.',
+    entrance_exams: buildEntranceExams(['NEET UG', 'State CETs', 'No mandatory entrance exam']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Yoga Instructor / Wellness Coach',
+    category: 'Sports',
+    description: "Yoga instructors and wellness coaches teach yoga, meditation, and holistic wellness to individuals, corporates, and retreat centres. The profession has seen global growth since India\'s Yoga Day initiative.",
+    required_skills: ['Yoga Asanas', 'Pranayama', 'Anatomy Basics', 'Teaching Methodology', 'Wellness Counselling'],
+    average_salary_india: 'INR 3-15 LPA',
+    growth_scope: 'Good scope in yoga studios, corporate wellness, international retreats, online classes, and wellness apps.',
+    entrance_exams: buildEntranceExams(['QCI Yoga Certification', 'AYUSH Ministry Courses']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Sports Journalist / Commentator',
+    category: 'Sports',
+    description: 'Sports journalists and commentators cover matches, interview athletes, write analysis, and present coverage on TV, radio, and digital platforms. The role blends sports knowledge with media skills.',
+    required_skills: ['Sports Knowledge', 'Writing', 'Public Speaking', 'Interviewing', 'Media Production Basics'],
+    average_salary_india: 'INR 4-18 LPA',
+    growth_scope: 'Strong scope in sports broadcasting, OTT sports channels, digital news, and podcast commentary.',
+    entrance_exams: buildEntranceExams(['CUET', 'University Entrance Exams', 'No mandatory entrance exam']),
+    top_colleges: []
+  },
+
+  // ── Education & Social Impact ─────────────────────────────────────────────
+
+  {
+    career_name: 'College Professor / Researcher',
+    category: 'Education',
+    description: 'College professors teach undergraduate and postgraduate students, conduct academic research, and publish in their field. The career requires a master degree and UGC NET/SET qualification for most positions.',
+    required_skills: ['Subject Expertise', 'Research Methods', 'Academic Writing', 'Curriculum Design', 'Communication'],
+    average_salary_india: 'INR 5-20 LPA',
+    growth_scope: 'Stable scope in colleges, central universities, research institutes, UGC-funded projects, and academia.',
+    entrance_exams: buildEntranceExams(['UGC NET', 'SET', 'CUET']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Special Educator',
+    category: 'Education',
+    description: 'Special educators work with children with learning disabilities, developmental challenges, autism, and physical needs. They design individualized education plans and support inclusive learning environments.',
+    required_skills: ['Special Education Methods', 'IEP Planning', 'Behaviour Management', 'Empathy', 'Communication'],
+    average_salary_india: 'INR 3-8 LPA',
+    growth_scope: 'Growing demand in special schools, inclusive classrooms, rehabilitation centres, and educational NGOs.',
+    entrance_exams: buildEntranceExams(['RCI Registration', 'B.Ed Entrance Exams', 'CUET']),
+    top_colleges: []
+  },
+
+  // ── Hospitality, Travel & Culinary ────────────────────────────────────────
+
+  {
+    career_name: 'Chef / Culinary Artist',
+    category: 'Hospitality',
+    description: 'Chefs and culinary artists create dishes across restaurants, hotels, catering firms, and food brands. The career ranges from haute cuisine to street food innovation and food content creation.',
+    required_skills: ['Culinary Techniques', 'Menu Planning', 'Kitchen Management', 'Food Safety', 'Creativity'],
+    average_salary_india: 'INR 3-20 LPA',
+    growth_scope: 'Good scope in luxury hotels, restaurant chains, cloud kitchens, catering, food TV, and independent restaurants.',
+    entrance_exams: buildEntranceExams(['NCHM JEE', 'IHM Entrance', 'No mandatory entrance exam']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Travel & Tourism Professional',
+    category: 'Hospitality',
+    description: 'Travel and tourism professionals plan itineraries, manage tour operations, and work with airlines, hotels, and tourism boards. The role can span corporate travel, luxury tourism, and eco-tourism.',
+    required_skills: ['Destination Knowledge', 'Customer Service', 'Itinerary Planning', 'Communication', 'GDS Software Basics'],
+    average_salary_india: 'INR 3-15 LPA',
+    growth_scope: 'Growing scope with domestic tourism boom, MICE tourism, luxury travel agencies, and government tourism boards.',
+    entrance_exams: buildEntranceExams(['NCHM JEE', 'CUET', 'No mandatory entrance exam']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Airline Cabin Crew',
+    category: 'Hospitality',
+    description: 'Airline cabin crew ensure passenger safety, comfort, and service on domestic and international flights. The role involves extensive travel, customer interaction, and emergency preparedness.',
+    required_skills: ['Customer Service', 'Emergency Procedures', 'Communication', 'Grooming', 'Language Skills'],
+    average_salary_india: 'INR 4-12 LPA',
+    growth_scope: 'Good scope as aviation expands; top earners in international carriers with layover allowances and perks.',
+    entrance_exams: buildEntranceExams(['Airline Recruitment', 'No mandatory entrance exam']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Event Planner / Manager',
+    category: 'Hospitality',
+    description: 'Event planners and managers organize weddings, corporate events, product launches, concerts, and conferences. The career combines logistics, creativity, vendor management, and client relations.',
+    required_skills: ['Project Management', 'Vendor Coordination', 'Budgeting', 'Communication', 'Creativity'],
+    average_salary_india: 'INR 3-18 LPA',
+    growth_scope: 'Good scope in event agencies, luxury wedding planning, MICE (meetings, incentives, conferences, exhibitions), and brands.',
+    entrance_exams: buildEntranceExams(['NCHM JEE', 'CUET', 'No mandatory entrance exam']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Pastry Chef / Baker',
+    category: 'Hospitality',
+    description: 'Pastry chefs and bakers specialize in desserts, breads, and confectionery for hotels, bakeries, patisseries, and catering. The career blends technical skill, precision, and creative artistry.',
+    required_skills: ['Baking Techniques', 'Pastry Arts', 'Recipe Development', 'Food Presentation', 'Kitchen Operations'],
+    average_salary_india: 'INR 3-12 LPA',
+    growth_scope: 'Growing scope in luxury bakeries, hotel chains, dessert brands, cloud kitchens, and patisserie startups.',
+    entrance_exams: buildEntranceExams(['NCHM JEE', 'IHM Entrance', 'No mandatory entrance exam']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Food Stylist / Food Content Creator',
+    category: 'Hospitality',
+    description: 'Food stylists and content creators photograph, style, and produce food content for brands, cookbooks, restaurants, and social media. The role merges culinary knowledge with visual storytelling.',
+    required_skills: ['Food Styling', 'Photography', 'Video Editing', 'Social Media', 'Brand Collaboration'],
+    average_salary_india: 'INR 3-20 LPA',
+    growth_scope: 'Growing demand from FMCG brands, restaurant chains, food delivery apps, and creator economy platforms.',
+    entrance_exams: buildEntranceExams(['No mandatory entrance exam']),
+    top_colleges: []
+  },
+
+  // ── Digital & Emerging Careers ────────────────────────────────────────────
+
+  {
+    career_name: 'Content Creator / YouTuber',
+    category: 'Emerging Careers',
+    description: 'Content creators build audiences on YouTube, Instagram, podcasts, and other platforms through video, audio, or written content. Monetisation comes from ads, brand deals, courses, and merchandise.',
+    required_skills: ['Scriptwriting', 'Video Editing', 'SEO Basics', 'Audience Growth', 'Storytelling'],
+    average_salary_india: 'INR 3-Unlimited',
+    growth_scope: 'Rapidly growing creator economy with monetisation through platforms, brands, digital products, and live events.',
+    entrance_exams: buildEntranceExams(['No mandatory entrance exam']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Game Developer',
+    category: 'Emerging Careers',
+    description: 'Game developers design and build video games for PC, mobile, and consoles using engines like Unity and Unreal. The role spans programming, game design, art, and user experience.',
+    required_skills: ['Unity or Unreal Engine', 'C# or C++', 'Game Design', 'Math for Games', 'Version Control'],
+    average_salary_india: 'INR 4-20 LPA',
+    growth_scope: 'High growth in India\'s gaming sector, mobile gaming, esports, and AR/VR game development.',
+    entrance_exams: buildEntranceExams(['JEE Main', 'MAAC / Arena Animation Admission', 'No mandatory entrance exam']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Blockchain / Web3 Developer',
+    category: 'Emerging Careers',
+    description: 'Blockchain and Web3 developers build decentralised applications, smart contracts, and crypto protocols on platforms like Ethereum and Solana. India has a growing Web3 startup ecosystem.',
+    required_skills: ['Solidity or Rust', 'Smart Contracts', 'Web3.js / ethers.js', 'Cryptography Basics', 'DeFi Concepts'],
+    average_salary_india: 'INR 8-35 LPA',
+    growth_scope: 'High demand in DeFi, NFT platforms, Web3 startups, and crypto exchanges with global remote opportunities.',
+    entrance_exams: buildEntranceExams(['JEE Main', 'No mandatory entrance exam']),
+    top_colleges: []
+  },
+  {
+    career_name: 'E-commerce / D2C Entrepreneur',
+    category: 'Emerging Careers',
+    description: 'E-commerce and D2C entrepreneurs launch and scale online businesses selling products directly to consumers. Success requires product-market fit, digital marketing, operations, and customer retention.',
+    required_skills: ['Product Sourcing', 'Digital Marketing', 'Marketplace Management', 'Finance Basics', 'Customer Analytics'],
+    average_salary_india: 'INR 3-Unlimited',
+    growth_scope: 'Huge scope with India\'s e-commerce boom, D2C brands, Shopify ecosystem, and Amazon/Flipkart seller programs.',
+    entrance_exams: buildEntranceExams(['No mandatory entrance exam']),
+    top_colleges: []
+  },
+  {
+    career_name: 'UX Researcher',
+    category: 'Emerging Careers',
+    description: 'UX researchers investigate how users interact with digital products through interviews, usability studies, and data analysis. Their findings inform design and product decisions at tech companies.',
+    required_skills: ['User Interviews', 'Usability Testing', 'Survey Design', 'Affinity Mapping', 'Data Analysis'],
+    average_salary_india: 'INR 5-20 LPA',
+    growth_scope: 'Growing demand at product companies, design agencies, fintech, health tech, and edtech platforms.',
+    entrance_exams: buildEntranceExams(['NID DAT', 'UCEED', 'No mandatory entrance exam']),
+    top_colleges: []
+  },
+  {
+    career_name: 'Podcast Host / Radio Presenter',
+    category: 'Emerging Careers',
+    description: 'Podcast hosts and radio presenters create audio content covering news, culture, education, and entertainment. The career spans traditional radio, digital podcasting, and live audio platforms.',
+    required_skills: ['Public Speaking', 'Storytelling', 'Audio Editing', 'Interviewing', 'Audience Building'],
+    average_salary_india: 'INR 3-15 LPA',
+    growth_scope: 'Growing scope with India\'s podcast boom, Spotify, JioSaavn, FM radio, and brand-sponsored audio content.',
+    entrance_exams: buildEntranceExams(['CUET', 'University Entrance Exams', 'No mandatory entrance exam']),
     top_colleges: []
   },
 
@@ -1199,7 +1793,7 @@ export const careerData = [
   {
     career_name: 'Textile Engineer',
     category: 'Engineering',
-    description: "Textile engineers develop fibres, fabrics, and manufacturing processes for India's massive textile and apparel industry. They work in mills, garment factories, and technical textiles for medical and defence uses.",
+    description: "Textile engineers develop fibres, fabrics, and manufacturing processes for India\'s massive textile and apparel industry. They work in mills, garment factories, and technical textiles for medical and defence uses.",
     required_skills: ['Fibre Science', 'Weaving Technology', 'Dyeing & Finishing', 'Quality Testing', 'Garment Tech'],
     average_salary_india: 'INR 3-12 LPA',
     growth_scope: 'Scope in mills, technical textiles, fashion industry, medical textiles, export units, and government schemes.',
@@ -1209,7 +1803,7 @@ export const careerData = [
   {
     career_name: 'Automobile / Automotive Engineer',
     category: 'Engineering',
-    description: "Automotive engineers design vehicles, drivetrains, EV systems, and safety features. India's auto sector — Tata, Maruti, Mahindra, and global OEMs — employs tens of thousands of automotive engineers.",
+    description: "Automotive engineers design vehicles, drivetrains, EV systems, and safety features. India\'s auto sector — Tata, Maruti, Mahindra, and global OEMs — employs tens of thousands of automotive engineers.",
     required_skills: ['Vehicle Dynamics', 'CAD/CAM', 'IC Engines', 'EV Systems', 'Manufacturing Processes'],
     average_salary_india: 'INR 4-16 LPA',
     growth_scope: 'Strong growth in EV transition, two-wheeler electrification, automotive software, and global R&D centres in India.',

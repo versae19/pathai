@@ -237,13 +237,17 @@ html.light {
     @apply font-serif text-4xl font-normal text-ink leading-none;
   }
   .directory-card {
-    @apply bg-white border border-border rounded-2xl p-5 shadow-sm hover:shadow-lg hover:-translate-y-1 hover:border-border-2 transition-all duration-300;
+    @apply bg-white border border-border rounded-2xl p-5 shadow-sm hover:shadow-lg hover:-translate-y-1 hover:border-border-2 transition-all duration-300 flex flex-col;
   }
   .directory-card h3 {
     @apply text-xl font-bold tracking-tight mb-2 text-ink;
   }
   .directory-card p {
     @apply text-sm text-ink-2 leading-relaxed mb-5;
+    flex: 1;
+  }
+  .directory-card > .detail-link {
+    @apply mt-4;
   }
   .salary-badge {
     @apply text-xs font-bold text-ink bg-gold-light px-3 py-1 rounded-full whitespace-nowrap;
@@ -658,6 +662,22 @@ html.light {
   .work-env-card p {
     @apply text-sm text-ink-2 leading-relaxed !important;
     margin: 0;
+  }
+
+  .stream-note-banner {
+    @apply flex gap-3 items-start rounded-xl border border-blue-200 bg-blue-50 px-4 py-3 mb-4;
+  }
+  .dark .stream-note-banner {
+    @apply border-blue-900 bg-blue-950;
+  }
+  .stream-note-icon {
+    @apply text-base shrink-0 mt-0.5;
+  }
+  .stream-note-banner p {
+    @apply text-sm text-blue-900 leading-relaxed m-0 !important;
+  }
+  .dark .stream-note-banner p {
+    @apply text-blue-200 !important;
   }
 }
 

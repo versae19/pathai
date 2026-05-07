@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import careerData, { careerCategories } from '../data/careerData'
 import { getCareerSlug, getCollegesForCareer } from '../utils/dataHelpers'
@@ -13,7 +13,9 @@ import {
 
 export default function CareerExplorerPage() {
   const navigate = useNavigate()
-  const [category, setCategory] = useState(ALL_FILTER)
+  const [searchParams] = useSearchParams()
+  const initialCategory = searchParams.get('category') || ALL_FILTER
+  const [category, setCategory] = useState(initialCategory)
   const [query, setQuery] = useState('')
   const [interests, setInterests] = useState([])
   const [salaryGoal, setSalaryGoal] = useState('')

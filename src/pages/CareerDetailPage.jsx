@@ -3,15 +3,27 @@ import { useNavigate, useParams } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import { findCareerBySlug, getCollegesForCareer, getCareerSlug } from '../utils/dataHelpers'
 import { getEngineeringRich } from '../data/engineeringRichData'
+import { getMedicalRich } from '../data/medicalRichData'
+import { getFinanceRich } from '../data/financeRichData'
+import { getLawGovtRich } from '../data/lawGovtRichData'
+import { getCreativeArtsRich } from '../data/creativeArtsRichData'
+import { getMediaFilmRich } from '../data/mediaFilmRichData'
+import { getSportsRich } from '../data/sportsRichData'
+import { getEducationRich } from '../data/educationRichData'
+import { getHospitalityRich } from '../data/hospitalityRichData'
+import { getDigitalRich } from '../data/digitalRichData'
 
 const PG_EXAMS = new Set([
   'GATE', 'NEET PG', 'NEET MDS', 'INI CET', 'GPAT',
   'CAT', 'XAT', 'GMAT', 'IIT JAM', 'ISI Admission Test', 'CEED', 'TISSNET',
   'CA Intermediate', 'CA Final', 'CS Executive', 'CS Professional', 'CFA', 'FRM',
-  'B.Ed Entrance Exams', 'CTET', 'TET',
+  'B.Ed Entrance Exams', 'CTET', 'TET', 'UGC NET', 'SET', 'RCI Registration',
   'UPSC CSE', 'UPSC ESE', 'RBI Assistant', 'IBPS PO', 'IBPS Clerk',
   'SBI PO', 'SBI Clerk', 'RRB ALP', 'RRB JE', 'RRB NTPC', 'SSC CGL',
   'AFCAT', 'CDS', 'INET',
+  'NIS Patiala Diploma', 'QCI Yoga Certification', 'AYUSH Ministry Courses', 'SAI NIS Academy',
+  'Google / Meta / HubSpot Certifications', 'CEH Certification', 'AWS / Azure Certifications',
+  'MAAC / Arena Animation Admission', 'Airline Recruitment',
 ])
 
 function splitExams(exams) {
@@ -65,10 +77,10 @@ function ExamAccordion({ exam, defaultOpen }) {
 }
 
 // ─── Engineering 360° detail ─────────────────────────────────────────────────
-function EngineeringDetail({ career, rich, colleges, navigate }) {
+function RichDetail({ career, rich, colleges, navigate }) {
   return (
     <main className="detail-shell">
-      <button className="back-link" onClick={() => navigate('/careers')}>← Back to careers</button>
+      <button className="back-link" onClick={() => navigate(`/careers?category=${encodeURIComponent(career.category)}`)}>← Back to careers</button>
 
       {/* ── Hero banner ── */}
       <section
@@ -78,7 +90,7 @@ function EngineeringDetail({ career, rich, colleges, navigate }) {
         <div className="eng-hero-content">
           <span className="eng-emoji">{rich.emoji}</span>
           <div>
-            <span className="eng-category-badge">Engineering &amp; Technology</span>
+            <span className="eng-category-badge">{career.category}</span>
             <h1 className="eng-title">{career.career_name}</h1>
             <p className="eng-tagline">{rich.tagline}</p>
           </div>
@@ -187,15 +199,28 @@ function EngineeringDetail({ career, rich, colleges, navigate }) {
             </div>
           </article>
 
-          {/* ── Entrance exams ── */}
-          <article className="detail-section fade-up fade-up-5">
-            <h2>Entrance exams</h2>
-            <div className="space-y-3">
-              {splitExams(career.entrance_exams).ug.map((exam, i) => (
-                <ExamAccordion key={exam.exam_name} exam={exam} defaultOpen={i === 0} />
-              ))}
-            </div>
-          </article>
+          {/* ── Entrance / key exams ── */}
+          {(() => {
+            const { ug, pg } = splitExams(career.entrance_exams)
+            const examsToShow = ug.length > 0 ? ug : career.entrance_exams.filter(Boolean)
+            const isRecruitment = ug.length === 0 && pg.length > 0
+            return (
+              <article className="detail-section fade-up fade-up-5">
+                <h2>{isRecruitment ? 'Key exams to target' : 'Entrance exams'}</h2>
+                {rich.stream_note && (
+                  <div className="stream-note-banner">
+                    <span className="stream-note-icon">ℹ️</span>
+                    <p>{rich.stream_note}</p>
+                  </div>
+                )}
+                <div className="space-y-3">
+                  {examsToShow.map((exam, i) => (
+                    <ExamAccordion key={exam.exam_name} exam={exam} defaultOpen={i === 0} />
+                  ))}
+                </div>
+              </article>
+            )
+          })()}
         </div>
 
         {/* ── Sidebar ── */}
@@ -231,7 +256,11 @@ function EngineeringDetail({ career, rich, colleges, navigate }) {
             </div>
             {colleges.length === 0 && <p className="text-sm text-ink-3">No linked colleges yet.</p>}
             <a
-              href="https://www.aicte.gov.in/education/institutions"
+              href={career.category === 'Medical'
+                ? 'https://www.nmc.org.in/information-desk/for-students-to-study-in-india/list-of-college-teaching-mbbs/'
+                : career.category === 'Engineering'
+                  ? 'https://www.aicte.gov.in/education/institutions'
+                  : 'https://www.ugc.gov.in/college'}
               target="_blank"
               rel="noopener noreferrer"
               className="detail-link w-full justify-center mt-5 no-underline"
@@ -250,7 +279,7 @@ function EngineeringDetail({ career, rich, colleges, navigate }) {
 function StandardDetail({ career, colleges, navigate }) {
   return (
     <main className="detail-shell">
-      <button className="back-link" onClick={() => navigate('/careers')}>← Back to careers</button>
+      <button className="back-link" onClick={() => navigate(`/careers?category=${encodeURIComponent(career.category)}`)}>← Back to careers</button>
 
       <section className="detail-hero fade-up">
         <div>
@@ -361,14 +390,34 @@ export default function CareerDetailPage() {
   }
 
   const colleges = getCollegesForCareer(career.career_name)
-  const isEngineering = career.category === 'Engineering'
-  const rich = isEngineering ? getEngineeringRich(career.career_name) : null
+  const hasRichLayout = career.category === 'Engineering' || career.category === 'Medical' || career.category === 'Commerce' || career.category === 'Government Jobs' || career.category === 'Design' || career.category === 'Media' || career.category === 'Sports' || career.category === 'Education' || career.category === 'Hospitality' || career.category === 'Emerging Careers'
+  const rich = career.category === 'Engineering'
+    ? getEngineeringRich(career.career_name)
+    : career.category === 'Medical'
+      ? getMedicalRich(career.career_name)
+      : career.category === 'Commerce'
+        ? getFinanceRich(career.career_name)
+        : career.category === 'Government Jobs'
+          ? getLawGovtRich(career.career_name)
+          : career.category === 'Design'
+            ? getCreativeArtsRich(career.career_name)
+            : career.category === 'Media'
+              ? getMediaFilmRich(career.career_name)
+              : career.category === 'Sports'
+                ? getSportsRich(career.career_name)
+                : career.category === 'Education'
+                  ? getEducationRich(career.career_name)
+                  : career.category === 'Hospitality'
+                    ? getHospitalityRich(career.career_name)
+                    : career.category === 'Emerging Careers'
+                      ? getDigitalRich(career.career_name)
+                      : null
 
   return (
     <div className="min-h-screen bg-bg">
       <Navbar />
-      {isEngineering
-        ? <EngineeringDetail career={career} rich={rich} colleges={colleges} navigate={navigate} />
+      {hasRichLayout
+        ? <RichDetail career={career} rich={rich} colleges={colleges} navigate={navigate} />
         : <StandardDetail career={career} colleges={colleges} navigate={navigate} />
       }
     </div>
