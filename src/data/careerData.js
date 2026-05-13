@@ -2,9 +2,13 @@ export const careerCategories = [
   'Engineering',
   'Medical',
   'Commerce',
-  'Arts',
   'Government Jobs',
-  'Emerging Careers'
+  'Design',
+  'Media',
+  'Education',
+  'Sports',
+  'Hospitality',
+  'Emerging Careers',
 ]
 
 export const entranceExamDetails = {

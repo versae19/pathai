@@ -541,7 +541,7 @@ function ComprehensiveExplore({ categories, intro, streamLabel }) {
                       </div>
                     )}
                   </div>
-                  {cat.id === 'engineering' || cat.id === 'medical' || cat.id === 'finance' || cat.id === 'law-govt' || cat.id === 'creative-design' || cat.id === 'media-film' || cat.id === 'sports-fitness' || cat.id === 'education-social' || cat.id === 'hospitality-culinary' || cat.id === 'digital-emerging' ? (
+                  {ALL_CAREER_NAMES.includes(selectedCareer.name) ? (
                     <button
                       type="button"
                       className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-bold border-0 cursor-pointer transition-all"

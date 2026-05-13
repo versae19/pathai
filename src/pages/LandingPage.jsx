@@ -106,6 +106,84 @@ const CATEGORY_STYLE = {
       </svg>
     ),
   },
+  'Design': {
+    darkBg:  'linear-gradient(145deg,#1a0a2e 0%,#2d1050 55%,#160820 100%)',
+    lightBg: 'linear-gradient(145deg,#fdf4ff 0%,#f3e8ff 65%,#fae8ff 100%)',
+    accent: '#c026d3', glow: 'rgba(192,38,211,0.28)',
+    textDark: '#e879f9', textLight: '#a21caf',
+    sub: 'NID · NIFT · UCEED',
+    icon: (color) => (
+      <svg viewBox="0 0 52 52" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" className="w-full h-full">
+        <circle cx="26" cy="26" r="10"/>
+        <path d="M26 16V8M26 44v-8M16 26H8M44 26h-8"/>
+        <path d="M19 19l-5.5-5.5M38.5 38.5L33 33M33 19l5.5-5.5M13.5 38.5L19 33"/>
+        <circle cx="26" cy="26" r="3" fill={color} stroke="none"/>
+      </svg>
+    ),
+  },
+  'Media': {
+    darkBg:  'linear-gradient(145deg,#1a0800 0%,#2d1200 55%,#1a0a00 100%)',
+    lightBg: 'linear-gradient(145deg,#fff7ed 0%,#fed7aa 65%,#ffedd5 100%)',
+    accent: '#ea580c', glow: 'rgba(234,88,12,0.28)',
+    textDark: '#fb923c', textLight: '#c2410c',
+    sub: 'IIMC · FTII · BJMC',
+    icon: (color) => (
+      <svg viewBox="0 0 52 52" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" className="w-full h-full">
+        <rect x="6" y="14" width="32" height="22" rx="3"/>
+        <path d="M38 20l8-5v22l-8-5"/>
+        <circle cx="22" cy="25" r="5"/>
+        <path d="M22 20v10M17 25h10"/>
+      </svg>
+    ),
+  },
+  'Education': {
+    darkBg:  'linear-gradient(145deg,#121000 0%,#231f00 55%,#121000 100%)',
+    lightBg: 'linear-gradient(145deg,#fefce8 0%,#fef9c3 65%,#fefce8 100%)',
+    accent: '#ca8a04', glow: 'rgba(202,138,4,0.28)',
+    textDark: '#fde047', textLight: '#a16207',
+    sub: 'CTET · UGC NET · B.Ed',
+    icon: (color) => (
+      <svg viewBox="0 0 52 52" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" className="w-full h-full">
+        <path d="M6 20l20-12 20 12-20 12L6 20z"/>
+        <path d="M14 24v12c0 0 4 5 12 5s12-5 12-5V24"/>
+        <path d="M46 20v10"/>
+        <circle cx="46" cy="32" r="2"/>
+      </svg>
+    ),
+  },
+  'Sports': {
+    darkBg:  'linear-gradient(145deg,#041510 0%,#082b1c 55%,#041510 100%)',
+    lightBg: 'linear-gradient(145deg,#f0fdf4 0%,#dcfce7 65%,#f0fdf4 100%)',
+    accent: '#16a34a', glow: 'rgba(22,163,74,0.28)',
+    textDark: '#4ade80', textLight: '#15803d',
+    sub: 'NIS Patiala · SAI · NEET',
+    icon: (color) => (
+      <svg viewBox="0 0 52 52" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" className="w-full h-full">
+        <circle cx="26" cy="26" r="18"/>
+        <path d="M26 8c0 0 8 8 8 18s-8 18-8 18"/>
+        <path d="M26 8c0 0-8 8-8 18s8 18 8 18"/>
+        <path d="M8 26h36"/>
+        <path d="M9 18h34M9 34h34"/>
+      </svg>
+    ),
+  },
+  'Hospitality': {
+    darkBg:  'linear-gradient(145deg,#1a0510 0%,#2d0a1e 55%,#1a0510 100%)',
+    lightBg: 'linear-gradient(145deg,#fff1f2 0%,#fecdd3 65%,#ffe4e6 100%)',
+    accent: '#e11d48', glow: 'rgba(225,29,72,0.28)',
+    textDark: '#fb7185', textLight: '#be123c',
+    sub: 'NCHM JEE · IHM · Airlines',
+    icon: (color) => (
+      <svg viewBox="0 0 52 52" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" className="w-full h-full">
+        <path d="M10 40V20a4 4 0 014-4h24a4 4 0 014 4v20"/>
+        <path d="M6 40h40"/>
+        <rect x="20" y="28" width="12" height="12" rx="1"/>
+        <rect x="14" y="20" width="6" height="6" rx="1"/>
+        <rect x="32" y="20" width="6" height="6" rx="1"/>
+        <path d="M26 6v6M20 10l4 2M32 10l-4 2"/>
+      </svg>
+    ),
+  },
 }
 
 const examNames = [...new Set(careerData.flatMap((c) => c.entrance_exams.map((e) => e.exam_name)))]
