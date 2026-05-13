@@ -176,10 +176,10 @@ export default function CareerComparisonPage() {
   return (
     <div className="min-h-screen bg-bg">
       <Navbar />
-      <main className="max-w-7xl mx-auto px-[5%] pt-28 pb-16">
+      <main className="page-shell">
 
         {/* Header */}
-        <section className="bg-white border border-border rounded-[28px] p-6 md:p-8 shadow-sm mb-6">
+        <section className="page-hero-panel mb-6">
           <div className="section-kicker">Career comparison</div>
           <h1 className="font-serif text-4xl md:text-5xl tracking-tight leading-tight text-ink mb-3">
             Compare careers side by side
@@ -190,7 +190,7 @@ export default function CareerComparisonPage() {
         </section>
 
         {/* Selector */}
-        <section className="bg-white border border-border rounded-2xl p-5 md:p-6 shadow-sm mb-6">
+        <section className="page-panel mb-6">
           <p className="text-xs font-bold uppercase tracking-widest text-ink-3 mb-4">
             Selected careers ({selected.length}/{MAX_CAREERS})
           </p>
@@ -244,14 +244,14 @@ export default function CareerComparisonPage() {
 
         {/* Empty state */}
         {selected.length === 0 && (
-          <div className="bg-white border border-border rounded-2xl p-10 shadow-sm text-center">
+          <div className="page-empty">
             <p className="font-serif text-3xl text-ink mb-2">Pick your first career</p>
             <p className="text-sm text-ink-2">Use the "Add career" button above to start comparing paths.</p>
           </div>
         )}
 
         {selected.length === 1 && (
-          <div className="bg-white border border-border rounded-2xl p-8 shadow-sm text-center">
+          <div className="page-empty">
             <p className="font-serif text-3xl text-ink mb-2">Add one more career</p>
             <p className="text-sm text-ink-2">You need at least 2 careers to see a comparison.</p>
           </div>

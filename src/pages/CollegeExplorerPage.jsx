@@ -128,7 +128,7 @@ export default function CollegeExplorerPage() {
 
         {/* Filters */}
         <section className="fade-up fade-up-1 mt-5">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 bg-white border border-border rounded-2xl p-4 shadow-sm">
+          <div className="page-panel grid grid-cols-2 md:grid-cols-4 gap-3">
             <div>
               <label htmlFor="location-filter" className="block text-xs font-bold uppercase tracking-widest text-ink-3 mb-2">
                 Location

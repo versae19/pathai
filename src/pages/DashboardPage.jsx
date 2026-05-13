@@ -127,7 +127,7 @@ export default function DashboardPage({ formData, planData, setPlanData }) {
     <div className="min-h-screen bg-bg flex">
 
       {/* SIDEBAR desktop */}
-      <aside className="hidden md:flex flex-col w-60 bg-white border-r border-border p-5 sticky top-0 h-screen overflow-y-auto flex-shrink-0">
+      <aside className="hidden md:flex flex-col w-64 bg-white/88 border-r border-border p-5 sticky top-0 h-screen overflow-y-auto flex-shrink-0">
         <div className="font-serif text-xl mb-1 cursor-pointer" onClick={() => navigate('/')}>
           LAKSHYA
         </div>
@@ -157,7 +157,7 @@ export default function DashboardPage({ formData, planData, setPlanData }) {
       </aside>
 
       {/* MOBILE tab bar */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-border flex z-50">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white/96 border-t border-border flex z-50 backdrop-blur">
         {NAV_ITEMS.map(n => (
           <button
             key={n.id}
@@ -171,7 +171,7 @@ export default function DashboardPage({ formData, planData, setPlanData }) {
       </div>
 
       {/* MAIN */}
-      <main className="flex-1 p-6 md:p-10 overflow-y-auto pb-24 md:pb-10">
+      <main className="flex-1 p-5 md:p-8 overflow-y-auto pb-24 md:pb-8">
 
         {/* ===== MY PLAN ===== */}
         {activeTab === 'plan' && (

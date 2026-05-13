@@ -11,8 +11,8 @@ export default function FormPage() {
   return (
     <div className="min-h-screen bg-bg">
       <Navbar />
-      <div className="max-w-3xl mx-auto px-5 pt-24 pb-20">
-        <div className="mb-8">
+      <div className="max-w-3xl mx-auto px-5 pt-24 pb-16">
+        <div className="page-hero-panel mb-6">
           <h1 className="font-serif text-3xl md:text-4xl tracking-tight text-ink mb-2">
             Explore careers
           </h1>
@@ -20,10 +20,12 @@ export default function FormPage() {
             Browse career options based on your education, or get a step-by-step roadmap for your dream career.
           </p>
         </div>
-        <CareerForm
-          onCancel={() => navigate('/')}
-          initialState={initialState}
-        />
+        <div className="page-panel">
+          <CareerForm
+            onCancel={() => navigate('/')}
+            initialState={initialState}
+          />
+        </div>
       </div>
     </div>
   )

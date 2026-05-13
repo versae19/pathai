@@ -189,10 +189,10 @@ export default function ExamPlannerPage() {
     <div className="min-h-screen bg-bg">
       <Navbar />
 
-      <main className="max-w-7xl mx-auto px-[5%] pt-28 pb-16">
+      <main className="page-shell">
 
         {/* ── Header ── */}
-        <section className="bg-white border border-border rounded-[28px] p-6 md:p-8 shadow-sm mb-6 fade-up">
+        <section className="page-hero-panel mb-6 fade-up">
           <div className="section-kicker">Exam strategy planner</div>
           <h1 className="font-serif text-4xl md:text-5xl tracking-tight leading-tight text-ink mb-3">
             Build your entrance exam roadmap
@@ -203,7 +203,7 @@ export default function ExamPlannerPage() {
         </section>
 
         {/* ── Career Selector ── */}
-        <section className="bg-white border border-border rounded-2xl p-5 shadow-sm mb-6 fade-up fade-up-1">
+        <section className="page-panel mb-6 fade-up fade-up-1">
           <label htmlFor="career-select" className="block text-xs font-bold uppercase tracking-widest text-ink-3 mb-2">
             Choose a career path
           </label>
@@ -232,7 +232,7 @@ export default function ExamPlannerPage() {
 
         {/* ── Empty state ── */}
         {!selectedCareer && (
-          <div className="bg-white border border-border rounded-2xl p-12 shadow-sm text-center fade-up fade-up-2">
+          <div className="page-empty fade-up fade-up-2">
             <p className="font-serif text-3xl text-ink mb-2">No career selected</p>
             <p className="text-sm text-ink-2">Pick a career above to generate your personalised exam roadmap.</p>
           </div>
@@ -240,7 +240,7 @@ export default function ExamPlannerPage() {
 
         {/* ── No config ── */}
         {selectedCareer && !config && (
-          <div className="bg-white border border-border rounded-2xl p-10 shadow-sm text-center fade-up fade-up-2">
+          <div className="page-empty fade-up fade-up-2">
             <p className="font-serif text-2xl text-ink mb-2">Strategy data not available yet</p>
             <p className="text-sm text-ink-2">We're building strategy content for this career. Check back soon.</p>
           </div>
