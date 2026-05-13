@@ -66,9 +66,9 @@ function OptionBtn({ label, sub, selected, onClick, small }) {
     <button
       type="button"
       onClick={onClick}
-      className={`w-full text-left rounded-2xl border transition-all duration-200 cursor-pointer
+      className={`w-full text-left rounded-[14px] border transition-all duration-200 cursor-pointer
         ${small ? 'px-3 py-2.5' : 'px-4 py-3.5'}
-        ${selected ? 'border-accent bg-accent-light shadow-sm' : 'border-border bg-white hover:border-border-2'}`}
+        ${selected ? 'border-accent bg-accent-light shadow-sm' : 'border-border bg-white hover:border-border-2 hover:shadow-sm'}`}
     >
       <span className={`block font-semibold ${small ? 'text-xs' : 'text-sm'} ${selected ? 'text-accent' : 'text-ink'}`}>
         {label}
@@ -98,7 +98,7 @@ function ExploreCard({ career, index }) {
 
   return (
     <div
-      className="bg-white border border-border rounded-2xl overflow-hidden hover:border-border-2 hover:shadow-md transition-all duration-300"
+      className="bg-white border border-border rounded-[16px] overflow-hidden hover:border-border-2 hover:shadow-md transition-all duration-300"
       style={{ animation: 'cardIn 0.4s ease both', animationDelay: `${index * 70}ms` }}
     >
       {/* Top bar accent */}
@@ -121,7 +121,7 @@ function ExploreCard({ career, index }) {
         <p className="text-xs text-ink-2 leading-relaxed line-clamp-2 mb-4">{career.description}</p>
 
         {/* Why suitable */}
-        <div className="p-3 rounded-xl mb-4"
+        <div className="p-3 rounded-[12px] mb-4"
           style={{ background: col.bg, border: `1px solid ${col.border}` }}>
           <div className="flex items-start gap-2">
             <span className="text-sm mt-0.5 shrink-0" style={{ color: col.dot }}>✓</span>
@@ -163,7 +163,7 @@ function ExploreCard({ career, index }) {
       </div>
 
       {/* Next steps — toggle */}
-      <div className="border-t border-border">
+      <div className="border-t border-border bg-[#fcfaf6]">
         <button
           type="button"
           className="w-full flex items-center justify-between px-5 py-3 text-xs font-bold text-ink-2 hover:text-ink transition-colors cursor-pointer border-0 bg-transparent"
@@ -672,7 +672,7 @@ export default function CareerForm({ onCancel, compact = false, initialState = n
   return (
     <div>
       {/* ── Mode toggle tabs ──────────────────────────────────────────── */}
-      <div className={`flex rounded-2xl border border-border bg-bg p-1 ${compact ? 'mb-5' : 'mb-7'}`}>
+      <div className={`flex rounded-[14px] border border-border bg-bg p-1 ${compact ? 'mb-5' : 'mb-7'}`}>
         {[
           { value: 'explore', label: 'Explore Options', sub: 'I have completed X' },
           { value: 'roadmap', label: 'Get Roadmap',     sub: 'I want to become X' },
@@ -681,7 +681,7 @@ export default function CareerForm({ onCancel, compact = false, initialState = n
             key={tab.value}
             type="button"
             onClick={() => switchMode(tab.value)}
-            className={`flex-1 rounded-xl border-0 cursor-pointer transition-all duration-200 text-center
+            className={`flex-1 rounded-[10px] border-0 cursor-pointer transition-all duration-200 text-center
               ${compact ? 'py-2.5' : 'py-3'}
               ${mode === tab.value ? 'bg-white shadow-sm' : 'bg-transparent hover:bg-white/60'}`}
           >
@@ -749,7 +749,7 @@ export default function CareerForm({ onCancel, compact = false, initialState = n
                   setError('')
                 }}
                 onFocus={() => setShowDrop(true)}
-                className="w-full px-4 py-3 rounded-xl border border-border bg-white text-sm text-ink focus:border-accent outline-none transition-colors"
+                className="w-full px-4 py-3 rounded-[14px] border border-border bg-white text-sm text-ink focus:border-accent outline-none transition-colors"
               />
               {targetCareer && (
                 <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-accent pointer-events-none">
@@ -757,7 +757,7 @@ export default function CareerForm({ onCancel, compact = false, initialState = n
                 </span>
               )}
               {showDrop && !targetCareer && filteredCareers.length > 0 && (
-                <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-border rounded-xl shadow-lg z-50 max-h-56 overflow-y-auto">
+                <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-border rounded-[14px] shadow-lg z-50 max-h-56 overflow-y-auto">
                   {filteredCareers.map(name => (
                     <button
                       key={name}

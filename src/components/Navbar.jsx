@@ -45,16 +45,16 @@ export default function Navbar() {
   }
 
   const getBg = () => {
-    if (isDark) return useDarkStyle ? 'rgba(4,4,18,0.7)' : 'rgba(6,6,24,0.97)'
-    if (useLightHomeStyle) return 'rgba(246,245,255,0.7)'
-    return 'rgba(250,250,255,0.98)'
+    if (isDark) return useDarkStyle ? 'rgba(8,15,29,0.72)' : 'rgba(8,15,29,0.94)'
+    if (useLightHomeStyle) return 'rgba(248,250,252,0.82)'
+    return 'rgba(248,250,252,0.94)'
   }
 
   const getBorder = () => {
     if (isHome && !scrolled) return '1px solid transparent'
     return isDark
-      ? '1px solid rgba(255,255,255,0.07)'
-      : '1px solid rgba(0,0,0,0.07)'
+      ? '1px solid rgba(148,163,184,0.18)'
+      : '1px solid rgba(15,23,42,0.08)'
   }
 
   const logoColor = useDarkStyle ? '#fff' : 'var(--c-text)'
@@ -63,11 +63,11 @@ export default function Navbar() {
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-[5%] h-[68px] transition-all duration-500"
-      style={{ background: getBg(), backdropFilter: 'blur(20px)', borderBottom: getBorder() }}
+      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-[5%] h-[72px] transition-all duration-500"
+      style={{ background: getBg(), backdropFilter: 'blur(18px)', borderBottom: getBorder() }}
     >
       <div
-        className="font-serif text-2xl tracking-tight cursor-pointer select-none transition-colors duration-300"
+        className="text-xl font-extrabold tracking-[0.18em] cursor-pointer select-none transition-colors duration-300"
         style={{ color: logoColor }}
         onClick={() => navigate('/')}
       >
@@ -85,7 +85,7 @@ export default function Navbar() {
           <button
             key={label}
             onClick={action}
-            className="hidden md:block text-sm font-medium transition-all duration-200 bg-transparent border-0 cursor-pointer hover:opacity-100"
+            className="hidden md:block text-sm font-semibold transition-all duration-200 bg-transparent border-0 cursor-pointer hover:opacity-100"
             style={{ color: linkColor, opacity: 0.85 }}
           >
             {label}
@@ -95,7 +95,7 @@ export default function Navbar() {
         {/* Theme toggle */}
         <button
           onClick={toggleTheme}
-          className="w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-200 border cursor-pointer"
+          className="w-10 h-10 rounded-2xl flex items-center justify-center transition-all duration-200 border cursor-pointer"
           style={{
             color: toggleColor,
             background: useDarkStyle ? 'rgba(255,255,255,0.07)' : 'var(--c-surface)',
@@ -108,10 +108,10 @@ export default function Navbar() {
 
         <button
           className="btn-primary text-sm px-5 py-2.5"
-          style={useDarkStyle ? { background: '#4f46e5', boxShadow: '0 0 24px rgba(99,102,241,0.45)' } : {}}
+          style={useDarkStyle ? { background: '#dd6b2f', boxShadow: '0 0 24px rgba(221,107,47,0.24)' } : {}}
           onClick={() => navigate('/plan')}
         >
-          Start Free →
+          Start free
         </button>
       </div>
     </nav>

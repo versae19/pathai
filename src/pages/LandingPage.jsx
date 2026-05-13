@@ -187,6 +187,7 @@ const CATEGORY_STYLE = {
 }
 
 const examNames = [...new Set(careerData.flatMap((c) => c.entrance_exams.map((e) => e.exam_name)))]
+const spotlightCareers = careerData.slice(0, 3)
 
 function CountUp({ target }) {
   const [count, setCount] = useState(0)
@@ -226,27 +227,25 @@ export default function LandingPage() {
 
       {/* ── HERO ─────────────────────────────────────────────────────────────── */}
       <section className="relative min-h-screen flex items-center overflow-hidden pt-16">
-        <div className="hero-orb hero-orb-1" />
-        <div className="hero-orb hero-orb-2" />
-        <div className="hero-orb hero-orb-3" />
+        <div className="hero-wash hero-wash-1" />
+        <div className="hero-wash hero-wash-2" />
         <div className="hero-grid" />
-        <div className="hero-scan-line" />
 
-        <div className="max-w-7xl mx-auto px-[5%] py-28 grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-16 items-center w-full relative z-10">
-          <div>
-            <div className="fade-up inline-flex items-center gap-3 px-5 py-2.5 rounded-full text-xs font-bold tracking-widest mb-10"
+        <div className="hero-shell max-w-7xl mx-auto px-[5%] py-16 grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-10 items-stretch w-full relative z-10">
+          <div className="hero-copy-panel">
+            <div className="fade-up inline-flex items-center gap-3 px-4 py-2 rounded-full text-xs font-bold tracking-[0.18em] mb-8"
               style={{ background: 'var(--c-badge-bg)', border: '1px solid var(--c-badge-bdr)', color: 'var(--c-badge-text)' }}>
               <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: 'var(--c-hl)' }} />
-              India's Career Intelligence Platform
+              Career planning for India
             </div>
             <h1 className="fade-up fade-up-1 font-serif tracking-tight leading-[1.06] mb-7"
-              style={{ fontSize: 'clamp(3rem,6.5vw,6rem)', color: 'var(--c-text)' }}>
-              Plan your career<br />
-              <span className="hero-gradient-text">with intelligence.</span>
+              style={{ fontSize: 'clamp(3.2rem,6.2vw,6.2rem)', color: 'var(--c-text)' }}>
+              Choose a path that<br />
+              <span className="hero-gradient-text">actually fits you.</span>
             </h1>
             <p className="fade-up fade-up-2 leading-[1.8] mb-12 max-w-lg"
               style={{ fontSize: 'clamp(1rem,1.4vw,1.2rem)', color: 'var(--c-text2)' }}>
-              Lakshya maps Indian career paths to entrance exams, realistic salaries, and top colleges — so students make confident decisions before committing years of effort.
+              Lakshya connects careers, entrance exams, salaries, and colleges into one clear roadmap so students can decide faster and with more confidence.
             </p>
             <div className="fade-up fade-up-3 grid grid-cols-3 gap-4 max-w-sm">
               {[[careerData.length,'Career paths'],[collegeData.length,'Colleges'],[examNames.length,'Exam routes']].map(([num,label]) => (
@@ -258,8 +257,13 @@ export default function LandingPage() {
                 </div>
               ))}
             </div>
+            <div className="fade-up fade-up-4 mt-10 flex flex-wrap gap-3">
+              {['Personalised roadmap', 'Exam timeline clarity', 'College matching'].map((item) => (
+                <span key={item} className="hero-chip">{item}</span>
+              ))}
+            </div>
           </div>
-          <div className="fade-up fade-up-2">
+          <div className="fade-up fade-up-2 hero-form-panel">
             <div className="form-hero-card">
               <div className="mb-6">
                 <div className="flex items-center gap-2 mb-2.5">
@@ -267,9 +271,20 @@ export default function LandingPage() {
                   <span className="w-1 h-1 rounded-full" style={{ background: 'var(--c-accent)' }} />
                   <span className="text-xs font-medium" style={{ color: 'var(--c-text3)' }}>No signup needed</span>
                 </div>
-                <h2 className="font-serif text-2xl leading-snug" style={{ color: '#1A1916' }}>Build your personalised roadmap</h2>
+                <h2 className="font-serif text-2xl leading-snug" style={{ color: 'var(--c-text)' }}>Build your personalised roadmap</h2>
               </div>
               <CareerForm compact />
+              <div className="mt-6 space-y-3">
+                {spotlightCareers.map((career) => (
+                  <div key={career.career_name} className="hero-preview-row">
+                    <div>
+                      <p className="text-sm font-semibold" style={{ color: 'var(--c-text)' }}>{career.career_name}</p>
+                      <p className="text-xs" style={{ color: 'var(--c-text3)' }}>{career.entrance_exams[0]?.exam_name || 'Career route'}</p>
+                    </div>
+                    <span className="hero-preview-badge">{career.average_salary_india}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -278,29 +293,22 @@ export default function LandingPage() {
       </section>
 
       {/* ── TICKER ───────────────────────────────────────────────────────────── */}
-      <div className="overflow-hidden relative z-10 py-5"
+      <div className="overflow-hidden relative z-10 py-4"
         style={{ background: 'var(--c-ticker-bg)', borderTop: '1px solid var(--c-ticker-bdr)', borderBottom: '1px solid var(--c-ticker-bdr)' }}>
         <div className="marquee-track">
           {[...examNames, ...examNames].map((name, i) => (
             <span key={i} className="marquee-item">
-              <span className="marquee-sep">◆</span>{name}
+              <span className="marquee-sep" />{name}
             </span>
           ))}
         </div>
       </div>
 
       {/* ── CAREER DATABASE ──────────────────────────────────────────────────── */}
-      <section id="career-database" className="py-28 px-[5%] relative overflow-hidden" style={{ background: 'var(--c-bg2)' }}>
-        {/* Section bg orb */}
-        <div className="absolute pointer-events-none" style={{
-          width: 700, height: 700, borderRadius: '50%',
-          background: 'radial-gradient(circle,var(--c-orb1) 0%,transparent 60%)',
-          filter: 'blur(120px)', top: -200, right: -150, opacity: 0.5,
-        }} />
-
+      <section id="career-database" className="pt-12 pb-20 px-[5%] relative overflow-hidden" style={{ background: 'var(--c-bg2)' }}>
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Header */}
-          <div className="mb-16 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+          <div className="mb-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
             <div>
               <div className="section-kicker-themed">Career database</div>
               <h2 className="font-serif tracking-tight leading-tight"
@@ -314,189 +322,100 @@ export default function LandingPage() {
             </p>
           </div>
 
-          {/* ── Category cards grid ─────────────────────────────────────────── */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-5">
+          <div className="career-category-strip">
             {categoryCounts.map((item, idx) => {
               const style = CATEGORY_STYLE[item.category]
               const active = item.category === activeCategory
               const iconColor = isDark ? style.textDark : style.textLight
-              const cardBg = isDark ? style.darkBg : style.lightBg
 
               return (
                 <button
                   key={item.category}
                   onClick={() => handleCategoryClick(item.category)}
-                  className="cat-card group relative overflow-hidden text-left focus:outline-none"
+                  className={`category-strip-pill ${active ? 'active' : ''}`}
                   style={{
-                    background: cardBg,
-                    boxShadow: active
-                      ? `0 0 0 2px ${style.accent}, 0 20px 60px ${style.glow}`
-                      : isDark ? '0 4px 24px rgba(0,0,0,0.4)' : '0 4px 24px rgba(0,0,0,0.08)',
-                    transform: active ? 'translateY(-4px)' : '',
-                    animationDelay: `${idx * 60}ms`,
+                    '--strip-accent': style.accent,
+                    animationDelay: `${idx * 45}ms`,
                   }}
                 >
-                  {/* Animated glow border on active */}
-                  {active && (
-                    <div className="absolute inset-0 rounded-[22px] pointer-events-none"
-                      style={{ boxShadow: `inset 0 0 20px ${style.glow}` }} />
-                  )}
-
-                  {/* Decorative grid inside card */}
-                  <div className="absolute inset-0 pointer-events-none opacity-30"
-                    style={{
-                      backgroundImage: `linear-gradient(${isDark ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.04)'} 1px,transparent 1px),linear-gradient(90deg,${isDark ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.04)'} 1px,transparent 1px)`,
-                      backgroundSize: '24px 24px',
-                    }} />
-
-                  {/* Shimmer sweep on hover */}
-                  <div className="cat-card-shimmer" />
-
-                  <div className="relative z-10 p-6 flex flex-col h-full">
-                    {/* Top row */}
-                    <div className="flex items-start justify-between mb-6">
-                      <span className="text-xs font-bold px-3 py-1.5 rounded-full"
-                        style={{
-                          background: active ? style.accent : isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.07)',
-                          color: active ? '#fff' : isDark ? 'rgba(255,255,255,0.55)' : 'rgba(0,0,0,0.45)',
-                          letterSpacing: '0.04em',
-                        }}>
-                        {item.count} careers
-                      </span>
-                      {active
-                        ? <span className="text-lg leading-none" style={{ color: style.accent }}>✓</span>
-                        : <span className="text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-                            style={{ color: style.accent }}>
-                            Explore →
-                          </span>
-                      }
-                    </div>
-
-                    {/* Icon */}
-                    <div className="flex-1 flex items-center justify-center py-4">
-                      <div className="cat-card-icon transition-all duration-400 group-hover:scale-110 group-hover:-translate-y-1"
-                        style={{ color: iconColor, filter: active ? `drop-shadow(0 0 12px ${style.accent})` : 'none' }}>
-                        {style.icon(iconColor)}
-                      </div>
-                    </div>
-
-                    {/* Bottom */}
-                    <div>
-                      <p className="text-xs font-semibold mb-1.5 tracking-wide" style={{ color: isDark ? 'rgba(255,255,255,0.38)' : 'rgba(0,0,0,0.38)' }}>
-                        {style.sub}
-                      </p>
-                      <h3 className="font-bold leading-tight tracking-tight" style={{ fontSize: 'clamp(1rem,1.5vw,1.15rem)', color: isDark ? '#fff' : '#061510' }}>
-                        {item.category}
-                      </h3>
-                    </div>
+                  <div className="category-strip-icon" style={{ color: iconColor }}>
+                    {style.icon(iconColor)}
+                  </div>
+                  <div className="category-strip-copy">
+                    <strong>{item.category}</strong>
+                    <span>{item.count} careers</span>
                   </div>
                 </button>
               )
             })}
           </div>
 
-          {/* Pointer arrow below active card */}
-          {activeCategory && (
-            <div className="flex justify-center mt-2 pointer-events-none">
-              <div className="cat-arrow-down"
-                style={{ borderTopColor: CATEGORY_STYLE[activeCategory]?.accent || 'var(--c-accent)' }} />
-            </div>
-          )}
-
-          {/* ── Career catalogue ─────────────────────────────────────────────── */}
-          {activeCategory && (() => {
+          {activeCategory ? (() => {
             const style = CATEGORY_STYLE[activeCategory] || {}
             const careers = careerData.filter((c) => c.category === activeCategory)
+            const previewCareers = careers.slice(0, 6)
+
             return (
-              <div ref={careerGridRef} className="mt-6">
-                {/* Section mini-header */}
-                <div className="flex items-center gap-3 mb-6 pt-2">
-                  <div className="w-2 h-2 rounded-full animate-pulse" style={{ background: style.accent || 'var(--c-accent)' }} />
-                  <span className="text-sm font-bold tracking-wide" style={{ color: style.accent || 'var(--c-accent)' }}>
-                    {activeCategory}
-                  </span>
-                  <span className="text-xs font-semibold" style={{ color: 'var(--c-text3)' }}>
-                    — {careers.length} career paths
-                  </span>
+              <div ref={careerGridRef} className="career-preview-panel">
+                <div className="career-preview-header" style={{ '--preview-accent': style.accent }}>
+                  <div>
+                    <div className="career-preview-kicker">Selected field</div>
+                    <h3>{activeCategory}</h3>
+                  </div>
+                  <div className="career-preview-header-meta">
+                    <span>{style.sub}</span>
+                    <strong>{careers.length} mapped careers</strong>
+                  </div>
                 </div>
 
-                <div key={activeCategory} className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-                  {careers.map((career, i) => (
+                <div key={activeCategory} className="career-preview-grid">
+                  {previewCareers.map((career, i) => (
                     <article
                       key={career.career_name}
                       onClick={() => navigate(`/careers/${getCareerSlug(career)}`)}
-                      className="career-data-card group cursor-pointer"
+                      className="career-preview-card group cursor-pointer"
                       style={{
-                        animationDelay: `${i * 38}ms`,
+                        animationDelay: `${i * 34}ms`,
                         animation: 'cardIn 0.4s ease both',
-                        '--cat-accent': style.accent || '#4f46e5',
-                        '--cat-glow': style.glow || 'rgba(27,107,74,0.2)',
+                        '--cat-accent': style.accent || '#a54b20',
                       }}
                     >
-                      {/* Left accent bar */}
-                      <div className="career-data-bar" style={{ background: style.accent || 'var(--c-accent)' }} />
-
-                      <div className="career-data-inner">
-                        {/* Header */}
-                        <div className="flex items-start justify-between gap-3 mb-3">
-                          <h3 className="text-base font-bold leading-snug" style={{ color: 'var(--c-text)' }}>
-                            {career.career_name}
-                          </h3>
-                          <span className="text-xs font-bold shrink-0 px-2.5 py-1 rounded-full"
-                            style={{ background: isDark ? 'rgba(245,158,11,0.12)' : 'rgba(245,158,11,0.1)', color: isDark ? '#fcd34d' : '#d97706', border: `1px solid ${isDark ? 'rgba(245,158,11,0.22)' : 'rgba(245,158,11,0.18)'}` }}>
-                            {career.average_salary_india}
-                          </span>
-                        </div>
-
-                        {/* Description */}
-                        <p className="text-xs leading-[1.75] mb-4 line-clamp-2" style={{ color: 'var(--c-text2)' }}>
-                          {career.description}
-                        </p>
-
-                        {/* Skill tags */}
-                        <div className="flex flex-wrap gap-1.5 mb-4">
-                          {career.required_skills.slice(0, 3).map((s) => (
-                            <span key={s} className="text-[11px] font-semibold px-2.5 py-1 rounded-full"
-                              style={{ background: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.05)', color: 'var(--c-text2)', border: '1px solid var(--c-border)' }}>
-                              {s}
-                            </span>
-                          ))}
-                        </div>
-
-                        {/* Footer */}
-                        <div className="flex items-center justify-between pt-3" style={{ borderTop: '1px solid var(--c-border)' }}>
-                          <div className="flex items-center gap-1.5">
-                            <span className="w-1.5 h-1.5 rounded-full" style={{ background: style.accent, opacity: 0.7 }} />
-                            <span className="text-xs font-semibold" style={{ color: 'var(--c-text3)' }}>
-                              {career.entrance_exams[0]?.exam_name || '—'}
-                            </span>
-                          </div>
-                          <span className="text-xs font-bold transition-all duration-200 group-hover:translate-x-0.5"
-                            style={{ color: style.accent }}>
-                            Details →
-                          </span>
-                        </div>
+                      <div className="career-preview-card-top">
+                        <h4>{career.career_name}</h4>
+                        <span className="career-preview-salary">{career.average_salary_india}</span>
+                      </div>
+                      <p>{career.description}</p>
+                      <div className="career-preview-meta">
+                        <span>{career.entrance_exams[0]?.exam_name || 'No exam listed'}</span>
+                        {career.required_skills.slice(0, 2).map((s) => (
+                          <span key={s}>{s}</span>
+                        ))}
                       </div>
                     </article>
                   ))}
                 </div>
 
-                <div className="mt-12 text-center">
+                <div className="career-preview-footer">
                   <button className="btn-glow" onClick={() => navigate('/careers')}>
                     Open full career explorer →
                   </button>
                 </div>
               </div>
             )
-          })()}
+          })() : (
+            <div className="career-stage-empty compact">
+              <p className="career-stage-empty-label">Career explorer</p>
+              <h3>Pick a field to preview the top mapped careers.</h3>
+              <p>The same category filtering still works here, just in a tighter landing-page format.</p>
+            </div>
+          )}
         </div>
       </section>
 
       {/* ── HOW IT WORKS ─────────────────────────────────────────────────────── */}
-      <section id="how-it-works" className="py-28 px-[5%] relative overflow-hidden" style={{ background: 'var(--c-bg)' }}>
-        <div className="how-orb" />
+      <section id="how-it-works" className="py-20 px-[5%] relative overflow-hidden" style={{ background: 'var(--c-bg)' }}>
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-20">
+          <div className="text-center mb-14">
             <div className="section-kicker-themed">How it works</div>
             <h2 className="font-serif tracking-tight" style={{ fontSize: 'clamp(2.2rem,4vw,3.5rem)', color: 'var(--c-text)' }}>
               Three steps to clarity.
@@ -531,16 +450,15 @@ export default function LandingPage() {
       </section>
 
       {/* ── CTA ──────────────────────────────────────────────────────────────── */}
-      <section className="relative py-28 px-[5%] overflow-hidden" style={{ background: 'var(--c-bg2)' }}>
-        <div className="cta-orb" />
+      <section className="relative py-20 px-[5%] overflow-hidden" style={{ background: 'var(--c-bg2)' }}>
         <div className="max-w-3xl mx-auto text-center relative z-10">
           <div className="section-kicker-themed mb-8">Get started</div>
           <h2 className="font-serif tracking-tight leading-[1.06] mb-6"
             style={{ fontSize:'clamp(2.5rem,5vw,5rem)', color:'var(--c-text)' }}>
-            Your roadmap is<br /><span className="hero-gradient-text">waiting.</span>
+            Start with clarity.<br /><span className="hero-gradient-text">Build with confidence.</span>
           </h2>
           <p className="text-lg leading-[1.8] mb-12 mx-auto max-w-md" style={{ color:'var(--c-text2)' }}>
-            Join thousands of Indian students who've mapped their future with Lakshya. Free, fast, and built for India.
+            Explore the right options, understand the exams, and leave with a plan you can actually follow.
           </p>
           <div className="flex flex-wrap gap-5 justify-center">
             <button className="btn-glow text-base px-10 py-4" onClick={() => navigate('/plan')}>Build my roadmap →</button>
@@ -555,8 +473,8 @@ export default function LandingPage() {
 
       {/* ── FOOTER ───────────────────────────────────────────────────────────── */}
       <footer style={{ background:'var(--c-footer-bg)', borderTop:'1px solid var(--c-footer-bdr)' }}>
-        <div className="max-w-7xl mx-auto px-[5%] py-20">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+        <div className="max-w-7xl mx-auto px-[5%] py-16">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div className="md:col-span-2">
               <div className="font-serif text-3xl mb-4" style={{ color:'var(--c-footer-text)' }}>
                 LAKSHYA
